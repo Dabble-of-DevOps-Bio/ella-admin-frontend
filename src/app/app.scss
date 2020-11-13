@@ -1,0 +1,70 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; }
+  .app .main-navbar {
+    grid-area: navbar; }
+  .app .main-navbar-secondary {
+    grid-area: navbar-secondary; }
+  .app .main-content {
+    grid-area: content;
+    overflow-y: auto; }
+  .app .main-workflow-loading {
+    grid-area: workflow-loading; }
+    .app .main-workflow-loading .loading {
+      height: 80vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; }
+      .app .main-workflow-loading .loading .loading-animation {
+        max-width: 20rem; }
+      .app .main-workflow-loading .loading .loading-text {
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 2.8rem;
+        font-weight: 600;
+        letter-spacing: 0.075rem;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.25); }
+  .app .main-allele-sidebar {
+    grid-area: allele-sidebar;
+    overflow: auto;
+    width: 100%;
+    border-right: 1px dotted rgba(49, 96, 129, 0.25); }
+    @supports (-moz-appearance: none) {
+      .app .main-allele-sidebar {
+        margin-right: 2rem; } }
+    .app .main-allele-sidebar::-webkit-scrollbar {
+      width: 0.8rem; }
+    .app .main-allele-sidebar::-webkit-scrollbar-thumb {
+      background-color: rgba(49, 96, 129, 0.25); }
+    .app .main-allele-sidebar:hover::-webkit-scrollbar-thumb {
+      background-color: rgba(49, 96, 129, 0.5); }
+  .app .main-overview-sidebar {
+    grid-area: overview-sidebar; }
+  .app .wrapper-workflow {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: 'navbar navbar' 'navbar-secondary navbar-secondary' 'allele-sidebar content'; }
+    .app .wrapper-workflow.workflow-loading {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto 1fr;
+      grid-template-areas: 'navbar' 'navbar-secondary' 'workflow-loading'; }
+  .app .wrapper-overview {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 4rem 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: 'navbar navbar' 'navbar-secondary navbar-secondary' 'overview-sidebar content'; }
+  .app .wrapper-dashboard {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: 'navbar' 'navbar-secondary' 'content'; }

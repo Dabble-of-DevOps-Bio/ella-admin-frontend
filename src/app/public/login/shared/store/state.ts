@@ -1,7 +1,17 @@
+import { createFormGroupState, FormGroupState } from "ngrx-forms";
+import { PublicLoginForm } from "../forms";
+
 export class PublicLoginPageState {
-  public isLoading: boolean;
+  public isSubmitting: boolean;
+  public formState: FormGroupState<PublicLoginForm>;
+  public isLoginFailed: boolean;
 
   constructor() {
-    this.isLoading = false;
+    this.isSubmitting = false;
+    this.isLoginFailed = false;
+    this.formState = createFormGroupState<PublicLoginForm>('PublicLoginForm', {
+      username: '',
+      password: ''
+    });
   }
 }

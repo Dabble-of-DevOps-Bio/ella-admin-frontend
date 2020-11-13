@@ -1,0 +1,16 @@
+<div class="tabular-row spacer">
+  <h3 class="full-title upper cell"><i>{{ label }}</i></h3>
+  <input
+    [ngrxFormControlState]="controlState"
+    [type]="type"
+    [autocomplete]="autocomplete"
+    [placeholder]="placeholder"
+    [attr.maxLength]="maxLength"
+    [attr.data-testid]="dataTestID"
+    [attr.role]="fieldRole"
+    [ngClass]="{
+      'form-control-success': controlState.isSubmitted && controlState.isValid,
+      'form-control-error': controlState.isSubmitted && controlState.isInvalid
+    }"
+    class="cell">
+</div>

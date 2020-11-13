@@ -1,3 +1,9 @@
 {
-
+  "PUBLIC": {
+    "LOGIN": {
+      "TEXT_USERNAME": "Username",
+      "TEXT_PASSWORD": "Password",
+      "BUTTON_LOGIN": "Log in"
+    }
+  }
 }
