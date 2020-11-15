@@ -10,10 +10,6 @@ const reducer = createReducer(
   on(UserActions.refreshProfileSuccess, (state, action) => ({
     ...state,
     profile: action.response
-  })),
-  on(UserActions.login, (state) => ({
-    ...state,
-    profile: new User()
   }))
 );
 

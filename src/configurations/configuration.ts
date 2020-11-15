@@ -1,5 +1,5 @@
-//const apiDomain = 'localhost:5001';
-const apiDomain = 'api.ella.ronasit.com';
+const apiDomain = 'localhost:8000';
+// const apiDomain = 'api.ella.ronasit.com';
 const apiURL = 'http://' + apiDomain;
 
 export const configuration = {
@@ -9,10 +9,15 @@ export const configuration = {
     default: 'en'
   },
   api: {
-    url: apiURL + '/api/v1',
+    url: apiURL + '/api',
     unauthorized_routes: [
       apiURL + '/users/actions/login/',
       apiURL + '/users/actions/forgot-password'
     ]
+  },
+  notifications: {
+    positionClass: 'inline',
+    disableTimeOut: true,
+    tapToDismiss: false
   }
 };

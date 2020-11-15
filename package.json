@@ -29,6 +29,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ronas-it/angular-common": "^1.0.27",
     "ngrx-forms": "^6.1.0",
+    "ngx-toastr": "^13.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

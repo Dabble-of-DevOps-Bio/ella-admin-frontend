@@ -1,10 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { UserActions } from '@shared/user';
 import { onNgrxForms, updateGroup, validate, wrapReducerWithFormStateUpdate } from 'ngrx-forms';
 import { PublicLoginForm } from '../forms';
 import { PublicLoginPageActions } from './actions';
 import { PublicLoginPageState } from './state';
 import { required } from 'ngrx-forms/validation';
+import { AuthActions } from '@shared/auth';
 
 const initialState = new PublicLoginPageState();
 
@@ -13,13 +13,13 @@ const reducers = wrapReducerWithFormStateUpdate(
     initialState,
     onNgrxForms(),
     on(PublicLoginPageActions.resetState, () => initialState),
-    on(UserActions.login, (state) => ({
+    on(AuthActions.authorize, (state) => ({
       ...state,
       isSubmitting: true,
       errorResponse: null,
       isLoginFailed: false
     })),
-    on(UserActions.loginFailure, (state, action) => ({
+    on(AuthActions.authorizeFailure, (state, action) => ({
       ...state,
       isLoginFailed: true,
       isSubmitting: false

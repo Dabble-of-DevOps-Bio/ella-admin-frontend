@@ -13,5 +13,10 @@ export const configuration = {
       apiURL + '/users/actions/login/',
       apiURL + '/users/actions/forgot-password'
     ]
+  },
+  notifications: {
+    positionClass: 'inline',
+    disableTimeOut: true,
+    tapToDismiss: false
   }
 };

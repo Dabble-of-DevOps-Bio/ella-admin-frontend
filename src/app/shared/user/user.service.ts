@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { plainToClass, classToPlain } from 'class-transformer';
-import { LoginCredentials, LoginResponse, User } from './models';
+import { User } from './models';
 import { UserRelationType, UserWithCountType } from './types';
 import { ApiService } from '@ronas-it/angular-common';
 
@@ -14,14 +14,6 @@ export class UserService {
     private apiService: ApiService
   ) {
     this.endpoint = '/users/actions';
-  }
-
-  public login(credentials: LoginCredentials): Observable<LoginResponse> {
-    return this.apiService
-      .post<LoginResponse>(this.endpoint + '/login/', credentials)
-      .pipe(
-        map((response) => plainToClass(LoginResponse, response))
-      );
   }
 
   /*public search({ hideNamesOnLeaderboard, page, perPage, filters, all, relations, orderBy, desc }: {

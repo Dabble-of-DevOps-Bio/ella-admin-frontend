@@ -4,25 +4,26 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { UserSelectors } from '../store';
+import { AuthSelectors } from '../store';
 
 @Injectable()
-export class AuthenticatedGuard implements CanActivate {
+export class UnauthenticatedGuard implements CanActivate {
   constructor(
     private router: Router,
     private store: Store<AppState>
-  ) { }
+  ) {
+  }
 
   public canActivate(): Observable<boolean> {
     return this.store
       .pipe(
-        select(UserSelectors.isAuthenticated),
-        map((isAuthenticated) => {console.log('A', isAuthenticated);
-          if (!isAuthenticated) {
-            this.router.navigate(['/login']);
+        select(AuthSelectors.isAuthenticated),
+        map((isAuthenticated) => {
+          if (isAuthenticated) {
+            this.router.navigate(['/users']);
           }
 
-          return isAuthenticated;
+          return !isAuthenticated;
         })
       );
   }

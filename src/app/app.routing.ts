@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthenticatedGuard, IsAdminGuard, UnauthenticatedGuard } from '@shared/user';
+import { AuthenticatedGuard, UnauthenticatedGuard } from '@shared/auth';
+import { IsAdminGuard } from '@shared/user';
 
 const routes: Routes = [
   {

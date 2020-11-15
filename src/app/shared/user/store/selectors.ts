@@ -26,14 +26,4 @@ export class UserSelectors {
     selectFeature,
     (state: UserState) => true// state.profile?.roleID === UserRoleEnum.SUPER_ADMIN
   );
-
-  public static isAuthenticated: MemoizedSelector<AppState, boolean> = createSelector(
-    selectFeature,
-    (state: UserState) => !!state.token
-  );
-
-  public static token: MemoizedSelector<AppState, string> = createSelector(
-    selectFeature,
-    (state: UserState) => state.token
-  );
 }
