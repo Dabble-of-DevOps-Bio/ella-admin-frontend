@@ -10,8 +10,8 @@ export const configuration = {
   api: {
     url: apiURL + '/api/v1',
     unauthorized_routes: [
-      apiURL + '/users/actions/login/',
-      apiURL + '/users/actions/forgot-password'
+      apiURL + '/api/token/',
+      apiURL + '/api/token/refresh/'
     ],
     whitelisted_domains: [
       apiDomain

@@ -1,7 +1,6 @@
 import { AppState } from '@shared/store';
 import { createSelector, MemoizedSelector } from '@ngrx/store';
 import { User } from '../models';
-import { UserRoleEnum } from '../enums';
 import { UserState } from './state';
 
 const selectFeature = (state: AppState) => state.userState;
@@ -17,13 +16,13 @@ export class UserSelectors {
     (state: UserState) => state.language
   );
 
-  public static isAdministrator: MemoizedSelector<AppState, boolean> = createSelector(
+  public static isStaff: MemoizedSelector<AppState, boolean> = createSelector(
     selectFeature,
-    (state: UserState) => true// state.profile?.roleID === UserRoleEnum.SUPER_ADMIN || state.profile?.roleID === UserRoleEnum.ADMIN
+    (state: UserState) => state.profile?.isStaff
   );
 
-  public static isSuperAdministrator: MemoizedSelector<AppState, boolean> = createSelector(
+  public static isSuperUser: MemoizedSelector<AppState, boolean> = createSelector(
     selectFeature,
-    (state: UserState) => true// state.profile?.roleID === UserRoleEnum.SUPER_ADMIN
+    (state: UserState) => state.profile?.isSuperUser
   );
 }

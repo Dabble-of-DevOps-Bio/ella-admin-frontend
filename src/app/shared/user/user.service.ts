@@ -3,7 +3,6 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { plainToClass, classToPlain } from 'class-transformer';
 import { User } from './models';
-import { UserRelationType, UserWithCountType } from './types';
 import { ApiService } from '@ronas-it/angular-common';
 
 @Injectable()
@@ -13,7 +12,23 @@ export class UserService {
   constructor(
     private apiService: ApiService
   ) {
-    this.endpoint = '/users/actions';
+    this.endpoint = '/users/';
+  }
+
+  public profile(): Observable<User> {
+    return this.apiService
+      .get<User>('/profile/')
+      .pipe(
+        map((profile) => plainToClass(User, profile))
+      );
+  }
+
+  public updateProfile(user: User): Observable<User> {
+    return this.apiService
+      .put('/profile/', classToPlain(user))
+      .pipe(
+        map((response) => plainToClass(User, response))
+      );
   }
 
   /*public search({ hideNamesOnLeaderboard, page, perPage, filters, all, relations, orderBy, desc }: {
@@ -47,14 +62,9 @@ export class UserService {
     return this.apiService.put(`${this.endpoint}/${user.id}`, classToPlain(user));
   }
 
-  /*public get(id: number, params: {
-    relations?: Array<UserRelationType>,
-    withCount?: Array<UserWithCountType>
-  } = {}): Observable<User> {
-    const request = new ProfileRequest({ ...params });
-
+  public get(id: number): Observable<User> {
     return this.apiService
-      .get(`${this.endpoint}/${id}`, classToPlain<ProfileRequest>(request))
+      .get(`${this.endpoint}/${id}`)
       .pipe(
         map((response) => plainToClass(User, response))
       );
@@ -62,5 +72,5 @@ export class UserService {
 
   public delete(id: number): Observable<void> {
     return this.apiService.delete(`${this.endpoint}/${id}`);
-  }*/
+  }
 }

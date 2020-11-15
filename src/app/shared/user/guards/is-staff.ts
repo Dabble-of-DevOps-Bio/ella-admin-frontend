@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { UserSelectors } from '../store';
 
 @Injectable()
-export class IsAdminGuard implements CanActivate {
+export class IsStaffGuard implements CanActivate {
   constructor(
     private router: Router,
     private store: Store<AppState>
@@ -18,15 +18,15 @@ export class IsAdminGuard implements CanActivate {
       .pipe(
         withLatestFrom(
           this.store.select(UserSelectors.profile),
-          this.store.select(UserSelectors.isAdministrator),
+          this.store.select(UserSelectors.isStaff),
         ),
-        // filter(([_, profile, __]) => !!profile.roleID),
-        map(([_, __, isAdministrator]) => {console.log('IA', isAdministrator);
-          if (!isAdministrator) {
+        filter(([_, profile, __]) => !!profile.isStaff),
+        map(([_, __, isStaff]) => {
+          if (!isStaff) {
             this.router.navigate(['/not-found']);
           }
 
-          return isAdministrator;
+          return isStaff;
         })
       );
   }

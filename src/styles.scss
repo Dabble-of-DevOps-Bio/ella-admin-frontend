@@ -282,22 +282,10 @@ button {
     button {
       margin-left: 1.3rem;
     }
-    .upload-button {
-      margin-left: 1.3rem;
-    }
-    interpretation-button {
-      margin-left: 1.3rem;
-    }
   }
-  &:disabled {
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    box-shadow: none;
-    color: rgba(0, 0, 0, 0.75);
-    opacity: 0.25;
-    background-color: inherit;
-    &:hover {
-      cursor: default;
-    }
+  &:disabled, &.bttn-disabled {border: 1px solid rgba(0, 0, 0, 0.5); box-shadow: none; color: rgba(0, 0, 0, 0.75);
+    opacity: 0.25; background-color: inherit; pointer-events: none;
+    &:hover {cursor: default;}
   }
 }
 select {
@@ -340,6 +328,9 @@ select {
   }
   &.active {background-color: rgba(49, 96, 129, 0.75); color: white; cursor: default;
     box-shadow: none; border-bottom: none;
+  }
+  &-disabled {pointer-events: none; background-color: rgba(49, 96, 129, 0.05); color:  rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(49, 96, 129, 0.05);
   }
 }
 .pagination {
@@ -440,32 +431,6 @@ button.normal {
 .button {
   ~ {
     .button {
-      margin-left: 1.3rem;
-    }
-  }
-}
-checkable-button {
-  ~ {
-    checkable-button {
-      margin-left: 1.3rem;
-    }
-    button {
-      margin-left: 1.3rem;
-    }
-    .upload-button {
-      margin-left: 1.3rem;
-    }
-  }
-}
-confirm-button {
-  ~ {
-    confirm-button {
-      margin-left: 1.3rem;
-    }
-    button {
-      margin-left: 1.3rem;
-    }
-    .upload-button {
       margin-left: 1.3rem;
     }
   }

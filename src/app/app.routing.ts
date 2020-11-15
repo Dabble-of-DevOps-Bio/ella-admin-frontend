@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthenticatedGuard, UnauthenticatedGuard } from '@shared/auth';
-import { IsAdminGuard } from '@shared/user';
 
 const routes: Routes = [
   {
@@ -11,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    canActivate: [AuthenticatedGuard, IsAdminGuard],
+    canActivate: [AuthenticatedGuard],
     loadChildren: () => import('./account/account.module').then((module) => module.AccountModule)
   },
   {

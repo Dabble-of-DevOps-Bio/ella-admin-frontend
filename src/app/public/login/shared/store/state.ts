@@ -1,5 +1,5 @@
-import { createFormGroupState, FormGroupState } from "ngrx-forms";
-import { PublicLoginForm } from "../forms";
+import { createFormGroupState, FormGroupState } from 'ngrx-forms';
+import { PublicLoginForm } from '../forms';
 
 export class PublicLoginPageState {
   public isSubmitting: boolean;

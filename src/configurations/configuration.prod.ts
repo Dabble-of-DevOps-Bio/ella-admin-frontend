@@ -10,8 +10,8 @@ export const configuration = {
   api: {
     url: 'https://localhost:5001/api/v1',
     unauthorized_routes: [
-      apiURL + '/users/actions/login/',
-      apiURL + '/users/actions/forgot-password'
+      apiURL + '/api/token/',
+      apiURL + '/api/token/refresh/'
     ],
     whitelisted_domains: [
       apiDomain

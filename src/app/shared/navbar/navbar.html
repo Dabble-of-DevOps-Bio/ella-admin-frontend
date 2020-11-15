@@ -1,4 +1,4 @@
-<div class="navbar">
+<div *ngVar="(profile$ | async) as profile" class="navbar">
   <nav>
     <div class="top">
       <section>
@@ -16,6 +16,11 @@
           <div class="link">
             <a href="/docs" target="_blank">
               <h3 class="full-title upper clickable white"><i>Documentation</i></h3>
+            </a>
+          </div>
+          <div *ngIf="isAuthenticated$ | async" class="link">
+            <a routerLink="/profile">
+              <h3 class="full-title upper clickable white"><i>{{ profile.shortName }}</i></h3>
             </a>
           </div>
         </div>

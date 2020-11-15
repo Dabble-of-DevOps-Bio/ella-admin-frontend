@@ -20,7 +20,13 @@
     </form-password>
     <div class="spacer2"></div>
     <div class="tabular-row spacer">
-      <button type="submit" class="cell bttn">
+      <button
+        [ngClass]="{
+          'bttn-loading': isSubmitting$ | async,
+          'bttn-disabled': formState.isInvalid
+        }"
+        type="submit"
+        class="cell bttn">
         {{ 'PUBLIC.LOGIN.BUTTON_LOGIN' | translate }}
       </button>
     </div>

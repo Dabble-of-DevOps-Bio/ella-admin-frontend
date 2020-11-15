@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NavbarComponent } from './navbar.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { NavbarFacade } from './navbar.facade';
+import { NgVariableModule } from '@shared/ng-variable';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -9,9 +12,13 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   imports: [
     CommonModule,
-    TranslateModule
+    RouterModule,
+    TranslateModule,
+    NgVariableModule
   ],
-  providers: [],
+  providers: [
+    NavbarFacade
+  ],
   exports: [
     NavbarComponent
   ]

@@ -1,2 +1,2 @@
-export { IsAdminGuard } from './is-admin';
-export { IsSuperadminGuard } from './is-superadmin';
+export { IsStaffGuard } from './is-staff';
+export { IsSuperUserGuard } from './is-super-user';

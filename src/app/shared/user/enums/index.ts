@@ -1,1 +1,0 @@
-export { UserRoleEnum } from './role';

@@ -20,10 +20,12 @@ export class AuthService {
       );
   }
 
-  public refreshToken(): Observable<HttpResponse<void>> {
-    return this.apiService.get<HttpResponse<void>>('/auth/refresh', {}, {
-      observe: 'response'
-    });
+  public refreshToken(token: string): Observable<AuthResponse> {
+    return this.apiService
+      .post<HttpResponse<void>>('/token/refresh/', { token })
+      .pipe(
+        map((response) => plainToClass(AuthResponse, response))
+      );
   }
 
   public forgotPassword(email: string): Observable<void> {

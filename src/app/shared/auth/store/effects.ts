@@ -1,14 +1,16 @@
-import { Action } from '@ngrx/store';
+import { Action, Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthActions } from './actions';
 import { AuthResponse } from '../models';
 import { AuthService } from '../auth.service';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserActions } from '@shared/user/store/actions';
+import { AuthSelectors } from './selectors';
+import { AppState } from '@shared/store';
 
 @Injectable()
 export class AuthEffects {
@@ -30,9 +32,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.authorizeSuccess),
       map((action) => {
-        localStorage.setItem('token', action.response.refresh);
-        // localStorage.setItem('user_id', String(action.response.user.id));
-        // localStorage.setItem('user_role_id', String(action.response.user.roleID));
+        localStorage.setItem('token', action.response.access);
 
         return UserActions.refreshProfile();
       })
@@ -45,7 +45,9 @@ export class AuthEffects {
       tap(() => {
         localStorage.removeItem('token');
         localStorage.removeItem('user_id');
-        localStorage.removeItem('user_role_id');
+        localStorage.removeItem('user_first_name');
+        localStorage.removeItem('user_last_name');
+        localStorage.removeItem('user_is_super_user');
 
         this.router.navigateByUrl('/login');
       })
@@ -56,15 +58,14 @@ export class AuthEffects {
   public refreshToken$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.refreshToken),
-      switchMap(() => {
+      withLatestFrom(
+        this.store.select(AuthSelectors.token)
+      ),
+      switchMap(([_, token]) => {
         return this.authService
-          .refreshToken()
+          .refreshToken(token)
           .pipe(
-            map((response) => {
-              const token = response.headers.get('Authorization').split(' ')[1];
-
-              return AuthActions.updateToken({ token });
-            }),
+            map(({ refresh }) => AuthActions.updateToken({ token: refresh })),
             catchError((response: HttpErrorResponse) => of(AuthActions.refreshTokenFailure({ response })))
           );
       })
@@ -84,6 +85,7 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>
   ) { }
 }
