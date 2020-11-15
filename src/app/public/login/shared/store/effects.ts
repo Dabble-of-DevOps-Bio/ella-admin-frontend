@@ -19,9 +19,6 @@ export class PublicLoginPageEffects {
         this.store.select(PublicLoginPageSelectors.formState)
       ),
       exhaustMap(([_, formState]) => {
-        NotificationActions.showError({
-          translationKey: 'ADMIN.COUPONS.NOTIFICATIONS.TEXT_COUPONS_DELETED'
-        });
         if (formState.isValid) {
           const credentials = new AuthCredentials(formState.value);
 
@@ -45,8 +42,8 @@ export class PublicLoginPageEffects {
   public loginFailed$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.authorizeFailure),
-      map(() => NotificationActions.showError({
-        translationKey: 'ADMIN.COUPONS.NOTIFICATIONS.TEXT_COUPONS_DELETED'
+      map((action) => NotificationActions.showError({
+        translationKey: action.response.error.detail
       }))
     )
   );

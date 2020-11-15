@@ -12,11 +12,14 @@ export const configuration = {
     unauthorized_routes: [
       apiURL + '/users/actions/login/',
       apiURL + '/users/actions/forgot-password'
+    ],
+    whitelisted_domains: [
+      apiDomain
     ]
   },
   notifications: {
     positionClass: 'inline',
-    disableTimeOut: true,
-    tapToDismiss: false
+    tapToDismiss: true,
+    timeOut: 3000
   }
 };

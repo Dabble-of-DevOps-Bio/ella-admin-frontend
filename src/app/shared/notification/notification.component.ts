@@ -6,8 +6,7 @@ import { Toast, ToastPackage, ToastrService } from 'ngx-toastr';
   selector: '[notification-component]',
   templateUrl: 'notification.html',
   styleUrls: ['notification.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: notificationAnimation
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotificationComponent extends Toast {
   constructor(

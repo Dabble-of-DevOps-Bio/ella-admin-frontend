@@ -1,0 +1,45 @@
+::ng-deep .toast {position: relative; overflow: hidden; padding: 1.3rem 3.9rem 1.3rem 2.6rem;
+    width: 100vw; margin: 0 auto; background-position: 15px center; background-repeat: no-repeat;
+    color: hsla; opacity: 0.99;
+    &:before {color: white; font-size: 1.1rem; font-family: "Work Sans", sans-serif;
+      letter-spacing: 0.1rem;
+    }
+    &-container {position: fixed; z-index: 10000; bottom: 0; right: 0; left: 0;
+      width: 100%; max-height: 20rem; overflow-y: auto; overflow-x: hidden;
+      &:hover {cursor: pointer;}
+    }
+    &-title {font-weight: bold;}
+    &-success {background-color: #31817b;
+      .toast:before {content: 'SUCCESS';}
+    }
+    &-error {background-color: #813e31;
+      .toast:before {content: 'ERROR';}
+    }
+    &-info {background-color: rgba(49, 56, 129, 0.75);
+      .toast:before {content: 'INFORMATION';}
+    }
+    &-warning {background-color: rgba(129, 62, 49, 0.75);
+      .toast:before {content: 'WARNING';}
+    }
+    &-message {word-wrap: break-word; font-size: 1.7rem; font-family: "Source Sans Pro", sans-serif;
+      font-weight: 600; text-transform: uppercase; color: white; padding-top: 0.3rem;
+      &-collision {word-wrap: break-word; font-size: 1.7rem; font-family: "Source Sans Pro", sans-serif;
+        font-weight: 600; color: white; padding-top: 0.3rem;
+      }
+      a {color: rgba(255, 255, 255, 0.75);
+        &:hover {color: white; text-decoration: none;}
+      }
+      label {color: rgba(255, 255, 255, 0.75);}
+    }
+    &-close-button {position: relative; right: -0.3em; top: -0.3em; float: right; font-size: 20px;
+      font-weight: bold; color: rgba(255, 255, 255, 0.75); -webkit-text-shadow: 0 1px 0 #ffffff;
+      text-shadow: 0 1px 0 #ffffff; opacity: 0.8; padding: 0; cursor: pointer;
+      background: transparent; border: 0; -webkit-appearance: none;
+      &:hover {color: white; text-decoration: none; cursor: pointer; opacity: 0.4;}
+      &:focus {color: white; text-decoration: none; cursor: pointer; opacity: 0.4;}
+      &.upload-button {padding: 0; cursor: pointer; background: transparent;
+        border: 0; -webkit-appearance: none;
+      }
+    }
+  }
+

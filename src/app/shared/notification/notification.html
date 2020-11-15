@@ -1,14 +1,4 @@
-<div data-testid="toast" class="toast">
+
+<div (click)="remove()" data-testid="toast" class="toast">
   <div class="toast-message">{{ message }}</div>
-  <div class="toast-actions">
-    <a (click)="remove()" class="link">{{ 'SHARED.NOTIFICATION.TEXT_HIDE' | translate }}</a>
-  </div>
-</div>
-<div id="toast-container" class="toast-top-right">
-  <div class="toast toast-error" aria-live="assertive" style="opacity: 0.839477;">
-    <div class="toast-message">Login unsuccessful: Invalid username superuser1</div>
-  </div>
-  <div class="toast toast-error" aria-live="assertive" style="opacity: 0.859017;">
-    <div class="toast-message">Login unsuccessful: Invalid username superuser1</div>
-  </div>
 </div>

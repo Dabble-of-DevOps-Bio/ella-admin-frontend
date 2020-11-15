@@ -14,8 +14,9 @@ import { NavbarModule } from '@shared/navbar';
 import { UserEffects, UserModule, userReducer } from '@shared/user';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
-import { NotificationComponent, NotificationModule } from '@shared/notification';
-import { AuthModule, authReducer, jwtOptionsFactory } from '@shared/auth';
+import { NotificationComponent, NotificationEffects, NotificationModule } from '@shared/notification';
+import { AuthEffects, AuthModule, authReducer, jwtOptionsFactory } from '@shared/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,13 @@ import { AuthModule, authReducer, jwtOptionsFactory } from '@shared/auth';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    ApiModule.forRoot({
+      apiUrl: configuration.api.url
+    }),
+    AuthModule,
+    UserModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -31,7 +38,9 @@ import { AuthModule, authReducer, jwtOptionsFactory } from '@shared/auth';
       }
     }),
     EffectsModule.forRoot([
-      UserEffects
+      AuthEffects,
+      UserEffects,
+      NotificationEffects
     ]),
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot({
@@ -50,17 +59,12 @@ import { AuthModule, authReducer, jwtOptionsFactory } from '@shared/auth';
         deps: [Store]
       }
     }),
-    ApiModule.forRoot({
-      apiUrl: configuration.api.url
-    }),
+    NavbarModule,
+    NotificationModule,
     ToastrModule.forRoot({
       ...configuration.notifications,
       toastComponent: NotificationComponent
-    }),
-    AuthModule,
-    UserModule,
-    NavbarModule,
-    NotificationModule
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

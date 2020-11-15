@@ -14,7 +14,7 @@ export function jwtOptionsFactory(store: Store<AppState>): object {
         )
         .toPromise();
     },
-    // whitelistedDomains: configuration.api.whitelisted_domains,
-    blacklistedRoutes: configuration.api.unauthorized_routes
+    allowedDomains: configuration.api.whitelisted_domains,
+    disallowedRoutes: configuration.api.unauthorized_routes
   };
 }
