@@ -15,10 +15,10 @@ const routes: Routes = [
         path: 'change-password',
         loadChildren: () => import('./change-password/change-password.module').then((module) => module.PublicChangePasswordPageModule)
       },
-      /*{
+      {
         path: '**',
         loadChildren: () => import('./login/login.module').then((module) => module.PublicLoginPageModule)
-      }*/
+      }
     ]
   }
 ];

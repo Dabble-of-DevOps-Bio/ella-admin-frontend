@@ -24,7 +24,7 @@ export class PublicLoginPageFacade {
     private store: Store<AppState>
   ) { }
 
-  public tryLogin(): void {
+  public login(): void {
     this.store.dispatch(PublicLoginPageActions.login());
   }
 

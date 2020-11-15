@@ -1,4 +1,4 @@
-const apiDomain = 'localhost:5001/api/v1';
+const apiDomain = 'api.ella.ronasit.com';
 const apiURL = 'http://' + apiDomain;
 
 export const configuration = {
@@ -8,7 +8,7 @@ export const configuration = {
     default: 'en'
   },
   api: {
-    url: 'https://localhost:5001/api/v1',
+    url: apiURL + '/api/v1',
     unauthorized_routes: [
       apiURL + '/users/actions/login/',
       apiURL + '/users/actions/forgot-password'

@@ -20,7 +20,7 @@ export class UnauthenticatedGuard implements CanActivate {
         select(UserSelectors.isAuthenticated),
         map((isAuthenticated) => {console.log('UA', isAuthenticated);
           if (isAuthenticated) {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/users']);
           }
 
           return !isAuthenticated;

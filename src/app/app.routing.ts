@@ -5,7 +5,7 @@ import { AuthenticatedGuard, IsAdminGuard, UnauthenticatedGuard } from '@shared/
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'users',
     pathMatch: 'full'
   },
   {
@@ -17,8 +17,7 @@ const routes: Routes = [
     path: '',
     canActivate: [UnauthenticatedGuard],
     loadChildren: () => import('./public/public.module').then((module) => module.PublicModule)
-  },
-  
+  }
 ];
 
 @NgModule({

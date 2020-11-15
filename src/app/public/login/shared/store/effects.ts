@@ -29,10 +29,10 @@ export class PublicLoginPageEffects {
     )
   );
 
-  public authorizeSuccess$: Observable<Action> = createEffect(() =>
+  public loginSuccess$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.loginSuccess),
-      tap(() => this.router.navigateByUrl('/dashboard'))
+      tap(() => this.router.navigateByUrl('/users'))
     ), {
       dispatch: false
     }

@@ -28,6 +28,6 @@ export class PublicLoginPageComponent implements OnDestroy {
   }
 
   public onSubmit(): void {
-    this.facade.tryLogin();
+    this.facade.login();
   }
 }

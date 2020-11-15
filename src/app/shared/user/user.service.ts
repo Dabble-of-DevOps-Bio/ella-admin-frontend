@@ -18,7 +18,7 @@ export class UserService {
 
   public login(credentials: LoginCredentials): Observable<LoginResponse> {
     return this.apiService
-      .post<LoginResponse>('/login/', credentials)
+      .post<LoginResponse>(this.endpoint + '/login/', credentials)
       .pipe(
         map((response) => plainToClass(LoginResponse, response))
       );
