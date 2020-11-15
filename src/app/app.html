@@ -1,54 +1,6 @@
 <div class="wrapper-login">
-  <div class="main-navbar">
-    <navbar class="">
-      <nav>
-        <div class="top">
-          <section>
-          </section>
-          <header class="hero" ng-if="!$ctrl.title" style="">
-            <h1>
-              <span id="les">les</span><span id="e">e</span><span id="l">||</span><span id="a">a</span>
-            </h1>
-          </header>
-          <section>
-            <div class="right">
-              <div class="link">
-                <a href="/docs" target="_blank"><h3 class="full-title upper clickable white"><i>Documentation</i></h3></a>
-              </div>
-            </div>
-          </section>
-        </div>
-      </nav>
-    </navbar>
-  </div>
+  <navbar></navbar>
   <div class="main-content">
-    <div class="login-content">
-      <sectionbox class="login-box" collapsible="false" color="green" topcontrols="true">
-        <section class="sectionbox green" ng-class="vm.getClasses()" ng-disabled="vm.ngDisabled" style="">
-          <header class="sb titlebar">
-            <div class="sb-title-container" ng-click="vm.collapse()">
-              <div class="title" ng-transclude="title"><maintitle class="ng-scope"> Login </maintitle></div>
-              <div class="subtitle" ng-transclude="subtitle"></div>
-            </div>
-            <div class="sb-controls" ng-transclude="controls"></div>
-          </header>
-          <div class="sb-container topcontrols" ng-class="{topcontrols: vm.onTop()}" style="">
-            <article class="sb-top" ng-transclude="top"></article>
-            <article class="sb-body" ng-transclude="contentwrapper">
-              <contentwrapper class="ng-scope">
-                <div class="bttn-set">
-                  <label tabindex="0" class="bttn" uib-btn-radio="item" ng-model="$ctrl.mode" ng-change="$ctrl.modeChanged({mode: $ctrl.mode})" ng-repeat="item in $ctrl.modes" style="">Login</label>
-                  <label tabindex="0" class="bttn" uib-btn-radio="item" ng-model="$ctrl.mode" ng-change="$ctrl.modeChanged({mode: $ctrl.mode})" ng-repeat="item in $ctrl.modes" style="">Change password</label>
-                </div>
-                <section class="line-wrapper">
-                  
-                </section>
-              </contentwrapper>
-            </article>
-          </div>
-        </section>
-      </sectionbox>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>
-<router-outlet></router-outlet>

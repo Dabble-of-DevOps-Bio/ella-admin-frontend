@@ -6,8 +6,8 @@ export class PublicLoginPageActions {
     '[Public Login Page] Reset State'
   );
 
-  public static tryLogin = createAction(
-    '[Public Login Page] Try Login'
+  public static login = createAction(
+    '[Public Login Page] Login'
   );
   /* tslint:enable:typedef */
 }

@@ -1,9 +1,6 @@
 :host .login-page {
-  .wrapper-login {
-    display: grid;
-    width: 100vw;
-    height: 100vh;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas: 'navbar' 'content'; }
+  .wrapper-login {display: grid; width: 100vw; height: 100vh; grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr; grid-template-areas: 'navbar' 'content';
+  }
+  form-text, form-password {display: table-row;}
 }

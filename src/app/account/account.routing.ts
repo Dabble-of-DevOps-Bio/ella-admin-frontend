@@ -6,7 +6,12 @@ const routes: Routes = [
   {
     path: '',
     component: AccountComponent,
-    children: []
+    children: [
+      {
+        path: 'users',
+        loadChildren: () => import('./users/users.module').then((module) => module.AccountUsersPageModule)
+      }
+    ]
   }
 ];
 

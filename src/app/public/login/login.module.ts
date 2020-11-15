@@ -11,6 +11,7 @@ import { FormTextModule } from '@shared/form-text';
 import { FormPasswordModule } from '@shared/form-password';
 import { NgVariableModule } from '@shared/ng-variable';
 import { NgrxFormsModule } from 'ngrx-forms';
+import { PublicLoginPageFacade } from './login.facade';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,8 @@ import { NgrxFormsModule } from 'ngrx-forms';
     NgVariableModule,
     NgrxFormsModule
   ],
-  providers: []
+  providers: [
+    PublicLoginPageFacade
+  ]
 })
 export class PublicLoginPageModule { }

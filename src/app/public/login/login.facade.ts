@@ -25,7 +25,7 @@ export class PublicLoginPageFacade {
   ) { }
 
   public tryLogin(): void {
-    this.store.dispatch(PublicLoginPageActions.tryLogin());
+    this.store.dispatch(PublicLoginPageActions.login());
   }
 
   public resetState(): void {

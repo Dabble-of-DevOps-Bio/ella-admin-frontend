@@ -1,15 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthenticatedGuard, IsAdminGuard, UnauthenticatedGuard } from '@shared/user';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./public/public.module').then((module) => module.PublicModule)
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
   },
   {
     path: '',
+    canActivate: [AuthenticatedGuard, IsAdminGuard],
     loadChildren: () => import('./account/account.module').then((module) => module.AccountModule)
-  }
+  },
+  {
+    path: '',
+    canActivate: [UnauthenticatedGuard],
+    loadChildren: () => import('./public/public.module').then((module) => module.PublicModule)
+  },
+  
 ];
 
 @NgModule({

@@ -28,5 +28,6 @@ export class FormTextComponent {
 
   constructor() {
     this.placeholder = '';
+    this.type = 'text';
   }
 }

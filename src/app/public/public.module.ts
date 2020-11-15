@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { PublicComponent } from './public.component';
 import { PublicRoutingModule } from './public.routing';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
-    PublicRoutingModule
+    PublicRoutingModule,
+    TranslateModule
   ]
 })
 export class PublicModule { }
