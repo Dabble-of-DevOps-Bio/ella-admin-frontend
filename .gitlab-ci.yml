@@ -57,9 +57,9 @@ tslint:
     - docker
     - linux
 
-build_development:
+build_staging:
   variables:
-    ENV: dev
+    ENV: stg
   <<: *build
   except:
     - production
