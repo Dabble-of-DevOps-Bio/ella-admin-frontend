@@ -1,4 +1,4 @@
-const apiDomain = 'api.ella.ronasit.com';
+const apiDomain = 'ella.ronasit.com';
 const apiURL = 'https://' + apiDomain;
 
 export const configuration = {
