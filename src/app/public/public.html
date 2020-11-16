@@ -1,1 +1,39 @@
-<router-outlet></router-outlet>
+<div class="login-content">
+  <div class="login-box">
+    <section class="sectionbox green">
+      <header class="sb titlebar">
+        <div class="sb-title-container">
+          <div class="title">
+            {{ 'PUBLIC.LAYOUT.TITLE_LOGIN' | translate }}
+          </div>
+          <div class="subtitle"></div>
+        </div>
+        <div class="sb-controls"></div>
+      </header>
+      <div class="sb-container topcontrols">
+        <article class="sb-top"></article>
+        <article class="sb-body">
+          <div class="contentwrapper">
+            <div class="bttn-set">
+              <a
+                routerLink="/login"
+                routerLinkActive="active"
+                class="bttn">
+                {{ 'PUBLIC.LAYOUT.TAB_LOGIN' | translate }}
+              </a>
+              <a
+                routerLink="/change-password"
+                routerLinkActive="active"
+                class="bttn">
+                {{ 'PUBLIC.LAYOUT.TAB_CHANGE_PASSWORD' | translate }}
+              </a>
+            </div>
+            <section class="line-wrapper">
+              <router-outlet></router-outlet>
+            </section>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>

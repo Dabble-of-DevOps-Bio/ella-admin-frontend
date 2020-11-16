@@ -28,7 +28,9 @@
     "@ngrx/store": "^10.0.0",
     "@ngx-translate/core": "^13.0.0",
     "@ronas-it/angular-common": "^1.0.27",
+    "luxon": "^1.25.0",
     "ngrx-forms": "^6.1.0",
+    "ngx-toastr": "^13.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
@@ -47,6 +49,8 @@
     "@testing-library/angular": "^10.0.0",
     "@testing-library/jest-dom": "^5.1.1",
     "@types/jest": "^26.0.5",
+    "@types/lodash": "^4.14.165",
+    "@types/luxon": "^1.25.0",
     "@types/node": "^12.11.1",
     "babel-jest": "^26.1.0",
     "codelyzer": "^6.0.0",

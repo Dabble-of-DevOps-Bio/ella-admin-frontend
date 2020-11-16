@@ -1,1 +1,35 @@
-Login
+<form 
+  *ngVar="formState$ | async as formState"
+  [ngrxFormState]="formState"
+  (submit)="onSubmit()"
+  class="table login-page">
+  <div class="table">
+    <div class="spacer2"></div>
+    <form-text
+      [controlState]="formState.controls.username"
+      [label]="'PUBLIC.LOGIN.TEXT_USERNAME' | translate"
+      autocomplete="username"
+      dataTestID="username-input">
+    </form-text>
+    <form-password
+      [controlState]="formState.controls.password"
+      [label]="'PUBLIC.LOGIN.TEXT_PASSWORD' | translate"
+      autocomplete="current-password"
+      dataTestID="password-input"
+      role="textbox">
+    </form-password>
+    <div class="spacer2"></div>
+    <div class="tabular-row spacer">
+      <button
+        [ngClass]="{
+          'bttn-loading': isSubmitting$ | async,
+          'bttn-disabled': formState.isInvalid
+        }"
+        type="submit"
+        class="cell bttn">
+        {{ 'PUBLIC.LOGIN.BUTTON_LOGIN' | translate }}
+      </button>
+    </div>
+  </div>
+  <div class="cell spacer-horizontal"></div>
+</form>

@@ -1,3 +1,15 @@
 {
-
+  "PUBLIC": {
+    "LAYOUT": {
+      "TITLE_LOGIN": "Login",
+      "TITLE_CHANGE_PASSWORD": "Change password",
+      "TAB_LOGIN": "Login",
+      "TAB_CHANGE_PASSWORD": "Change password"
+    },
+    "LOGIN": {
+      "TEXT_USERNAME": "Username",
+      "TEXT_PASSWORD": "Password",
+      "BUTTON_LOGIN": "Log in"
+    }
+  }
 }

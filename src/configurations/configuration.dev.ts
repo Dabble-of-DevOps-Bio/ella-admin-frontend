@@ -1,10 +1,25 @@
+const apiDomain = 'api.ella.ronasit.com';
+const apiURL = 'http://' + apiDomain;
+
 export const configuration = {
-  production: true,
+  production: false,
   language: {
     available: ['en'],
     default: 'en'
   },
   api: {
-    url: 'https://localhost'
+    url: apiURL + '/api/v1',
+    unauthorized_routes: [
+      apiURL + '/api/token/',
+      apiURL + '/api/token/refresh/'
+    ],
+    whitelisted_domains: [
+      apiDomain
+    ]
+  },
+  notifications: {
+    positionClass: 'inline',
+    tapToDismiss: true,
+    timeOut: 3000
   }
 };

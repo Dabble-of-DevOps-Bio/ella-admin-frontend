@@ -6,7 +6,16 @@ const routes: Routes = [
   {
     path: '',
     component: AccountComponent,
-    children: []
+    children: [
+      {
+        path: 'users',
+        loadChildren: () => import('./users/users.module').then((module) => module.AccountUsersPageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then((module) => module.AccountProfilePageModule)
+      }
+    ]
   }
 ];
 

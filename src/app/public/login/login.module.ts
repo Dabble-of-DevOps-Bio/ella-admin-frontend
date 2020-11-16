@@ -7,6 +7,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { publicLoginPageReducer, PublicLoginPageEffects } from './shared/store';
+import { FormTextModule } from '@shared/form-text';
+import { FormPasswordModule } from '@shared/form-password';
+import { NgVariableModule } from '@shared/ng-variable';
+import { NgrxFormsModule } from 'ngrx-forms';
+import { PublicLoginPageFacade } from './login.facade';
 
 @NgModule({
   declarations: [
@@ -18,8 +23,14 @@ import { publicLoginPageReducer, PublicLoginPageEffects } from './shared/store';
     TranslateModule,
     PublicLoginPageRoutingModule,
     StoreModule.forFeature('publicLoginPage', publicLoginPageReducer),
-    EffectsModule.forFeature([PublicLoginPageEffects])
+    EffectsModule.forFeature([PublicLoginPageEffects]),
+    FormTextModule,
+    FormPasswordModule,
+    NgVariableModule,
+    NgrxFormsModule
   ],
-  providers: []
+  providers: [
+    PublicLoginPageFacade
+  ]
 })
 export class PublicLoginPageModule { }
