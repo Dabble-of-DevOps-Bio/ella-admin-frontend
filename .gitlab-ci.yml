@@ -27,7 +27,7 @@ cache: &global_cache
   stage: build
   image: node:14
   script:
-    - npm run-script build
+    - npm run-script build:${ENV}
   artifacts:
     paths:
       - dist/
