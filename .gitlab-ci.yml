@@ -67,7 +67,7 @@ build_development:
 push:
   extends: .push_gcr
   environment:
-    name: "development"
+    name: "staging"
   only:
     - master
 
