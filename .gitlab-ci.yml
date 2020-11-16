@@ -7,7 +7,7 @@ stages:
 
 variables:
   CI_PROJECT_NAME: ella-admin-angular-fe
-  DOMAIN: ella-admin.ronasit.com
+  DOMAIN: admin.ella.ronasit.com
   DOCKERFILE: ./Dockerfile
   CHART_REPO: ronasit/static
   CHART_VERSION: &ref "1.1.1"
