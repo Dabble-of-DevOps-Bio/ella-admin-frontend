@@ -1,4 +1,4 @@
-const apiDomain = 'ella.ronasit.com';
+const apiDomain = 'api.ella.ronasit.com';
 const apiURL = 'https://' + apiDomain;
 
 export const configuration = {
@@ -8,7 +8,7 @@ export const configuration = {
     default: 'en'
   },
   api: {
-    url: apiURL + '/api/v1',
+    url: apiURL + '/api',
     unauthorized_routes: [
       apiURL + '/api/token/',
       apiURL + '/api/token/refresh/'
