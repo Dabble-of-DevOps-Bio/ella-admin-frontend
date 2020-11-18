@@ -2,32 +2,32 @@ stages:
   - prepare
   - lint
   - build
-  - push
+#  - push
   - deploy
 
 variables:
   CI_PROJECT_NAME: ella-admin-angular-fe
-  DOMAIN: admin.ella.ronasit.com
-  DOCKERFILE: ./Dockerfile
-  CHART_REPO: ronasit/static
-  CHART_VERSION: &ref "1.1.1"
-  DOCKER_CONTAINER_REGISTRY: gcr.io/ronas-it-development/${CI_PROJECT_NAME}-${CI_ENVIRONMENT_SLUG}
+  DOMAIN: admin.ella.ronasit.com/admin
+#  DOCKERFILE: ./Dockerfile
+#  CHART_REPO: ronasit/static
+#  CHART_VERSION: &ref "1.1.1"
+#  DOCKER_CONTAINER_REGISTRY: gcr.io/ronas-it-development/${CI_PROJECT_NAME}-${CI_ENVIRONMENT_SLUG}
 
-include:
-  - project: 'k8s-tools/charts/static'
-    ref: *ref
-    file: '/helpers/.gitlab-ci-template.yml'
+#include:
+#  - project: 'k8s-tools/charts/static'
+#    ref: *ref
+#    file: '/helpers/.gitlab-ci-template.yml'
 
 cache: &global_cache
   paths:
     - ./node_modules
   policy: pull
 
-.build_template: &build
+build_template: 
   stage: build
   image: node:14
   script:
-    - npm run-script build:${ENV}
+    - npm run-script build
   artifacts:
     paths:
       - dist/
@@ -57,24 +57,27 @@ tslint:
     - docker
     - linux
 
-build_staging:
-  variables:
-    ENV: stg
-  <<: *build
-  except:
-    - production
+#build_staging:
+#  variables:
+#    ENV: stg
+#  <<: *build
+#  except:
+#    - production
 
-push:
-  extends: .push_gcr
-  environment:
-    name: "staging"
-  only:
-    - master
+#push:
+#  extends: .push_gcr
+#  environment:
+#    name: "staging"
+#  only:
+#    - master
 
 deploy_staging:
+  stage: deploy 
   environment:
     name: "staging"
     url: https://${DOMAIN}
-  extends: .deploy
+  image: projects.ronasit.com:4567/docker/ssh
+  script:
+   - rsync -av ./dist/ ec2-user@54.161.122.188:/var/www/ella.ronasit.com/
   only:
     - master
