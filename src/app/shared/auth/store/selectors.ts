@@ -10,6 +10,11 @@ export class AuthSelectors {
     (state: AuthState) => state.token
   );
 
+  public static refreshToken: MemoizedSelector<AppState, string> = createSelector(
+    selectFeature,
+    (state: AuthState) => state.refreshToken
+  );
+
   public static isTokenRefreshing: MemoizedSelector<AppState, boolean> = createSelector(
     selectFeature,
     (state: AuthState) => state.isTokenRefreshing
