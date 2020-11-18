@@ -79,5 +79,3 @@ deploy_staging:
   image: projects.ronasit.com:4567/docker/ssh
   script:
    - rsync -av ./dist/ ec2-user@54.161.122.188:/var/www/ella.ronasit.com/
-  only:
-    - master
