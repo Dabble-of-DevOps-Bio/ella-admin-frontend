@@ -8,12 +8,13 @@ const reducer = createReducer(
   initialState,
   on(AuthActions.updateToken, (state, action) => ({
     ...state,
-    token: action.token,
+    refreshToken: action.token,
     isTokenRefreshing: false
   })),
   on(AuthActions.authorizeSuccess, (state, action) => ({
     ...state,
     token: action.response.access,
+    refreshToken: action.response.refresh,
     isTokenRefreshing: false
   })),
   on(AuthActions.refreshToken, (state) => ({

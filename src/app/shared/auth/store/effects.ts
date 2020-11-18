@@ -33,6 +33,7 @@ export class AuthEffects {
       ofType(AuthActions.authorizeSuccess),
       map((action) => {
         localStorage.setItem('token', action.response.access);
+        localStorage.setItem('refresh_token', action.response.refresh);
 
         return UserActions.refreshProfile();
       })
@@ -44,6 +45,7 @@ export class AuthEffects {
       ofType(AuthActions.unauthorize),
       tap(() => {
         localStorage.removeItem('token');
+        localStorage.removeItem('refresh_token');
         localStorage.removeItem('user_id');
         localStorage.removeItem('user_first_name');
         localStorage.removeItem('user_last_name');
@@ -59,13 +61,13 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.refreshToken),
       withLatestFrom(
-        this.store.select(AuthSelectors.token)
+        this.store.select(AuthSelectors.refreshToken)
       ),
       switchMap(([_, token]) => {
         return this.authService
           .refreshToken(token)
           .pipe(
-            map(({ refresh }) => AuthActions.updateToken({ token: refresh })),
+            map(({ access }) => AuthActions.updateToken({ token: access })),
             catchError((response: HttpErrorResponse) => of(AuthActions.refreshTokenFailure({ response })))
           );
       })
@@ -77,6 +79,7 @@ export class AuthEffects {
       ofType(AuthActions.updateToken),
       tap((action) => {
         localStorage.setItem('token', action.token);
+        localStorage.setItem('refresh_token', action.token);
       })
     ),
     { dispatch: false }

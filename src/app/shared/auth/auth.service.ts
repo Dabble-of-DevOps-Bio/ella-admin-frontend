@@ -22,7 +22,7 @@ export class AuthService {
 
   public refreshToken(token: string): Observable<AuthResponse> {
     return this.apiService
-      .post<HttpResponse<void>>('/token/refresh/', { token })
+      .post<HttpResponse<void>>('/token/refresh/', { refresh: token })
       .pipe(
         map((response) => plainToClass(AuthResponse, response))
       );
