@@ -50,7 +50,7 @@ tslint:
 build_staging:
  variables:
    ENV: stg
- extends: .build
+ extends: .build_template
  except:
    - production
 
