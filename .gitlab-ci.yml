@@ -2,32 +2,22 @@ stages:
   - prepare
   - lint
   - build
-#  - push
   - deploy
 
 variables:
   CI_PROJECT_NAME: ella-admin-angular-fe
   DOMAIN: admin.ella.ronasit.com/admin
-#  DOCKERFILE: ./Dockerfile
-#  CHART_REPO: ronasit/static
-#  CHART_VERSION: &ref "1.1.1"
-#  DOCKER_CONTAINER_REGISTRY: gcr.io/ronas-it-development/${CI_PROJECT_NAME}-${CI_ENVIRONMENT_SLUG}
-
-#include:
-#  - project: 'k8s-tools/charts/static'
-#    ref: *ref
-#    file: '/helpers/.gitlab-ci-template.yml'
 
 cache: &global_cache
   paths:
     - ./node_modules
   policy: pull
 
-build_template: 
+.build_template: &build 
   stage: build
   image: node:14
   script:
-    - npm run-script build
+    - npm run-script build:${ENV}
   artifacts:
     paths:
       - dist/
@@ -57,19 +47,12 @@ tslint:
     - docker
     - linux
 
-#build_staging:
-#  variables:
-#    ENV: stg
-#  <<: *build
-#  except:
-#    - production
-
-#push:
-#  extends: .push_gcr
-#  environment:
-#    name: "staging"
-#  only:
-#    - master
+build_staging:
+ variables:
+   ENV: stg
+ extends: .build
+ except:
+   - production
 
 deploy_staging:
   stage: deploy 
