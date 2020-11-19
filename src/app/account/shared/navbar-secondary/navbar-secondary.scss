@@ -1,0 +1,8 @@
+:host .navbar-secondary {
+  display: flex; background-color: #316081; align-items: center; justify-content: space-between;
+  background-color: #9caebf; height: 4.2rem; padding: 0 1.3rem;
+  .bttn-set .bttn {background-color: rgba(255, 255, 255, 0.75); color: rgba(0, 0, 0, 0.75);
+    &.active {background-color: rgba(49, 96, 129, 0.75); color: white;}
+  }
+}
+.main-navbar-secondary {grid-area: navbar-secondary;}

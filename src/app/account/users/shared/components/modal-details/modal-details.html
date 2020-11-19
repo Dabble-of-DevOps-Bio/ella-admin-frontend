@@ -1,0 +1,34 @@
+<div
+  *ngVar="isSubmitting$ | async as isSubmitting"
+  [modalDisableClose]="isSubmitting"
+  [modalID]="modalID"
+  class="modal profile-modal">
+  <h3 class="title">{{ 'ACCOUNT.PROFILE.MODAL_DETAILS.TEXT_TITLE' | translate }}</h3>
+  <a (click)="close()" class="modal-close">
+    <span class="icon icon-mask icon-cross-small"></span>
+  </a>
+  <div class="modal-content" mat-dialog-content>
+    <form
+      *ngVar="formState$ | async as formState"
+      (submit)="updateEmail()"
+      [ngrxFormState]="formState"
+      role="form">
+      <form-text
+        [controlState]="formState.controls.firstName"
+        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_FIRST_NAME' | translate }}">
+      </form-text>
+      <form-text
+        [controlState]="formState.controls.lastName"
+        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_LAST_NAME' | translate }}">
+      </form-text>
+      <button
+        [ngClass]="{
+          'button-loading': isSubmitting,
+          'button-disabled': formState.isInvalid
+        }"
+        class="button button-block">
+        {{ 'ACCOUNT.USERS.MODAL_DETAILS.BUTTON_SAVE' | translate }}
+      </button>
+    </form>
+  </div>
+</div>

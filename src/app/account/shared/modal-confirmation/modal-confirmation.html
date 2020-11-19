@@ -1,0 +1,15 @@
+<div class="modal modal-confirmation">
+  <h3 mat-dialog-title class="modal-title">
+    {{ data.title | translate }}
+  </h3>
+  <div mat-dialog-actions class="modal-actions">
+    <div class="bttn-set">
+      <button (click)="onConfirm()" class="bttn" type="button">
+        {{ 'SHARED.MODAL.BUTTON_YES' | translate }}
+      </button>
+      <button mat-dialog-close class="bttn" type="button">
+        {{ 'SHARED.MODAL.BUTTON_NO' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

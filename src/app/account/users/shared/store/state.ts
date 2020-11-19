@@ -1,7 +1,12 @@
+import { AccountUsersModalDetailsState } from './modal-details';
+import { AccountUsersPageRootState } from './root';
+
 export class AccountUsersPageState {
-  public isLoading: boolean;
+  public rootState: AccountUsersPageRootState;
+  public modalDetails: AccountUsersModalDetailsState;
 
   constructor() {
-    this.isLoading = false;
+    this.rootState = new AccountUsersPageRootState();
+    this.modalDetails = new AccountUsersModalDetailsState();
   }
 }

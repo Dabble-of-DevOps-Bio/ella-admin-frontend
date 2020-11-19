@@ -6,11 +6,18 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { accountUsersPageReducer, AccountUsersPageEffects } from './shared/store';
+import { AccountUsersModalDetailsEffects, accountUsersPageReducer } from './shared/store';
+import { AccountUsersPageFacade } from './users.facade';
+import { AgGridModule } from 'ag-grid-angular';
+import { AccountUsersActionsCellRendererComponent } from './shared/components/actions-cell-renderer/actions-cell-renderer.component';
+import { AccountUsersModalDetailsFacade } from './shared/components/modal-details/modal-details.facade';
+import { AccountUsersPageRootEffects } from './shared/store/root';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    AccountUsersPageComponent
+    AccountUsersPageComponent,
+    AccountUsersActionsCellRendererComponent
   ],
   imports: [
     CommonModule,
@@ -18,8 +25,16 @@ import { accountUsersPageReducer, AccountUsersPageEffects } from './shared/store
     TranslateModule,
     AccountUsersPageRoutingModule,
     StoreModule.forFeature('accountUsersPage', accountUsersPageReducer),
-    EffectsModule.forFeature([AccountUsersPageEffects])
+    EffectsModule.forFeature([
+      AccountUsersPageRootEffects,
+      AccountUsersModalDetailsEffects
+    ]),
+    AgGridModule.withComponents([AccountUsersActionsCellRendererComponent]),
+    MatDialogModule
   ],
-  providers: []
+  providers: [
+    AccountUsersPageFacade,
+    AccountUsersModalDetailsFacade
+  ]
 })
 export class AccountUsersPageModule { }

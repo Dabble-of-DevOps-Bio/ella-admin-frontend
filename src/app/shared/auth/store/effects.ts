@@ -85,6 +85,13 @@ export class AuthEffects {
     { dispatch: false }
   );
 
+  public refreshTokenFailure$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.refreshTokenFailure),
+      map(() => AuthActions.unauthorize())
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private authService: AuthService,

@@ -1,0 +1,5 @@
+:host ::ng-deep .modal-confirmation {
+  &-cancel {font-weight: bold !important;}
+  .modal-title {margin: 1.1rem -3px 1.9rem;}
+  .row {flex: 1;}
+}

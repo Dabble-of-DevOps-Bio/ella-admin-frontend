@@ -11,5 +11,23 @@
       "TEXT_PASSWORD": "Password",
       "BUTTON_LOGIN": "Log in"
     }
+  },
+  "ACCOUNT": {
+    "USERS": {
+      "MODAL_DELETE": {
+        "TEXT_TITLE": "Delete user?"
+      },
+      "MODAL_RESET_PASSWORD": {
+        "TEXT_TITLE": "Reset password?"
+      }
+    }
+  },
+  "SHARED": {
+    "MODAL": {
+      "BUTTON_YES": "Yes",
+      "BUTTON_NO": "No",
+      "BUTTON_OK": "OK",
+      "BUTTON_CANCEL": "Cancel"
+    }
   }
 }

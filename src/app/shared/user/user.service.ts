@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { plainToClass, classToPlain } from 'class-transformer';
+import { plainToClass, classToPlain, plainToClassFromExist } from 'class-transformer';
 import { User } from './models';
 import { ApiService } from '@ronas-it/angular-common';
+import { PaginationRequest, PaginationResponse } from '@shared/pagination';
+import { UserOrderByEnum } from './enums';
 
 @Injectable()
 export class UserService {
@@ -31,24 +33,21 @@ export class UserService {
       );
   }
 
-  /*public search({ hideNamesOnLeaderboard, page, perPage, filters, all, relations, orderBy, desc }: {
-    hideNamesOnLeaderboard?: boolean,
+  public search({ page, perPage, all, orderBy, desc }: {
     page?: number,
     perPage?: number,
-    filters?: UserFilters,
     all?: boolean,
-    relations?: Array<UserRelationType>,
     orderBy?: UserOrderByEnum
     desc?: boolean
   } = {}): Observable<PaginationResponse<User>> {
-    const request = new UserPaginationRequest({ hideNamesOnLeaderboard, page, perPage, ...filters, all, relations, orderBy, desc });
+    const request = new PaginationRequest({ page, perPage, all, orderBy, desc });
 
     return this.apiService
-      .get<PaginationResponse<User>>(this.endpoint, omitBy(classToPlain<UserPaginationRequest>(request), isUndefined))
+      .get<PaginationResponse<User>>(this.endpoint, request)
       .pipe(
         map((response) => plainToClassFromExist(new PaginationResponse<User>(User), response))
       );
-  }*/
+  }
 
   public create(user: User): Observable<User> {
     return this.apiService
