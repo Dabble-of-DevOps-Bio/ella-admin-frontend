@@ -7,7 +7,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { BaseModalComponent } from '@shared/base-modal';
 
 @Component({
-  selector: 'profile-modal-details',
+  selector: 'account-modal-details',
   templateUrl: 'modal-details.html',
   styleUrls: ['modal-details.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

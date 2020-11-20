@@ -13,24 +13,34 @@ import { AccountUsersActionsCellRendererComponent } from './shared/components/ac
 import { AccountUsersModalDetailsFacade } from './shared/components/modal-details/modal-details.facade';
 import { AccountUsersPageRootEffects } from './shared/store/root';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AccountUsersModalDetailsComponent } from './shared/components/modal-details/modal-details.component';
+import { NgrxFormsModule } from 'ngrx-forms';
+import { ModalModule } from '@shared/modal';
+import { NgVariableModule } from '@shared/ng-variable';
+import { FormTextModule } from '@shared/form-text';
 
 @NgModule({
   declarations: [
     AccountUsersPageComponent,
-    AccountUsersActionsCellRendererComponent
+    AccountUsersActionsCellRendererComponent,
+    AccountUsersModalDetailsComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     TranslateModule,
     AccountUsersPageRoutingModule,
+    NgrxFormsModule,
+    ModalModule,
     StoreModule.forFeature('accountUsersPage', accountUsersPageReducer),
     EffectsModule.forFeature([
       AccountUsersPageRootEffects,
       AccountUsersModalDetailsEffects
     ]),
     AgGridModule.withComponents([AccountUsersActionsCellRendererComponent]),
-    MatDialogModule
+    MatDialogModule,
+    NgVariableModule,
+    FormTextModule
   ],
   providers: [
     AccountUsersPageFacade,

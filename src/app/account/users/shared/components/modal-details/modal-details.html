@@ -3,32 +3,57 @@
   [modalDisableClose]="isSubmitting"
   [modalID]="modalID"
   class="modal profile-modal">
-  <h3 class="title">{{ 'ACCOUNT.PROFILE.MODAL_DETAILS.TEXT_TITLE' | translate }}</h3>
-  <a (click)="close()" class="modal-close">
-    <span class="icon icon-mask icon-cross-small"></span>
-  </a>
+  <h3 mat-dialog-title class="modal-title">
+    <div class="modal-title-container">
+      <div mat-dialog-close class="icon modal-close">
+        <svg id="i-close" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+          <path d="M2 30 L30 2 M30 30 L2 2"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="modal-title-text">
+      {{ 'ACCOUNT.USERS.MODAL_DETAILS.TITLE_EDIT' | translate }}
+    </div>
+  </h3>
   <div class="modal-content" mat-dialog-content>
     <form
       *ngVar="formState$ | async as formState"
       (submit)="updateEmail()"
       [ngrxFormState]="formState"
-      role="form">
+      role="form"
+      class="table">
       <form-text
         [controlState]="formState.controls.firstName"
-        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_FIRST_NAME' | translate }}">
+        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_FIRST_NAME' | translate }}"
+        [validationMessages]="{
+          required: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_FIRST_NAME_IS_REQUIRED' | translate
+        }">
       </form-text>
       <form-text
         [controlState]="formState.controls.lastName"
-        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_LAST_NAME' | translate }}">
+        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_LAST_NAME' | translate }}"
+        [validationMessages]="{
+          required: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_LAST_NAME_IS_REQUIRED' | translate
+        }">
       </form-text>
-      <button
-        [ngClass]="{
-          'button-loading': isSubmitting,
-          'button-disabled': formState.isInvalid
-        }"
-        class="button button-block">
-        {{ 'ACCOUNT.USERS.MODAL_DETAILS.BUTTON_SAVE' | translate }}
-      </button>
+      <form-text
+        [controlState]="formState.controls.email"
+        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_EMAIL' | translate }}"
+        [validationMessages]="{
+          required: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_EMAIL_IS_REQUIRED' | translate,
+          invalid: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_EMAIL_IS_INVALID' | translate
+        }">
+      </form-text>
+      <div class="bttn-set">
+        <button
+          [ngClass]="{
+            'button-loading': isSubmitting,
+            'button-disabled': formState.isInvalid
+          }"
+          class="bttn">
+          {{ 'ACCOUNT.USERS.MODAL_DETAILS.BUTTON_SAVE' | translate }}
+        </button>
+      </div>
     </form>
   </div>
 </div>

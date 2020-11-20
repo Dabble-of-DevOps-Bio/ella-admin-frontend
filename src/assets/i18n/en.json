@@ -13,7 +13,27 @@
     }
   },
   "ACCOUNT": {
+    "NAVBAR": {
+      "LINK_USERS": "Users",
+      "LINK_USER_GROUPS": "User groups",
+      "LINK_SOMETHING": "Something",
+      "BUTTON_NEW_USER": "New user"
+    },
     "USERS": {
+      "MODAL_DETAILS": {
+        "TITLE_NEW": "New user",
+        "TITLE_EDIT": "Edit user",
+        "TEXT_FIRST_NAME": "First name",
+        "TEXT_LAST_NAME": "Last name",
+        "TEXT_EMAIL": "Email",
+        "BUTTON_SAVE": "Save",
+        "ERRORS": {
+          "TEXT_FIRST_NAME_IS_REQUIRED": "First name is required",
+          "TEXT_LAST_NAME_IS_REQUIRED": "Last name is required",
+          "TEXT_EMAIL_IS_REQUIRED": "Email is required",
+          "TEXT_EMAIL_IS_INVALID": "Email is invalid"
+        }
+      },
       "MODAL_DELETE": {
         "TEXT_TITLE": "Delete user?"
       },

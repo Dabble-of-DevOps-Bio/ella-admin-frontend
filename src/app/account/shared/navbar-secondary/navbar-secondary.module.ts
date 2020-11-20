@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { AccountNavbarSecondaryComponent } from './navbar-secondary.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
+import { AccountNavbarSecondaryFacade } from './navbar-secondary.facade';
+import { ModalModule } from '@shared/modal';
 
 @NgModule({
   declarations: [
@@ -11,9 +13,12 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     TranslateModule,
-    RouterModule
+    RouterModule,
+    ModalModule
   ],
-  providers: [],
+  providers: [
+    AccountNavbarSecondaryFacade
+  ],
   exports: [
     AccountNavbarSecondaryComponent
   ]
