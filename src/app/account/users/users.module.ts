@@ -18,6 +18,7 @@ import { NgrxFormsModule } from 'ngrx-forms';
 import { ModalModule } from '@shared/modal';
 import { NgVariableModule } from '@shared/ng-variable';
 import { FormTextModule } from '@shared/form-text';
+import { CustomSelectModule } from '@shared/custom-select';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FormTextModule } from '@shared/form-text';
     AgGridModule.withComponents([AccountUsersActionsCellRendererComponent]),
     MatDialogModule,
     NgVariableModule,
-    FormTextModule
+    FormTextModule,
+    CustomSelectModule
   ],
   providers: [
     AccountUsersPageFacade,

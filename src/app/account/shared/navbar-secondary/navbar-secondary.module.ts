@@ -13,8 +13,7 @@ import { ModalModule } from '@shared/modal';
   imports: [
     CommonModule,
     TranslateModule,
-    RouterModule,
-    ModalModule
+    RouterModule
   ],
   providers: [
     AccountNavbarSecondaryFacade

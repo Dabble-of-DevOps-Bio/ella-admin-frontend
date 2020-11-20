@@ -12,25 +12,27 @@ const reducer = wrapReducerWithFormStateUpdate(
     initialState,
     onNgrxForms(),
     on(AccountUsersModalDetailsActions.resetState, () => initialState),
-    on(AccountUsersModalDetailsActions.update, (state) => ({
+    on(AccountUsersModalDetailsActions.save, (state) => ({
       ...state,
       isSubmitting: state.formState.isValid
     })),
-    on(AccountUsersModalDetailsActions.updateSuccess, (state) => ({
+    on(AccountUsersModalDetailsActions.saveSuccess, (state) => ({
       ...state,
       isSubmitting: false
     })),
-    on(AccountUsersModalDetailsActions.updateFailure, (state) => ({
+    on(AccountUsersModalDetailsActions.saveFailure, (state) => ({
       ...state,
       isSubmitting: false
     })),
     on(AccountUsersModalDetailsActions.prefillForm, (state, action) => ({
       ...state,
       formState: updateGroup<AccountUsersDetailsForm>(state.formState, {
-        firstName: setValue(action.user?.firstName),
-        lastName: setValue(action.user?.lastName),
-        email: setValue(action.user?.email),
-        id: setValue(action.user?.id)
+        firstName: setValue(action.user?.firstName || ''),
+        lastName: setValue(action.user?.lastName || ''),
+        username: setValue(action.user?.username || ''),
+        email: setValue(action.user?.email || ''),
+        id: setValue(action.user?.id || null),
+        authGroup: setValue(action.user?.authGroup || 1)
       })
     }))
   ),
@@ -38,6 +40,7 @@ const reducer = wrapReducerWithFormStateUpdate(
   updateGroup<AccountUsersDetailsForm>({
     firstName: validate(required),
     lastName: validate(required),
+    username: validate(required),
     email: validate(required, email)
   })
 );

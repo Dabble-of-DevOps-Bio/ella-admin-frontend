@@ -8,7 +8,7 @@ const reducer = createReducer(
   initialState,
   on(AuthActions.updateToken, (state, action) => ({
     ...state,
-    refreshToken: action.token,
+    token: action.token,
     isTokenRefreshing: false
   })),
   on(AuthActions.authorizeSuccess, (state, action) => ({

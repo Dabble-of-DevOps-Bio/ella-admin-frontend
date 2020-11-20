@@ -1,0 +1,46 @@
+<div class="tabular-row spacer">
+  <h3
+    *ngIf="label"
+    [ngClass]="{ required: isRequired }"
+    class="full-title upper cell">
+    <i>{{ label }}</i>
+  </h3>
+  <div
+    *ngIf="!isDisabled; else disabledDropdown"
+    class="cell dropdown custom-select"
+    dropdown>
+    <a [ngClass]="{ 'dropdown-trigger-placeholder': !selectedOption }" class="dropdown-trigger">
+      {{ selectedValueTitle }}
+      <span class="icon icon-mask icon-arrow-down"></span>
+    </a>
+
+    <div class="dropdown-content dropdown-content-scrollable">
+      <div
+        (scrolled)="onScroll()"
+        [ngClass]="{ 'dropdown-scroll': hasScroll }">
+        <div class="dropdown-items">
+          <a
+            *ngFor="let option of options"
+            (click)="onClickOption(option)"
+            [title]="option.title || ''"
+            data-testid="dropdown-item"
+            class="dropdown-item">
+            {{ option.title }}
+          </a>
+          <div *ngIf="isLoading" class="dropdown-item loader loader-loading"></div>
+          <div *ngIf="isNotFound" class="dropdown-item not-found">
+            {{ 'SHARED.SELECT.TEXT_NO_ITEMS' | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #disabledDropdown>
+    <div
+      class="cell dropdown custom-select disabled">
+      <a class="dropdown-trigger">
+        {{ selectedValueTitle }}
+      </a>
+    </div>
+  </ng-template>
+</div>

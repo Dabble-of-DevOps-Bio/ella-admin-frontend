@@ -18,19 +18,33 @@ export class AccountUsersModalDetailsActions {
     props<{ user: User }>()
   );
 
+  public static save = createAction(
+    '[Account Profile Page - Modal Change Details] Save',
+    props<{ modalID: string }>()
+  );
+
+  public static create = createAction(
+    '[Account Profile Page - Modal Change Details] Create',
+    props<{ modalID: string }>()
+  );
+
   public static update = createAction(
     '[Account Profile Page - Modal Change Details] Update',
     props<{ modalID: string }>()
   );
 
-  public static updateSuccess = createAction(
-    '[Account Profile Page - Modal Change Details] Update Success',
+  public static saveSuccess = createAction(
+    '[Account Profile Page - Modal Change Details] Save Success',
     props<{ response: User }>()
   );
 
-  public static updateFailure = createAction(
-    '[Account Profile Page - Modal Change Details] Update Failure',
+  public static saveFailure = createAction(
+    '[Account Profile Page - Modal Change Details] Save Failure',
     props<{ response: HttpErrorResponse }>()
+  );
+
+  public static openDetailsDialog = createAction(
+    '[Account Users Page] Open Details Dialog'
   );
   /* tslint:enable:typedef */
 }

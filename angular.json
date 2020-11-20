@@ -35,7 +35,8 @@
             "allowedCommonJsDependencies": [
               "lodash",
               "class-transformer"
-            ]
+            ],
+            "showCircularDependencies": false
           },
           "configurations": {
             "production": {

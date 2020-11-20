@@ -25,11 +25,14 @@
         "TITLE_EDIT": "Edit user",
         "TEXT_FIRST_NAME": "First name",
         "TEXT_LAST_NAME": "Last name",
+        "TEXT_USERNAME": "Username",
         "TEXT_EMAIL": "Email",
+        "TEXT_AUTH_GROUP": "Auth group",
         "BUTTON_SAVE": "Save",
         "ERRORS": {
           "TEXT_FIRST_NAME_IS_REQUIRED": "First name is required",
           "TEXT_LAST_NAME_IS_REQUIRED": "Last name is required",
+          "TEXT_USERNAME_IS_REQUIRED": "Username is required",
           "TEXT_EMAIL_IS_REQUIRED": "Email is required",
           "TEXT_EMAIL_IS_INVALID": "Email is invalid"
         },
@@ -56,6 +59,14 @@
       "BUTTON_NO": "No",
       "BUTTON_OK": "OK",
       "BUTTON_CANCEL": "Cancel"
+    },
+    "MODAL_FAILURE": {
+      "TEXT_TITLE": "Error",
+      "TEXT_CONTENT": "Unable to handle request"
+    },
+    "AUTH_GROUPS": {
+      "TEXT_ADMIN": "Admin",
+      "TEXT_STAFF": "Staff"
     }
   }
 }
