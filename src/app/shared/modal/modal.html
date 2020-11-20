@@ -1,0 +1,22 @@
+<div class="modal">
+  <h3 mat-dialog-title class="modal-title">
+    <div class="modal-title-container">
+      <div mat-dialog-close class="icon modal-close">
+        <svg id="i-close" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+          <path d="M2 30 L30 2 M30 30 L2 2"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="modal-title-text">
+      {{ data.title }}
+    </div>
+  </h3>
+  <p mat-dialog-content class="modal-content">
+    {{ data.content }}
+  </p>
+  <div mat-dialog-actions class="bttn-set">
+    <button mat-dialog-close class="bttn">
+      {{ data.button }}
+    </button>
+  </div>
+</div>

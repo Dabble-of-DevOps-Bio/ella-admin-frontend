@@ -11,5 +11,62 @@
       "TEXT_PASSWORD": "Password",
       "BUTTON_LOGIN": "Log in"
     }
+  },
+  "ACCOUNT": {
+    "NAVBAR": {
+      "LINK_USERS": "Users",
+      "LINK_USER_GROUPS": "User groups",
+      "LINK_SOMETHING": "Something",
+      "BUTTON_NEW_USER": "New user"
+    },
+    "USERS": {
+      "MODAL_DETAILS": {
+        "TITLE_NEW": "New user",
+        "TITLE_EDIT": "Edit user",
+        "TEXT_FIRST_NAME": "First name",
+        "TEXT_LAST_NAME": "Last name",
+        "TEXT_USERNAME": "Username",
+        "TEXT_EMAIL": "Email",
+        "TEXT_AUTH_GROUP": "Auth group",
+        "BUTTON_SAVE": "Save",
+        "ERRORS": {
+          "TEXT_FIRST_NAME_IS_REQUIRED": "First name is required",
+          "TEXT_LAST_NAME_IS_REQUIRED": "Last name is required",
+          "TEXT_USERNAME_IS_REQUIRED": "Username is required",
+          "TEXT_EMAIL_IS_REQUIRED": "Email is required",
+          "TEXT_EMAIL_IS_INVALID": "Email is invalid"
+        },
+        "MODAL_SUCCESS": {
+          "TEXT_TITLE": "Data was saved successfully",
+          "TEXT_OK": "OK"
+        }
+      },
+      "MODAL_DELETE": {
+        "TEXT_TITLE": "Delete user?"
+      },
+      "MODAL_RESET_PASSWORD": {
+        "TEXT_TITLE": "Reset password?",
+        "MODAL_SUCCESS": {
+          "TEXT_TITLE": "Data was saved successfully",
+          "TEXT_OK": "OK"
+        }
+      }
+    }
+  },
+  "SHARED": {
+    "MODAL": {
+      "BUTTON_YES": "Yes",
+      "BUTTON_NO": "No",
+      "BUTTON_OK": "OK",
+      "BUTTON_CANCEL": "Cancel"
+    },
+    "MODAL_FAILURE": {
+      "TEXT_TITLE": "Error",
+      "TEXT_CONTENT": "Unable to handle request"
+    },
+    "AUTH_GROUPS": {
+      "TEXT_ADMIN": "Admin",
+      "TEXT_STAFF": "Staff"
+    }
   }
 }

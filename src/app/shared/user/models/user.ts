@@ -21,8 +21,8 @@ export class User {
   @Expose({ name: 'group_id' })
   public groupID: number;
 
-  @Expose({ name: 'auth_groups' })
-  public authGroups: Array<number>;
+  @Expose({ name: 'auth_group' })
+  public authGroup: number;
 
   @Expose({ name: 'is_staff' })
   public isStaff: boolean;

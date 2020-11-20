@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { UserActions } from '@shared/user/store/actions';
 import { AuthSelectors } from './selectors';
 import { AppState } from '@shared/store';
+import { ModalActions } from '@shared/modal';
 
 @Injectable()
 export class AuthEffects {
@@ -43,7 +44,7 @@ export class AuthEffects {
   public unauthorize$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.unauthorize),
-      tap(() => {
+      map(() => {
         localStorage.removeItem('token');
         localStorage.removeItem('refresh_token');
         localStorage.removeItem('user_id');
@@ -52,9 +53,10 @@ export class AuthEffects {
         localStorage.removeItem('user_is_super_user');
 
         this.router.navigateByUrl('/login');
+
+        return ModalActions.closeAll();
       })
-    ),
-    { dispatch: false }
+    )
   );
 
   public refreshToken$: Observable<Action> = createEffect(() =>
@@ -83,6 +85,13 @@ export class AuthEffects {
       })
     ),
     { dispatch: false }
+  );
+
+  public refreshTokenFailure$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.refreshTokenFailure),
+      map(() => AuthActions.unauthorize())
+    )
   );
 
   constructor(

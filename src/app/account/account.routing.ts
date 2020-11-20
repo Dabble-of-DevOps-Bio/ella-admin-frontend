@@ -14,6 +14,10 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then((module) => module.AccountProfilePageModule)
+      },
+      {
+        path: 'user-groups',
+        loadChildren: () => import('./user-groups/user-groups.module').then((module) => module.AccountUserGroupsPageModule)
       }
     ]
   }

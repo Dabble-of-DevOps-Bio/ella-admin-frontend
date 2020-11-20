@@ -10,8 +10,8 @@ export class PublicLoginPageState {
     this.isSubmitting = false;
     this.isLoginFailed = false;
     this.formState = createFormGroupState<PublicLoginForm>('PublicLoginForm', {
-      username: '',
-      password: ''
+      username: 'superuser',
+      password: 'Password#123'
     });
   }
 }

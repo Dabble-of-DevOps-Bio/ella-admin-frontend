@@ -28,8 +28,8 @@ export class AuthService {
       );
   }
 
-  public forgotPassword(email: string): Observable<void> {
-    return this.apiService.post('/auth/forgot-password', { email });
+  public resetPassword(email: string): Observable<void> {
+    return this.apiService.post('/password-reset/', { email });
   }
 
   public restorePassword(request: RestorePasswordRequest): Observable<void> {
