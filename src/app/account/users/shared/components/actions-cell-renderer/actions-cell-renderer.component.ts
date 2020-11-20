@@ -26,7 +26,7 @@ export class AccountUsersActionsCellRendererComponent implements ICellRendererAn
   }
 
   public openResetModal(): void {
-    this.facade.openResetPasswordModal(this.params.data.id);
+    this.facade.openResetPasswordModal(this.params.data.email);
   }
 
   public openDeleteModal(): void {

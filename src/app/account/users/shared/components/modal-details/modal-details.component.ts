@@ -35,7 +35,7 @@ export class AccountUsersModalDetailsComponent extends BaseModalComponent implem
     this.facade.resetState();
   }
 
-  public updateEmail(): void {
-    this.facade.updateEmail(this.modalID);
+  public save(): void {
+    this.facade.save(this.modalID);
   }
 }

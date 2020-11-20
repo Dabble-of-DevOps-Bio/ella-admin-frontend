@@ -638,6 +638,7 @@ button.normal {
 .spacer, .spacer-horizontal {height: 4rem;}
 .spacer2 {height: 2rem;}
 
+/* modals */
 .mat-dialog-container {background-color: #f5f9f8; color: #000; padding: 0 24px 24px!important; overflow: initial; position: relative;
   .modal {width: 238px; text-align: center;
     &-title {font-family: "Work Sans", sans-serif; font-size: 1.2rem; line-height: 20px; 
@@ -658,6 +659,12 @@ button.normal {
     }
   }
 }
+
+/* form errors */
+.form-helper-error {font-size: 1.1rem; color: #bb0909;}
+
+/* ag-tables */
+.ag-theme-alpine {font-family: "Work Sans", sans-serif;}
 
 @media only screen and (min-width: 1800px) {
   html {font-size: 11px;}

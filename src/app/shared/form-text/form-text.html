@@ -13,4 +13,9 @@
       'form-control-error': controlState.isSubmitted && controlState.isInvalid
     }"
     class="cell">
+    <validation-errors
+      *ngIf="controlState.isSubmitted && controlState.isInvalid"
+      [controlErrors]="controlState.errors"
+      [messages]="validationMessages">
+    </validation-errors>
 </div>

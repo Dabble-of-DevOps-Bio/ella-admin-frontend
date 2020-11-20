@@ -34,7 +34,7 @@ export class AccountUsersPageComponent implements OnDestroy {
       { headerName: 'Superuser', field: 'isSuperUser', sortable: true, filter: true, maxWidth: 120 },
       { headerName: 'Active', field: 'active', sortable: true, filter: true, maxWidth: 100 },
       { headerName: 'Created', field: 'createdAt', sortable: true, filter: true, maxWidth: 120 },
-      { headerHame: 'Actions', cellRenderer: 'actionsCellRenderer', maxWidth: 160 }
+      { headerName: 'Actions', cellRenderer: 'actionsCellRenderer', maxWidth: 160 }
     ];
 
     this.frameworkComponents = {

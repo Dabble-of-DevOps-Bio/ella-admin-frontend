@@ -32,13 +32,21 @@
           "TEXT_LAST_NAME_IS_REQUIRED": "Last name is required",
           "TEXT_EMAIL_IS_REQUIRED": "Email is required",
           "TEXT_EMAIL_IS_INVALID": "Email is invalid"
+        },
+        "MODAL_SUCCESS": {
+          "TEXT_TITLE": "Data was saved successfully",
+          "TEXT_OK": "OK"
         }
       },
       "MODAL_DELETE": {
         "TEXT_TITLE": "Delete user?"
       },
       "MODAL_RESET_PASSWORD": {
-        "TEXT_TITLE": "Reset password?"
+        "TEXT_TITLE": "Reset password?",
+        "MODAL_SUCCESS": {
+          "TEXT_TITLE": "Data was saved successfully",
+          "TEXT_OK": "OK"
+        }
       }
     }
   },

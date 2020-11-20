@@ -1,7 +1,5 @@
 import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
-import { AppState } from '@shared/store';
 import { ModalData } from '@shared/modal';
 
 @Component({
@@ -13,14 +11,13 @@ import { ModalData } from '@shared/modal';
 export class AccountModalConfirmationComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ModalData,
-    public dialogRef: MatDialogRef<AccountModalConfirmationComponent>,
-    private store: Store<AppState>
+    public dialogRef: MatDialogRef<AccountModalConfirmationComponent>
   ) { }
 
   public onConfirm(): void {
-    this.store.dispatch(this.data.action({
-      commentID: this.data.commentID,
-      dialogID: this.dialogRef.id
-    }));
+    this.data.action({
+      id: this.data.id,
+      modalID: this.dialogRef.id
+    });
   }
 }

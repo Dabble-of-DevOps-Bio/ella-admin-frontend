@@ -3,6 +3,6 @@ export class ModalData {
   public content?: string;
   public button?: string;
   public email?: string;
-  public commentID?: number;
+  public id?: number;
   public action?: Function;
 }

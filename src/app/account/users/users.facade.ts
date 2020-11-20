@@ -56,8 +56,8 @@ export class AccountUsersPageFacade {
     this.store.dispatch(AccountUsersPageRootActions.deleteUser({ modalID, id }));
   }
 
-  public resetPassword(modalID: string, id: number): void {
-    this.store.dispatch(AccountUsersPageRootActions.resetPassword({ modalID, id }));
+  public resetPassword(modalID: string, email: string): void {
+    this.store.dispatch(AccountUsersPageRootActions.resetPassword({ modalID, email }));
   }
 
   public openDeleteModal(id: number): void {
@@ -65,7 +65,7 @@ export class AccountUsersPageFacade {
       AccountModalConfirmationComponent,
       {
         data: {
-          action: ((modalID) => this.resetPassword(modalID, id)).bind(this),
+          action: ((modalID) => this.deleteUser(modalID, id)).bind(this),
           title: 'ACCOUNT.USERS.MODAL_DELETE.TEXT_TITLE',
           text: 'ACCOUNT.USERS.MODAL_DELETE.TEXT_MESSAGE',
           isLoading$: this.isSendingRequest$
@@ -74,12 +74,12 @@ export class AccountUsersPageFacade {
     );
   }
 
-  public openResetPasswordModal(id: number): void {
+  public openResetPasswordModal(email: string): void {
     this.modalService.open(
       AccountModalConfirmationComponent,
       {
         data: {
-          action: ((modalID) => this.deleteUser(modalID, id)).bind(this),
+          action: ((modalID) => this.resetPassword(modalID, email)).bind(this),
           title: 'ACCOUNT.USERS.MODAL_RESET_PASSWORD.TEXT_TITLE',
           text: 'ACCOUNT.USERS.MODAL_RESET_PASSWORD.TEXT_MESSAGE',
           isLoading$: this.isSendingRequest$

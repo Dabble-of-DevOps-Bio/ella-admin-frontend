@@ -17,6 +17,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { NotificationComponent, NotificationEffects, NotificationModule } from '@shared/notification';
 import { AuthEffects, AuthModule, authReducer, jwtOptionsFactory } from '@shared/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalEffects, ModalModule } from '@shared/modal';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     }),
     AuthModule,
     UserModule,
+    ModalModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -40,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EffectsModule.forRoot([
       AuthEffects,
       UserEffects,
-      NotificationEffects
+      NotificationEffects,
+      ModalEffects
     ]),
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot({

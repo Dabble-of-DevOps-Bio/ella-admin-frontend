@@ -18,7 +18,7 @@
   <div class="modal-content" mat-dialog-content>
     <form
       *ngVar="formState$ | async as formState"
-      (submit)="updateEmail()"
+      (submit)="save()"
       [ngrxFormState]="formState"
       role="form"
       class="table">
@@ -41,7 +41,7 @@
         label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_EMAIL' | translate }}"
         [validationMessages]="{
           required: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_EMAIL_IS_REQUIRED' | translate,
-          invalid: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_EMAIL_IS_INVALID' | translate
+          email: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_EMAIL_IS_INVALID' | translate
         }">
       </form-text>
       <div class="bttn-set">

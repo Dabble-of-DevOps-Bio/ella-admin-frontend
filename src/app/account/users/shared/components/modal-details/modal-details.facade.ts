@@ -33,7 +33,7 @@ export class AccountUsersModalDetailsFacade extends BaseModalFacade {
     this.store.dispatch(AccountUsersModalDetailsActions.initModal({ id }));
   }
 
-  public updateEmail(modalID: string): void {
+  public save(modalID: string): void {
     this.store.dispatch(AccountUsersModalDetailsActions.update({ modalID }));
   }
 }

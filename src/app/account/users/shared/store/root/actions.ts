@@ -45,12 +45,11 @@ export class AccountUsersPageRootActions {
 
   public static resetPassword = createAction(
     '[Account Users Page] Reset Password',
-    props<{ modalID: string, id: number }>()
+    props<{ modalID: string, email: string }>()
   );
 
   public static resetPasswordSuccess = createAction(
-    '[Account Users Page] Reset Password Success',
-    props<{ id: number }>()
+    '[Account Users Page] Reset Password Success'
   );
 
   public static resetPasswordFailure = createAction(

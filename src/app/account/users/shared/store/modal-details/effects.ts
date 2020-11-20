@@ -10,7 +10,7 @@ import { UserService, UserSelectors, User } from '@shared/user';
 import { ModalActions, ModalComponent, ModalService } from '@shared/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AccountUsersPageRootSelectors } from '../root';
+import { AccountUsersPageRootActions, AccountUsersPageRootSelectors } from '../root';
 
 @Injectable()
 export class AccountUsersModalDetailsEffects {
@@ -30,11 +30,7 @@ export class AccountUsersModalDetailsEffects {
       ),
       filter(([_, formState]) => formState.isValid),
       switchMap(([{ modalID }, formState]) => {
-        const updateRequest = new User({
-          firstName: formState.value.firstName,
-          lastName: formState.value.lastName,
-          email: formState.value.email
-        });
+        const updateRequest = new User({ ...formState.value });
 
         return this.userService
           .update(updateRequest)
@@ -42,7 +38,8 @@ export class AccountUsersModalDetailsEffects {
             mergeMap((response) => [
               AccountUsersModalDetailsActions.updateSuccess({ response: updateRequest }),
               ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
-              ModalActions.closeByID({ modalID })
+              ModalActions.closeByID({ modalID }),
+              AccountUsersPageRootActions.loadItemsByParameters({}),
             ]),
             catchError((response: HttpErrorResponse) => [AccountUsersModalDetailsActions.updateFailure({ response })])
           );
@@ -56,7 +53,7 @@ export class AccountUsersModalDetailsEffects {
       tap(() => {
         this.modalService.openModal(ModalComponent, {
           title: this.translateService.instant('ACCOUNT.USERS.MODAL_DETAILS.MODAL_SUCCESS.TEXT_TITLE'),
-          button: this.translateService.instant('ACCOUNT.USERS.MODAL_DETAILS.MODAL_SUCCESS.TEXT_CONTINUE')
+          button: this.translateService.instant('ACCOUNT.USERS.MODAL_DETAILS.MODAL_SUCCESS.TEXT_OK')
         });
       })
     ),

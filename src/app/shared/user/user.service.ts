@@ -58,18 +58,18 @@ export class UserService {
   }
 
   public update(user: User): Observable<void> {
-    return this.apiService.put(`${this.endpoint}/${user.id}`, classToPlain(user));
+    return this.apiService.put(`${this.endpoint}${user.id}/`, classToPlain(user));
   }
 
   public get(id: number): Observable<User> {
     return this.apiService
-      .get(`${this.endpoint}/${id}`)
+      .get(`${this.endpoint}${id}/`)
       .pipe(
         map((response) => plainToClass(User, response))
       );
   }
 
   public delete(id: number): Observable<void> {
-    return this.apiService.delete(`${this.endpoint}/${id}`);
+    return this.apiService.delete(`${this.endpoint}${id}/`);
   }
 }
