@@ -27,9 +27,10 @@ const reducer = wrapReducerWithFormStateUpdate(
     on(AccountUsersModalDetailsActions.prefillForm, (state, action) => ({
       ...state,
       formState: updateGroup<AccountUsersDetailsForm>(state.formState, {
-        firstName: setValue(action.profile.firstName),
-        lastName: setValue(action.profile.lastName),
-        email: setValue(action.profile.email)
+        firstName: setValue(action.user.firstName),
+        lastName: setValue(action.user.lastName),
+        email: setValue(action.user.email),
+        id: setValue(action.user.id)
       })
     }))
   ),

@@ -9,12 +9,13 @@ export class AccountUsersModalDetailsActions {
   );
 
   public static initModal = createAction(
-    '[Account Profile Page - Modal Change Details] Init Modal'
+    '[Account Profile Page - Modal Change Details] Init Modal',
+    props<{ id: number }>()
   );
 
   public static prefillForm = createAction(
     '[Account Profile Page - Modal Change Details] Prefill Form',
-    props<{ profile: User }>()
+    props<{ user: User }>()
   );
 
   public static update = createAction(

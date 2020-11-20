@@ -45,9 +45,10 @@ export class AccountUsersPageFacade {
     this.store.dispatch(AccountUsersPageRootActions.loadItems());
   }
 
-  public openDetailsModal(): void {
+  public openDetailsModal(id: number): void {
     this.modalService.open(AccountUsersModalDetailsComponent, {
-      panelClass: 'users-modal-panel'
+      panelClass: 'users-modal-panel',
+      data: { id }
     });
   }
 

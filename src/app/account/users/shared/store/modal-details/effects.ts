@@ -10,16 +10,15 @@ import { UserService, UserSelectors, User } from '@shared/user';
 import { ModalActions, ModalComponent, ModalService } from '@shared/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AccountUsersPageRootSelectors } from '../root';
 
 @Injectable()
 export class AccountUsersModalDetailsEffects {
   public initModal$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountUsersModalDetailsActions.initModal),
-      withLatestFrom(
-        this.store.select(UserSelectors.profile)
-      ),
-      map(([_, profile]) => AccountUsersModalDetailsActions.prefillForm({ profile }))
+      mergeMap(({ id }) => this.store.select(AccountUsersPageRootSelectors.item, id)),
+      map((user) => AccountUsersModalDetailsActions.prefillForm({ user }))
     )
   );
 

@@ -10,7 +10,8 @@ export class AccountUsersModalDetailsState {
     this.formState = createFormGroupState<AccountUsersDetailsForm>('AccountUsersDetailsForm', {
       firstName: '',
       lastName: '',
-      email: ''
+      email: '',
+      id: null
     });
   }
 }

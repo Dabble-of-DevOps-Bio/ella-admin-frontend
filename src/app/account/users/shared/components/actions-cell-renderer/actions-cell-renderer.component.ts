@@ -22,14 +22,14 @@ export class AccountUsersActionsCellRendererComponent implements ICellRendererAn
   }
 
   public openEditModal(): void {
-    this.facade.openDetailsModal();
+    this.facade.openDetailsModal(this.params.data.id);
   }
 
   public openResetModal(): void {
-    this.facade.openResetPasswordModal(1);
+    this.facade.openResetPasswordModal(this.params.data.id);
   }
 
   public openDeleteModal(): void {
-    this.facade.openDeleteModal(1);
+    this.facade.openDeleteModal(this.params.data.id);
   }
 }

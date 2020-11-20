@@ -29,8 +29,8 @@ export class AccountUsersModalDetailsFacade extends BaseModalFacade {
     this.store.dispatch(AccountUsersModalDetailsActions.resetState());
   }
 
-  public initModal(): void {
-    this.store.dispatch(AccountUsersModalDetailsActions.initModal());
+  public initModal(id: number): void {
+    this.store.dispatch(AccountUsersModalDetailsActions.initModal({ id }));
   }
 
   public updateEmail(modalID: string): void {
