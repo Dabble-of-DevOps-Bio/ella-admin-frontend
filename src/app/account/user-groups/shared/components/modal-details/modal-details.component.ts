@@ -1,36 +1,32 @@
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormGroupState } from 'ngrx-forms';
-import { AccountUsersDetailsForm } from '../../forms';
-import { AccountUsersModalDetailsFacade } from './modal-details.facade';
+import { AccountUserGroupsDetailsForm } from '../../forms';
+import { AccountUserGroupsModalDetailsFacade } from './modal-details.facade';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseModalComponent } from '@shared/base-modal';
-import { CustomSelectOption } from '@shared/custom-select';
-import { AuthGroupEnum } from '@shared/user/enums';
 
 @Component({
-  selector: 'users-modal-details',
+  selector: 'user-groups-modal-details',
   templateUrl: 'modal-details.html',
   styleUrls: ['modal-details.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccountUsersModalDetailsComponent extends BaseModalComponent implements OnInit, OnDestroy {
+export class AccountUserGroupsModalDetailsComponent extends BaseModalComponent implements OnInit, OnDestroy {
   public isSubmitting$: Observable<boolean>;
-  public formState$: Observable<FormGroupState<AccountUsersDetailsForm>>;
-  public isNewUser: boolean;
-  public authGroupOptions: Array<CustomSelectOption<number, AuthGroupEnum>>;
+  public formState$: Observable<FormGroupState<AccountUserGroupsDetailsForm>>;
+  public isNewGroup: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { id: number },
-    protected dialogRef: MatDialogRef<AccountUsersModalDetailsComponent>,
-    protected facade: AccountUsersModalDetailsFacade
+    protected dialogRef: MatDialogRef<AccountUserGroupsModalDetailsComponent>,
+    protected facade: AccountUserGroupsModalDetailsFacade
   ) {
     super(dialogRef, facade);
 
     this.isSubmitting$ = this.facade.isSubmitting$;
     this.formState$ = this.facade.formState$;
-    this.isNewUser = (this.data.id === null);
-    this.authGroupOptions = this.facade.authGroupOptions;
+    this.isNewGroup = (this.data.id === null);
   }
 
   public ngOnInit(): void {

@@ -6,8 +6,16 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { accountUserGroupsPageReducer, AccountUserGroupsPageEffects } from './shared/store';
-
+import { AccountUserGroupsPageFacade } from './user-groups.facade';
+import { NgrxFormsModule } from 'ngrx-forms';
+import { AgGridModule } from 'ag-grid-angular';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgVariableModule } from '@shared/ng-variable';
+import { FormTextModule } from '@shared/form-text';
+import { AccountUserGroupsPageRootEffects, accountUserGroupsPageReducer, AccountUserGroupsModalDetailsEffects } from './shared/store';
+import { AccountUserGroupsActionsCellRendererComponent } from './shared/components/actions-cell-renderer/actions-cell-renderer.component';
+import { AccountUserGroupsModalDetailsFacade } from './shared/components/modal-details/modal-details.facade';
+import { UserGroupModule } from '@shared/user-group';
 @NgModule({
   declarations: [
     AccountUserGroupsPageComponent
@@ -18,8 +26,20 @@ import { accountUserGroupsPageReducer, AccountUserGroupsPageEffects } from './sh
     TranslateModule,
     AccountUserGroupsPageRoutingModule,
     StoreModule.forFeature('accountUserGroupsPage', accountUserGroupsPageReducer),
-    EffectsModule.forFeature([AccountUserGroupsPageEffects])
+    EffectsModule.forFeature([
+      AccountUserGroupsPageRootEffects,
+      AccountUserGroupsModalDetailsEffects
+    ]),
+    NgrxFormsModule,
+    AgGridModule.withComponents([AccountUserGroupsActionsCellRendererComponent]),
+    MatDialogModule,
+    NgVariableModule,
+    FormTextModule,
+    UserGroupModule
   ],
-  providers: []
+  providers: [
+    AccountUserGroupsPageFacade,
+    AccountUserGroupsModalDetailsFacade
+  ]
 })
 export class AccountUserGroupsPageModule { }

@@ -1,45 +1,45 @@
 import { createAction, props } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
-import { User } from '@shared/user';
+import { UserGroup } from '@shared/user-group';
 
-export class AccountUsersModalDetailsActions {
+export class AccountUserGroupsModalDetailsActions {
   /* tslint:disable:typedef */
   public static resetState = createAction(
-    '[Account Users Page - Modal Change Details] Reset State'
+    '[Account User Groups Page - Modal Change Details] Reset State'
   );
 
   public static initModal = createAction(
-    '[Account Users Page - Modal Change Details] Init Modal',
+    '[Account User Groups Page - Modal Change Details] Init Modal',
     props<{ id: number }>()
   );
 
   public static prefillForm = createAction(
-    '[Account Users Page - Modal Change Details] Prefill Form',
-    props<{ user: User }>()
+    '[Account User Groups Page - Modal Change Details] Prefill Form',
+    props<{ userGroup: UserGroup }>()
   );
 
   public static save = createAction(
-    '[Account Users Page - Modal Change Details] Save',
+    '[Account User Groups Page - Modal Change Details] Save',
     props<{ modalID: string }>()
   );
 
   public static create = createAction(
-    '[Account Users Page - Modal Change Details] Create',
+    '[Account User Groups Page - Modal Change Details] Create',
     props<{ modalID: string }>()
   );
 
   public static update = createAction(
-    '[Account Users Page - Modal Change Details] Update',
+    '[Account User Groups Page - Modal Change Details] Update',
     props<{ modalID: string }>()
   );
 
   public static saveSuccess = createAction(
-    '[Account Users Page - Modal Change Details] Save Success',
-    props<{ response: User }>()
+    '[Account User Groups Page - Modal Change Details] Save Success',
+    props<{ response: UserGroup }>()
   );
 
   public static saveFailure = createAction(
-    '[Account Users Page - Modal Change Details] Save Failure',
+    '[Account User Groups Page - Modal Change Details] Save Failure',
     props<{ response: HttpErrorResponse }>()
   );
 

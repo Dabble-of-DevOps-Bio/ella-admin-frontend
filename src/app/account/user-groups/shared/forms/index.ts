@@ -1,0 +1,1 @@
+export { AccountUserGroupsDetailsForm } from './details';

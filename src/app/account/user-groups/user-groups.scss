@@ -1,1 +1,5 @@
-:host .user-groups-page {}
+:host .user-groups-page {
+  ::ng-deep .ag-root-wrapper .bttn-set .bttn {
+    line-height: 1.9rem; margin-top: 0.6rem;
+  }
+}
