@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AccountNavbarSecondaryFacade } from './navbar-secondary.facade';
 
 @Component({
@@ -8,7 +9,13 @@ import { AccountNavbarSecondaryFacade } from './navbar-secondary.facade';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountNavbarSecondaryComponent {
-  constructor(private facade: AccountNavbarSecondaryFacade) { }
+  public isAdmin$: Observable<boolean>;
+
+  constructor(
+    private facade: AccountNavbarSecondaryFacade
+  ) {
+    this.isAdmin$ = this.facade.isAdmin$;
+  }
 
   public openNewUserModal(): void {
     this.facade.openNewUserModal();

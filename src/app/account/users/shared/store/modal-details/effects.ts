@@ -49,6 +49,7 @@ export class AccountUsersModalDetailsEffects {
       ),
       switchMap(([{ modalID }, formState]) => {
         const updateRequest = new User({ ...formState.value });
+        updateRequest.groupID = null;
 
         return this.userService
           .create(updateRequest)
@@ -102,8 +103,8 @@ export class AccountUsersModalDetailsEffects {
   public saveFailure$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountUsersModalDetailsActions.saveFailure),
-      map(() => NotificationActions.showError({
-        translationKey: 'SHARED.NOTIFICATIONS.TEXT_ERROR'
+      map((response) => NotificationActions.showError({
+        translationKey: (response.response.error.name !== undefined) ? response.response.error.name[0] : 'SHARED.NOTIFICATIONS.TEXT_ERROR'
       }))
     )
   );

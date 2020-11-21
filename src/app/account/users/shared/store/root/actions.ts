@@ -40,7 +40,8 @@ export class AccountUsersPageRootActions {
   );
 
   public static deleteUserFailure = createAction(
-    '[Account Users Page] Delete User Failure'
+    '[Account Users Page] Delete User Failure',
+    props<{ response: HttpErrorResponse }>()
   );
 
   public static resetPassword = createAction(
@@ -53,7 +54,8 @@ export class AccountUsersPageRootActions {
   );
 
   public static resetPasswordFailure = createAction(
-    '[Account Users Page] Reset Password Failure'
+    '[Account Users Page] Reset Password Failure',
+    props<{ response: HttpErrorResponse }>()
   );
   /* tslint:enable:typedef */
 }

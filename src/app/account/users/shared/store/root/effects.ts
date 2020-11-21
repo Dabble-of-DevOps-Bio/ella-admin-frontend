@@ -9,8 +9,7 @@ import { PaginationResponse } from '@shared/pagination';
 import { User, UserService } from '@shared/user';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '@shared/auth';
-import { ModalActions, ModalComponent, ModalService } from '@shared/modal';
-import { TranslateService } from '@ngx-translate/core';
+import { ModalActions } from '@shared/modal';
 import { NotificationActions } from '@shared/notification';
 
 @Injectable()
@@ -50,7 +49,7 @@ export class AccountUsersPageRootEffects {
               ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
               ModalActions.closeAll()
             ]),
-            catchError((response: HttpErrorResponse) => [AccountUsersPageRootActions.resetPasswordFailure()])
+            catchError((response: HttpErrorResponse) => [AccountUsersPageRootActions.resetPasswordFailure({ response })])
           );
       })
     )
@@ -71,8 +70,8 @@ export class AccountUsersPageRootEffects {
   public resetPasswordFailure$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountUsersPageRootActions.resetPasswordFailure),
-      map(() => NotificationActions.showError({
-        translationKey: 'SHARED.NOTIFICATIONS.TEXT_ERROR'
+      map((response) => NotificationActions.showError({
+        translationKey: (response.response.error.name !== undefined) ? response.response.error.name[0] : 'SHARED.NOTIFICATIONS.TEXT_ERROR'
       }))
     )
   );

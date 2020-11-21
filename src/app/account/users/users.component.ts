@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { User } from '@shared/user';
+import { AgGridColumn } from 'ag-grid-angular';
 import { Observable } from 'rxjs';
 import { AccountUsersPageFacade } from './users.facade';
 
@@ -13,7 +14,7 @@ export class AccountUsersPageComponent implements OnDestroy {
   public items$: Observable<Array<User>>;
   public isLoading$: Observable<boolean>;
   public isSendingRequest$: Observable<boolean>;
-  public columnDefs: Array<any>;
+  public columnDefs: Array<Partial<AgGridColumn>>;
   public frameworkComponents: any;
   private gridApi: any;
 

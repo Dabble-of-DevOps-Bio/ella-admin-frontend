@@ -31,6 +31,11 @@
         "TEXT_CREATED": "Created",
         "TEXT_ACTIONS": "Actions"
       },
+      "ACTIONS": {
+        "TEXT_EDIT": "Edit",
+        "TEXT_RESET": "Reset",
+        "TEXT_DELETE": "Delete"
+      },
       "MODAL_DETAILS": {
         "TITLE_NEW": "New user",
         "TITLE_EDIT": "Edit user",
@@ -60,6 +65,10 @@
         "TEXT_ID": "ID",
         "TEXT_NAME": "Name",
         "TEXT_ACTIONS": "Actions"
+      },
+      "ACTIONS": {
+        "TEXT_EDIT": "Edit",
+        "TEXT_DELETE": "Delete"
       },
       "MODAL_DETAILS": {
         "TITLE_NEW": "New user group",

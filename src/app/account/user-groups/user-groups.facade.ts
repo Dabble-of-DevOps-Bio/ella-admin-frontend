@@ -8,6 +8,10 @@ import { AccountModalConfirmationComponent } from '../shared/modal-confirmation'
 import { ModalService } from '@shared/modal';
 import { AccountUserGroupsModalDetailsComponent } from './shared/components/modal-details/modal-details.component';
 import { UserGroup } from '@shared/user-group';
+import { TranslateService } from '@ngx-translate/core';
+import { AgGridColumn } from 'ag-grid-angular';
+import { AccountUserGroupsActionsCellRendererComponent } from './shared/components/actions-cell-renderer/actions-cell-renderer.component';
+import { UserSelectors } from '@shared/user';
 
 @Injectable()
 export class AccountUserGroupsPageFacade {
@@ -27,10 +31,44 @@ export class AccountUserGroupsPageFacade {
     return this.store.select(AccountUserGroupsPageRootSelectors.isSendingRequest);
   }
 
+  public get isAdmin$(): Observable<boolean> {
+    return this.store.select(UserSelectors.isAdmin);
+  }
+
+  public get columnDefs(): Array<Partial<AgGridColumn>> {
+    return [
+      {
+        headerName: this.translateService.instant('ACCOUNT.USER_GROUPS.COLUMNS.TEXT_ID'),
+        field: 'id',
+        sortable: true,
+        filter: true,
+        maxWidth: 80
+      },
+      {
+        headerName: this.translateService.instant('ACCOUNT.USER_GROUPS.COLUMNS.TEXT_NAME'),
+        field: 'name',
+        sortable: true,
+        filter: true
+      },
+      {
+        headerName: this.translateService.instant('ACCOUNT.USER_GROUPS.COLUMNS.TEXT_ACTIONS'),
+        cellRenderer: 'actionsCellRenderer',
+        maxWidth: 180
+      }
+    ];
+  }
+
+  public get frameworkComponents(): any {
+    return {
+      actionsCellRenderer: AccountUserGroupsActionsCellRendererComponent
+    };
+  }
+
   constructor(
     private store: Store<AppState>,
     private router: Router,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private translateService: TranslateService
   ) { }
 
   public getItem$(id: number): Observable<UserGroup> {

@@ -48,7 +48,7 @@ export class AccountUserGroupsPageRootEffects {
               ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
               ModalActions.closeAll()
             ]),
-            catchError((response: HttpErrorResponse) => [AccountUserGroupsPageRootActions.deleteUserGroupFailure()])
+            catchError((response: HttpErrorResponse) => [AccountUserGroupsPageRootActions.deleteUserGroupFailure({ response })])
           );
       })
     )
@@ -69,8 +69,8 @@ export class AccountUserGroupsPageRootEffects {
   public deleteUserGroupFailed$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountUserGroupsPageRootActions.deleteUserGroupFailure),
-      map(() => NotificationActions.showError({
-        translationKey: 'SHARED.NOTIFICATIONS.TEXT_ERROR'
+      map((response) => NotificationActions.showError({
+        translationKey: (response.response.error.name !== undefined) ? response.response.error.name[0] : 'SHARED.NOTIFICATIONS.TEXT_ERROR'
       }))
     )
   );

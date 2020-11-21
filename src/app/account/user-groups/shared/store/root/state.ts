@@ -1,4 +1,4 @@
-import { UserGroup } from "@shared/user-group";
+import { UserGroup } from '@shared/user-group';
 
 export class AccountUserGroupsPageRootState {
   public isLoading: boolean;

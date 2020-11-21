@@ -39,7 +39,8 @@ export class AccountUserGroupsPageRootActions {
   );
 
   public static deleteUserGroupFailure = createAction(
-    '[Account User Groups Page] Delete User Group Failure'
+    '[Account User Groups Page] Delete User Group Failure',
+    props<{ response: HttpErrorResponse }>()
   );
   /* tslint:enable:typedef */
 }

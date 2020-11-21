@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { AccountUserGroupsModalDetailsActions } from './actions';
 import { withLatestFrom, filter, switchMap, map, mergeMap, catchError, tap } from 'rxjs/operators';
 import { AccountUserGroupsModalDetailsSelectors } from './selectors';
-import { ModalActions, ModalComponent, ModalService } from '@shared/modal';
+import { ModalActions, ModalService } from '@shared/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AccountUserGroupsPageRootActions, AccountUserGroupsPageRootSelectors } from '../root';
@@ -103,8 +103,8 @@ export class AccountUserGroupsModalDetailsEffects {
   public saveFailure$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountUserGroupsModalDetailsActions.saveFailure),
-      map(() => NotificationActions.showError({
-        translationKey: 'SHARED.NOTIFICATIONS.TEXT_ERROR'
+      map((response) => NotificationActions.showError({
+        translationKey: (response.response.error.name !== undefined) ? response.response.error.name[0] : 'SHARED.NOTIFICATIONS.TEXT_ERROR'
       }))
     )
   );

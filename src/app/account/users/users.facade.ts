@@ -2,7 +2,7 @@ import { AppState } from '@shared/store';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { User } from '@shared/user';
+import { User, UserSelectors } from '@shared/user';
 import { Router } from '@angular/router';
 import { AccountUsersPageRootActions, AccountUsersPageRootSelectors } from './shared/store/root';
 import { AccountModalConfirmationComponent } from '../shared/modal-confirmation';
@@ -31,6 +31,10 @@ export class AccountUsersPageFacade {
 
   public get isSendingRequest$(): Observable<boolean> {
     return this.store.select(AccountUsersPageRootSelectors.isSendingRequest);
+  }
+
+  public get isAdmin$(): Observable<boolean> {
+    return this.store.select(UserSelectors.isAdmin);
   }
 
   public get columnDefs(): Array<Partial<AgGridColumn>> {

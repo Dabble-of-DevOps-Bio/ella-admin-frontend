@@ -1,5 +1,11 @@
-<div class="bttn-set">
-  <a (click)="openEditModal()" class="bttn">Edit</a>
-  <a (click)="openResetModal()" class="bttn">Reset</a>
-  <a (click)="openDeleteModal()" class="bttn">Delete</a>
+<div *ngVar="isAdmin$ | async as isAdmin" class="bttn-set">
+  <a (click)="openEditModal()" class="bttn">
+    {{ 'ACCOUNT.USERS.ACTIONS.TEXT_EDIT' | translate }}
+  </a>
+  <a *ngIf="isAdmin" (click)="openResetModal()" class="bttn">
+    {{ 'ACCOUNT.USERS.ACTIONS.TEXT_RESET' | translate }}
+  </a>
+  <a *ngIf="isAdmin" (click)="openDeleteModal()" class="bttn">
+    {{ 'ACCOUNT.USERS.ACTIONS.TEXT_DELETE' | translate }}
+  </a>
 </div>
