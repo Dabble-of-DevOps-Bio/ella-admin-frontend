@@ -1,9 +1,5 @@
-import { DateTime } from 'luxon';
+import { isDate } from 'lodash';
 
 export function DateTransformer(value: any): Date {
-  if (!value || value instanceof Date) {
-    return value;
-  }
-
-  return DateTime.fromSQL(value, { zone: 'UTC' }).toJSDate();
+  return (value && !isDate(value)) ? new Date(value.replace(/\s/g, 'T')) : value;
 }

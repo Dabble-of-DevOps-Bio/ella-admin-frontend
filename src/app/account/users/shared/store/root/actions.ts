@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { PaginationResponse } from '@shared/pagination';
 import { User } from '@shared/user';
-import { UserOrderByEnum } from '@shared/user/enums';
+import { UserSortField } from '@shared/user/enums';
 
 export class AccountUsersPageRootActions {
   /* tslint:disable:typedef */
@@ -16,7 +16,7 @@ export class AccountUsersPageRootActions {
 
   public static loadItemsByParameters = createAction(
     '[Account Users Page] Load Items By Parameters',
-    props<{ page?: number, perPage?: number, orderBy?: UserOrderByEnum, desc?: boolean }>()
+    props<{ page?: number, perPage?: number, orderBy?: UserSortField, desc?: boolean }>()
   );
 
   public static loadItemsSuccess = createAction(
@@ -40,7 +40,8 @@ export class AccountUsersPageRootActions {
   );
 
   public static deleteUserFailure = createAction(
-    '[Account Users Page] Delete User Failure'
+    '[Account Users Page] Delete User Failure',
+    props<{ response: HttpErrorResponse }>()
   );
 
   public static resetPassword = createAction(
@@ -53,7 +54,8 @@ export class AccountUsersPageRootActions {
   );
 
   public static resetPasswordFailure = createAction(
-    '[Account Users Page] Reset Password Failure'
+    '[Account Users Page] Reset Password Failure',
+    props<{ response: HttpErrorResponse }>()
   );
   /* tslint:enable:typedef */
 }

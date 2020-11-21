@@ -1,0 +1,8 @@
+<div class="bttn-set">
+  <a (click)="openEditModal()" class="bttn">
+    {{ 'ACCOUNT.USER_GROUPS.ACTIONS.TEXT_EDIT' | translate }}
+  </a>
+  <a *ngIf="isAdmin$ | async" (click)="openDeleteModal()" class="bttn">
+    {{ 'ACCOUNT.USER_GROUPS.ACTIONS.TEXT_DELETE' | translate }}
+  </a>
+</div>

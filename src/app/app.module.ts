@@ -18,7 +18,6 @@ import { NotificationComponent, NotificationEffects, NotificationModule } from '
 import { AuthEffects, AuthModule, authReducer, jwtOptionsFactory } from '@shared/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalEffects, ModalModule } from '@shared/modal';
-import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [

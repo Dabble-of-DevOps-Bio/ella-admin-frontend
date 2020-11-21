@@ -10,7 +10,7 @@ export class UserState {
       id: parseInt(localStorage.getItem('user_id'), 10),
       firstName: localStorage.getItem('user_first_name'),
       lastName: localStorage.getItem('user_last_name'),
-      isSuperUser: !!Number(localStorage.getItem('user_is_super_user'))
+      authGroup: Number(localStorage.getItem('user_auth_group'))
     });
     this.language = localStorage.getItem('user_language') || configuration.language.default;
   }

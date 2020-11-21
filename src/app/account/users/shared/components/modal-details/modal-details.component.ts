@@ -9,7 +9,7 @@ import { CustomSelectOption } from '@shared/custom-select';
 import { AuthGroupEnum } from '@shared/user/enums';
 
 @Component({
-  selector: 'account-modal-details',
+  selector: 'users-modal-details',
   templateUrl: 'modal-details.html',
   styleUrls: ['modal-details.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

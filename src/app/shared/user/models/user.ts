@@ -1,4 +1,5 @@
 import { DateTransformer } from '@shared/date-transformer';
+import { UserGroup } from '@shared/user-group';
 import { Expose, Transform, Type, Exclude } from 'class-transformer';
 
 export class User {
@@ -24,23 +25,6 @@ export class User {
   @Expose({ name: 'auth_group' })
   public authGroup: number;
 
-  @Expose({ name: 'is_staff' })
-  public isStaff: boolean;
-
-  @Expose({ name: 'is_superuser' })
-  public isSuperUser: boolean;
-
-  @Expose()
-  public active: boolean;
-
-  @Transform(DateTransformer)
-  @Expose({ name: 'date_joined' })
-  public dateJoined: Date;
-
-  @Transform(DateTransformer)
-  @Expose({ name: 'last_login' })
-  public lastLogin: Date;
-
   @Transform(DateTransformer)
   @Expose({ name: 'created_at' })
   public createdAt: Date;
@@ -48,6 +32,10 @@ export class User {
   @Transform(DateTransformer)
   @Expose({ name: 'updated_at' })
   public updatedAt: Date;
+
+  @Type(() => UserGroup)
+  @Expose()
+  public group: UserGroup;
 
   @Exclude()
   public get shortName(): string {

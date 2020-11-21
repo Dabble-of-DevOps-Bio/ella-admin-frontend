@@ -17,13 +17,11 @@ export class IsStaffGuard implements CanActivate {
     return this.store
       .pipe(
         withLatestFrom(
-          this.store.select(UserSelectors.profile),
           this.store.select(UserSelectors.isStaff),
         ),
-        filter(([_, profile, __]) => !!profile.isStaff),
-        map(([_, __, isStaff]) => {
+        map(([_, isStaff]) => {
           if (!isStaff) {
-            this.router.navigate(['/not-found']);
+            this.router.navigate(['/']);
           }
 
           return isStaff;

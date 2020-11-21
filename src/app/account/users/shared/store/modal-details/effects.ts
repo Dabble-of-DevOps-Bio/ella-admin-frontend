@@ -12,6 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AccountUsersPageRootActions, AccountUsersPageRootSelectors } from '../root';
 import { AccountUsersModalDetailsComponent } from '../../components/modal-details/modal-details.component';
+import { NotificationActions } from '@shared/notification';
 
 @Injectable()
 export class AccountUsersModalDetailsEffects {
@@ -48,6 +49,7 @@ export class AccountUsersModalDetailsEffects {
       ),
       switchMap(([{ modalID }, formState]) => {
         const updateRequest = new User({ ...formState.value });
+        updateRequest.groupID = null;
 
         return this.userService
           .create(updateRequest)
@@ -55,8 +57,7 @@ export class AccountUsersModalDetailsEffects {
             mergeMap((response) => [
               AccountUsersModalDetailsActions.saveSuccess({ response: updateRequest }),
               ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
-              ModalActions.closeByID({ modalID }),
-              AccountUsersPageRootActions.loadItemsByParameters({}),
+              ModalActions.closeAll(),
             ]),
             catchError((response: HttpErrorResponse) => [AccountUsersModalDetailsActions.saveFailure({ response })])
           );
@@ -79,8 +80,7 @@ export class AccountUsersModalDetailsEffects {
             mergeMap((response) => [
               AccountUsersModalDetailsActions.saveSuccess({ response: updateRequest }),
               ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
-              ModalActions.closeByID({ modalID }),
-              AccountUsersPageRootActions.loadItemsByParameters({}),
+              ModalActions.closeAll(),
             ]),
             catchError((response: HttpErrorResponse) => [AccountUsersModalDetailsActions.saveFailure({ response })])
           );
@@ -91,20 +91,21 @@ export class AccountUsersModalDetailsEffects {
   public saveSuccess$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountUsersModalDetailsActions.saveSuccess),
-      tap(() => {
-        this.modalService.openModal(ModalComponent, {
-          title: this.translateService.instant('ACCOUNT.USERS.MODAL_DETAILS.MODAL_SUCCESS.TEXT_TITLE'),
-          button: this.translateService.instant('ACCOUNT.USERS.MODAL_DETAILS.MODAL_SUCCESS.TEXT_OK')
-        });
-      })
-    ),
-    { dispatch: false }
+      mergeMap(() => [
+        NotificationActions.showSuccess({
+          translationKey: 'SHARED.NOTIFICATIONS.TEXT_SUCCESS'
+        }),
+        AccountUsersPageRootActions.loadItemsByParameters({}),
+      ])
+    )
   );
 
   public saveFailure$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountUsersModalDetailsActions.saveFailure),
-      map(({ response }) => ModalActions.openServerErrorModal({ response }))
+      map((response) => NotificationActions.showError({
+        translationKey: (response.response.error.name !== undefined) ? response.response.error.name[0] : 'SHARED.NOTIFICATIONS.TEXT_ERROR'
+      }))
     )
   );
 

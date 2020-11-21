@@ -1,7 +1,12 @@
+import { AccountUserGroupsModalDetailsState } from './modal-details';
+import { AccountUserGroupsPageRootState } from './root';
+
 export class AccountUserGroupsPageState {
-  public isLoading: boolean;
+  public rootState: AccountUserGroupsPageRootState;
+  public modalDetails: AccountUserGroupsModalDetailsState;
 
   constructor() {
-    this.isLoading = false;
+    this.rootState = new AccountUserGroupsPageRootState();
+    this.modalDetails = new AccountUserGroupsModalDetailsState();
   }
 }

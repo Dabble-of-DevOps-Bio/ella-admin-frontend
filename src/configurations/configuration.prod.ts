@@ -21,5 +21,6 @@ export const configuration = {
     positionClass: 'inline',
     tapToDismiss: true,
     timeOut: 3000
-  }
+  },
+  dateFormat: 'yyyy-LL-dd'
 };

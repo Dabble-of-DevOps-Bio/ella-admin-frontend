@@ -20,6 +20,22 @@
       "BUTTON_NEW_USER": "New user"
     },
     "USERS": {
+      "COLUMNS": {
+        "TEXT_ID": "ID",
+        "TEXT_USERNAME": "Username",
+        "TEXT_FIRST_NAME": "First name",
+        "TEXT_LAST_NAME": "Last name",
+        "TEXT_EMAIL": "Email",
+        "TEXT_GROUP": "Group",
+        "TEXT_AUTH_GROUP": "Auth Group",
+        "TEXT_CREATED": "Created",
+        "TEXT_ACTIONS": "Actions"
+      },
+      "ACTIONS": {
+        "TEXT_EDIT": "Edit",
+        "TEXT_RESET": "Reset",
+        "TEXT_DELETE": "Delete"
+      },
       "MODAL_DETAILS": {
         "TITLE_NEW": "New user",
         "TITLE_EDIT": "Edit user",
@@ -35,21 +51,36 @@
           "TEXT_USERNAME_IS_REQUIRED": "Username is required",
           "TEXT_EMAIL_IS_REQUIRED": "Email is required",
           "TEXT_EMAIL_IS_INVALID": "Email is invalid"
-        },
-        "MODAL_SUCCESS": {
-          "TEXT_TITLE": "Data was saved successfully",
-          "TEXT_OK": "OK"
         }
       },
       "MODAL_DELETE": {
         "TEXT_TITLE": "Delete user?"
       },
       "MODAL_RESET_PASSWORD": {
-        "TEXT_TITLE": "Reset password?",
-        "MODAL_SUCCESS": {
-          "TEXT_TITLE": "Data was saved successfully",
-          "TEXT_OK": "OK"
+        "TEXT_TITLE": "Reset password?"
+      }
+    },
+    "USER_GROUPS": {
+      "COLUMNS": {
+        "TEXT_ID": "ID",
+        "TEXT_NAME": "Name",
+        "TEXT_ACTIONS": "Actions"
+      },
+      "ACTIONS": {
+        "TEXT_EDIT": "Edit",
+        "TEXT_DELETE": "Delete"
+      },
+      "MODAL_DETAILS": {
+        "TITLE_NEW": "New user group",
+        "TITLE_EDIT": "Edit user group",
+        "TEXT_NAME": "Name",
+        "BUTTON_SAVE": "Save",
+        "ERRORS": {
+          "TEXT_NAME_IS_REQUIRED": "Name is required"
         }
+      },
+      "MODAL_DELETE": {
+        "TEXT_TITLE": "Delete user group?"
       }
     }
   },
@@ -60,13 +91,13 @@
       "BUTTON_OK": "OK",
       "BUTTON_CANCEL": "Cancel"
     },
-    "MODAL_FAILURE": {
-      "TEXT_TITLE": "Error",
-      "TEXT_CONTENT": "Unable to handle request"
-    },
     "AUTH_GROUPS": {
       "TEXT_ADMIN": "Admin",
       "TEXT_STAFF": "Staff"
+    },
+    "NOTIFICATIONS": {
+      "TEXT_SUCCESS": "Data was saved successfully",
+      "TEXT_ERROR": "Unable to handle request"
     }
   }
 }
