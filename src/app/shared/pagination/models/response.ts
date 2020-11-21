@@ -1,13 +1,17 @@
 import { Exclude, Expose, Type } from 'class-transformer';
 
 export class PaginationResponse<T> {
-  @Expose({ name: 'current_page' })
-  public currentPage: number;
+  @Expose({ name: 'previous_page' })
+  public previousPage: number;
 
-  @Expose({ name: 'per_page' })
-  public perPage: number;
+  @Expose({ name: 'next_page' })
+  public nextPage: number;
 
-  public total: number;
+  @Expose({ name: 'last_page' })
+  public lastPage: number;
+
+  @Expose({ name: 'total_items' })
+  public totalItems: number;
 
   @Type((options) => {
     return (<PaginationResponse<T>>options.newObject).type;

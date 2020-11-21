@@ -1,6 +1,6 @@
 import { AppState } from '@shared/store';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { User } from '@shared/user';
 import { Router } from '@angular/router';
@@ -8,6 +8,12 @@ import { AccountUsersPageRootActions, AccountUsersPageRootSelectors } from './sh
 import { AccountModalConfirmationComponent } from '../shared/modal-confirmation';
 import { ModalService } from '@shared/modal';
 import { AccountUsersModalDetailsComponent } from './shared/components/modal-details/modal-details.component';
+import { TranslateService } from '@ngx-translate/core';
+import { AuthGroupEnum } from '@shared/user/enums';
+import { AgGridColumn } from 'ag-grid-angular';
+import { AccountUsersActionsCellRendererComponent } from './shared/components/actions-cell-renderer/actions-cell-renderer.component';
+import { DateTime } from 'luxon';
+import { configuration } from '@configurations';
 
 @Injectable()
 export class AccountUsersPageFacade {
@@ -27,10 +33,81 @@ export class AccountUsersPageFacade {
     return this.store.select(AccountUsersPageRootSelectors.isSendingRequest);
   }
 
+  public get columnDefs(): Array<Partial<AgGridColumn>> {
+    return [
+      {
+        headerName: this.translateService.instant('ACCOUNT.USERS.COLUMNS.TEXT_ID'),
+        field: 'id',
+        sortable: true,
+        filter: true,
+        maxWidth: 80
+      },
+      {
+        headerName: this.translateService.instant('ACCOUNT.USERS.COLUMNS.TEXT_USERNAME'),
+        field: 'username',
+        sortable: true,
+        filter: true
+      },
+      {
+        headerName: this.translateService.instant('ACCOUNT.USERS.COLUMNS.TEXT_FIRST_NAME'),
+        field: 'firstName',
+        sortable: true,
+        filter: true
+      },
+      {
+        headerName: this.translateService.instant('ACCOUNT.USERS.COLUMNS.TEXT_LAST_NAME'),
+        field: 'lastName',
+        sortable: true,
+        filter: true
+      },
+      {
+        headerName: this.translateService.instant('ACCOUNT.USERS.COLUMNS.TEXT_EMAIL'),
+        field: 'email',
+        sortable: true,
+        filter: true
+      },
+      {
+        headerName: this.translateService.instant('ACCOUNT.USERS.COLUMNS.TEXT_GROUP'),
+        field: 'group.name',
+        sortable: true,
+        filter: true,
+        maxWidth: 140
+      },
+      {
+        headerName: this.translateService.instant('ACCOUNT.USERS.COLUMNS.TEXT_AUTH_GROUP'),
+        field: 'authGroup',
+        sortable: true,
+        filter: true,
+        maxWidth: 140,
+        valueFormatter: (params: any) => this.translateService.instant('SHARED.AUTH_GROUPS.TEXT_' + AuthGroupEnum[params.value])
+      },
+      {
+        headerName: this.translateService.instant('ACCOUNT.USERS.COLUMNS.TEXT_CREATED'),
+        field: 'createdAt',
+        sortable: true,
+        filter: true,
+        maxWidth: 120,
+        valueFormatter: (params: any) => DateTime.fromJSDate(params.value).toFormat(configuration.dateFormat)
+      },
+      {
+        headerName: this.translateService.instant('ACCOUNT.USERS.COLUMNS.TEXT_ACTIONS'),
+        cellRenderer: 'actionsCellRenderer',
+        maxWidth: 180
+      }
+    ];
+  }
+
+  public get frameworkComponents(): any {
+    return {
+      actionsCellRenderer: AccountUsersActionsCellRendererComponent
+    };
+  }
+
   constructor(
     private store: Store<AppState>,
     private router: Router,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private translateService: TranslateService
   ) { }
 
   public getItem$(id: number): Observable<User> {

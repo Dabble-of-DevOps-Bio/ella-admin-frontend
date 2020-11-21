@@ -1,7 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { User } from '@shared/user';
 import { Observable } from 'rxjs';
-import { AccountUsersActionsCellRendererComponent } from './shared/components/actions-cell-renderer/actions-cell-renderer.component';
 import { AccountUsersPageFacade } from './users.facade';
 
 @Component({
@@ -25,21 +24,8 @@ export class AccountUsersPageComponent implements OnDestroy {
     this.isLoading$ = this.facade.isLoading$;
     this.isSendingRequest$ = this.facade.isSendingRequest$;
 
-    this.columnDefs = [
-      { headerName: 'ID', field: 'id', sortable: true, filter: true, maxWidth: 80 },
-      { headerName: 'First name', field: 'firstName', sortable: true, filter: true },
-      { headerName: 'Last name', field: 'lastName', sortable: true, filter: true },
-      { headerName: 'Email', field: 'email', sortable: true, filter: true },
-      { headerName: 'Group', field: 'groupID', sortable: true, filter: true, maxWidth: 100 },
-      { headerName: 'Superuser', field: 'isSuperUser', sortable: true, filter: true, maxWidth: 120 },
-      { headerName: 'Active', field: 'active', sortable: true, filter: true, maxWidth: 100 },
-      { headerName: 'Created', field: 'createdAt', sortable: true, filter: true, maxWidth: 120 },
-      { headerName: 'Actions', cellRenderer: 'actionsCellRenderer', maxWidth: 160 }
-    ];
-
-    this.frameworkComponents = {
-      actionsCellRenderer: AccountUsersActionsCellRendererComponent
-    };
+    this.columnDefs = this.facade.columnDefs;
+    this.frameworkComponents = this.facade.frameworkComponents;
 
     this.facade.loadItems();
   }

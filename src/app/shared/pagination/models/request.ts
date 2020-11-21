@@ -1,31 +1,31 @@
-import { Expose, Transform } from 'class-transformer';
+import { Expose, Exclude } from 'class-transformer';
 
 export class PaginationRequest {
-  @Expose({ toPlainOnly: true })
+  @Expose()
+  public search?: string;
+
+  @Expose()
   public page?: number;
 
-  @Expose({ name: 'per_page', toPlainOnly: true })
+  @Expose({ name: 'per_page' })
   public perPage?: number;
 
-  @Transform((value) => (value) ? 1 : undefined, { toPlainOnly: true })
-  @Expose({ toPlainOnly: true })
+  @Expose()
   public all?: boolean;
 
-  @Expose({ toPlainOnly: true })
-  public query?: string;
+  @Exclude()
+  public sortBy?: string;
 
-  @Expose({ name: 'order_by', toPlainOnly: true })
-  public orderBy?: any;
-
-  @Transform((value) => (value) ? 1 : 0, { toPlainOnly: true })
-  @Expose({ toPlainOnly: true })
+  @Exclude()
   public desc?: boolean;
 
-  @Expose({ name: 'with', toPlainOnly: true })
+  @Expose({ name: 'expand', toPlainOnly: true })
   public relations?: Array<string>;
 
-  @Expose({ name: 'with_count', toPlainOnly: true })
-  public withCount?: Array<string>;
+  @Expose()
+  public get sort(): string {
+    return (this.desc) ? `-${this.sortBy}` : this.sortBy;
+  }
 
   constructor(model: Partial<PaginationRequest> = {}) {
     Object.assign(this, model);

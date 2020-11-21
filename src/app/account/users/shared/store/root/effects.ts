@@ -11,6 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '@shared/auth';
 import { ModalActions, ModalComponent, ModalService } from '@shared/modal';
 import { TranslateService } from '@ngx-translate/core';
+import { NotificationActions } from '@shared/notification';
 
 @Injectable()
 export class AccountUsersPageRootEffects {
@@ -28,7 +29,7 @@ export class AccountUsersPageRootEffects {
       ofType(AccountUsersPageRootActions.loadItemsByParameters),
       switchMap((action) => {
         return this.userService
-          .search({})
+          .search({ relations: ['group'] })
           .pipe(
             map((response: PaginationResponse<User>) => AccountUsersPageRootActions.loadItemsSuccess({ response })),
             catchError((response: HttpErrorResponse) => [AccountUsersPageRootActions.loadItemsFailure({ response })])
@@ -47,7 +48,7 @@ export class AccountUsersPageRootEffects {
             mergeMap((response) => [
               AccountUsersPageRootActions.resetPasswordSuccess(),
               ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
-              ModalActions.closeByID({ modalID })
+              ModalActions.closeAll()
             ]),
             catchError((response: HttpErrorResponse) => [AccountUsersPageRootActions.resetPasswordFailure()])
           );
@@ -58,22 +59,28 @@ export class AccountUsersPageRootEffects {
   public resetPasswordSuccess$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountUsersPageRootActions.resetPasswordSuccess),
-      tap(() => {
-        this.modalService.openModal(ModalComponent, {
-          title: this.translateService.instant('ACCOUNT.USERS.MODAL_RESET_PASSWORD.MODAL_SUCCESS.TEXT_TITLE'),
-          button: this.translateService.instant('ACCOUNT.USERS.MODAL_RESET_PASSWORD.MODAL_SUCCESS.TEXT_OK')
-        });
-      })
-    ),
-    { dispatch: false }
+      mergeMap(() => [
+        NotificationActions.showSuccess({
+          translationKey: 'SHARED.NOTIFICATIONS.TEXT_SUCCESS'
+        }),
+        AccountUsersPageRootActions.loadItemsByParameters({}),
+      ])
+    )
+  );
+
+  public resetPasswordFailure$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountUsersPageRootActions.resetPasswordFailure),
+      map(() => NotificationActions.showError({
+        translationKey: 'SHARED.NOTIFICATIONS.TEXT_ERROR'
+      }))
+    )
   );
 
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
     private userService: UserService,
-    private authService: AuthService,
-    private modalService: ModalService,
-    private translateService: TranslateService
+    private authService: AuthService
   ) { }
 }

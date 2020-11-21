@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { UserService } from './user.service';
 import { ApiModule } from '@ronas-it/angular-common';
 import { configuration } from '@configurations';
-import { IsStaffGuard, IsSuperUserGuard } from './guards';
+import { IsAdminGuard, IsStaffGuard } from './guards';
 
 @NgModule({
   imports: [
@@ -13,7 +13,7 @@ import { IsStaffGuard, IsSuperUserGuard } from './guards';
   providers: [
     UserService,
     IsStaffGuard,
-    IsSuperUserGuard
+    IsAdminGuard
   ]
 })
 export class UserModule { }

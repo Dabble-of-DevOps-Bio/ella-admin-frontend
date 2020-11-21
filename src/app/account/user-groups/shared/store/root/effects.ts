@@ -2,14 +2,14 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AppState } from '@shared/store';
 import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
-import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AccountUserGroupsPageRootActions } from './actions';
 import { UserGroup, UserGroupService } from '@shared/user-group';
 import { PaginationResponse } from '@shared/pagination';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ModalActions, ModalComponent, ModalService } from '@shared/modal';
-import { TranslateService } from '@ngx-translate/core';
+import { ModalActions } from '@shared/modal';
+import { NotificationActions } from '@shared/notification';
 
 @Injectable()
 export class AccountUserGroupsPageRootEffects {
@@ -46,7 +46,7 @@ export class AccountUserGroupsPageRootEffects {
             mergeMap((response) => [
               AccountUserGroupsPageRootActions.deleteUserGroupSuccess(),
               ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
-              ModalActions.closeByID({ modalID })
+              ModalActions.closeAll()
             ]),
             catchError((response: HttpErrorResponse) => [AccountUserGroupsPageRootActions.deleteUserGroupFailure()])
           );
@@ -57,21 +57,27 @@ export class AccountUserGroupsPageRootEffects {
   public deleteUserGroupSuccess$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountUserGroupsPageRootActions.deleteUserGroupSuccess),
-      tap(() => {
-        this.modalService.openModal(ModalComponent, {
-          title: this.translateService.instant('ACCOUNT.USER_GROUPS.MODAL_DELETE.MODAL_SUCCESS.TEXT_TITLE'),
-          button: this.translateService.instant('ACCOUNT.USER_GROUPS.MODAL_DELETE.MODAL_SUCCESS.TEXT_OK')
-        });
-      })
-    ),
-    { dispatch: false }
+      mergeMap(() => [
+        NotificationActions.showSuccess({
+          translationKey: 'SHARED.NOTIFICATIONS.TEXT_SUCCESS'
+        }),
+        AccountUserGroupsPageRootActions.loadItemsByParameters({}),
+      ])
+    )
+  );
+
+  public deleteUserGroupFailed$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountUserGroupsPageRootActions.deleteUserGroupFailure),
+      map(() => NotificationActions.showError({
+        translationKey: 'SHARED.NOTIFICATIONS.TEXT_ERROR'
+      }))
+    )
   );
 
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private userGroupService: UserGroupService,
-    private modalService: ModalService,
-    private translateService: TranslateService
+    private userGroupService: UserGroupService
   ) { }
 }

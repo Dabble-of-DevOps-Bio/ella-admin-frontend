@@ -1,1 +1,1 @@
-export type UserRelationType = '';
+export type UserRelationType = 'group';

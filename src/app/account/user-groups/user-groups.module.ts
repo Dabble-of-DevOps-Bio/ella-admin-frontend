@@ -16,9 +16,14 @@ import { AccountUserGroupsPageRootEffects, accountUserGroupsPageReducer, Account
 import { AccountUserGroupsActionsCellRendererComponent } from './shared/components/actions-cell-renderer/actions-cell-renderer.component';
 import { AccountUserGroupsModalDetailsFacade } from './shared/components/modal-details/modal-details.facade';
 import { UserGroupModule } from '@shared/user-group';
+import { ModalModule } from '@shared/modal';
+import { AccountUserGroupsModalDetailsComponent } from './shared/components/modal-details/modal-details.component';
+
 @NgModule({
   declarations: [
-    AccountUserGroupsPageComponent
+    AccountUserGroupsPageComponent,
+    AccountUserGroupsActionsCellRendererComponent,
+    AccountUserGroupsModalDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +40,8 @@ import { UserGroupModule } from '@shared/user-group';
     MatDialogModule,
     NgVariableModule,
     FormTextModule,
-    UserGroupModule
+    UserGroupModule,
+    ModalModule
   ],
   providers: [
     AccountUserGroupsPageFacade,

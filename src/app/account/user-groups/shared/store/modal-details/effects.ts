@@ -12,6 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AccountUserGroupsPageRootActions, AccountUserGroupsPageRootSelectors } from '../root';
 import { AccountUserGroupsModalDetailsComponent } from '../../components/modal-details/modal-details.component';
 import { UserGroup, UserGroupService } from '@shared/user-group';
+import { NotificationActions } from '@shared/notification';
 
 @Injectable()
 export class AccountUserGroupsModalDetailsEffects {
@@ -79,8 +80,7 @@ export class AccountUserGroupsModalDetailsEffects {
             mergeMap((response) => [
               AccountUserGroupsModalDetailsActions.saveSuccess({ response: updateRequest }),
               ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
-              ModalActions.closeByID({ modalID }),
-              AccountUserGroupsPageRootActions.loadItemsByParameters({}),
+              ModalActions.closeAll(),
             ]),
             catchError((response: HttpErrorResponse) => [AccountUserGroupsModalDetailsActions.saveFailure({ response })])
           );
@@ -91,20 +91,21 @@ export class AccountUserGroupsModalDetailsEffects {
   public saveSuccess$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountUserGroupsModalDetailsActions.saveSuccess),
-      tap(() => {
-        this.modalService.openModal(ModalComponent, {
-          title: this.translateService.instant('ACCOUNT.USERS_GROUP.MODAL_DETAILS.MODAL_SUCCESS.TEXT_TITLE'),
-          button: this.translateService.instant('ACCOUNT.USERS_GROUP.MODAL_DETAILS.MODAL_SUCCESS.TEXT_OK')
-        });
-      })
-    ),
-    { dispatch: false }
+      mergeMap(() => [
+        NotificationActions.showSuccess({
+          translationKey: 'SHARED.NOTIFICATIONS.TEXT_SUCCESS'
+        }),
+        AccountUserGroupsPageRootActions.loadItemsByParameters({}),
+      ])
+    )
   );
 
   public saveFailure$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountUserGroupsModalDetailsActions.saveFailure),
-      map(({ response }) => ModalActions.openServerErrorModal({ response }))
+      map(() => NotificationActions.showError({
+        translationKey: 'SHARED.NOTIFICATIONS.TEXT_ERROR'
+      }))
     )
   );
 

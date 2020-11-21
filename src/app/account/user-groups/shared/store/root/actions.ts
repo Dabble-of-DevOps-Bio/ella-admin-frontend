@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { PaginationResponse } from '@shared/pagination';
 import { UserGroup } from '@shared/user-group';
+import { UserGroupSortField } from '@shared/user-group/enums';
 
 export class AccountUserGroupsPageRootActions {
   /* tslint:disable:typedef */
@@ -15,7 +16,7 @@ export class AccountUserGroupsPageRootActions {
 
   public static loadItemsByParameters = createAction(
     '[Account User Groups Page] Load Items By Parameters',
-    props<{ page?: number, perPage?: number, desc?: boolean }>()
+    props<{ page?: number, perPage?: number, orderBy?: UserGroupSortField, desc?: boolean }>()
   );
 
   public static loadItemsSuccess = createAction(

@@ -5,7 +5,9 @@ import { plainToClass, classToPlain, plainToClassFromExist } from 'class-transfo
 import { User } from './models';
 import { ApiService } from '@ronas-it/angular-common';
 import { PaginationRequest, PaginationResponse } from '@shared/pagination';
-import { UserOrderByEnum } from './enums';
+import { UserRelationType } from './types';
+import { UserSortField } from './enums';
+import { isUndefined, omitBy } from 'lodash';
 
 @Injectable()
 export class UserService {
@@ -33,17 +35,17 @@ export class UserService {
       );
   }
 
-  public search({ page, perPage, all, orderBy, desc }: {
+  public search({ page, perPage, sortBy, desc, relations }: {
     page?: number,
     perPage?: number,
-    all?: boolean,
-    orderBy?: UserOrderByEnum
-    desc?: boolean
+    sortBy?: UserSortField,
+    desc?: boolean,
+    relations?: Array<UserRelationType>
   } = {}): Observable<PaginationResponse<User>> {
-    const request = new PaginationRequest({ page, perPage, all, orderBy, desc });
+    const request = new PaginationRequest({ page, perPage, sortBy, desc, relations });
 
     return this.apiService
-      .get<PaginationResponse<User>>(this.endpoint, request)
+      .get<PaginationResponse<User>>(this.endpoint, omitBy(classToPlain<PaginationRequest>(request), isUndefined))
       .pipe(
         map((response) => plainToClassFromExist(new PaginationResponse<User>(User), response))
       );

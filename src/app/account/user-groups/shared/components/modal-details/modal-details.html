@@ -13,8 +13,8 @@
     </div>
     <div class="modal-title-text">
       {{ ((isNewUser)
-          ? 'ACCOUNT.USERS.MODAL_DETAILS.TITLE_NEW'
-          : 'ACCOUNT.USERS.MODAL_DETAILS.TITLE_EDIT') | translate }}
+          ? 'ACCOUNT.USER_GROUPS.MODAL_DETAILS.TITLE_NEW'
+          : 'ACCOUNT.USER_GROUPS.MODAL_DETAILS.TITLE_EDIT') | translate }}
     </div>
   </h3>
   <div class="modal-content" mat-dialog-content>
@@ -25,47 +25,12 @@
       role="form"
       class="table">
       <form-text
-        [controlState]="formState.controls.firstName"
-        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_FIRST_NAME' | translate }}"
+        [controlState]="formState.controls.name"
+        label="{{ 'ACCOUNT.USER_GROUPS.MODAL_DETAILS.TEXT_NAME' | translate }}"
         [validationMessages]="{
-          required: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_FIRST_NAME_IS_REQUIRED' | translate
+          required: 'ACCOUNT.USER_GROUPS.MODAL_DETAILS.ERRORS.TEXT_NAME_IS_REQUIRED' | translate
         }">
       </form-text>
-      <form-text
-        [controlState]="formState.controls.lastName"
-        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_LAST_NAME' | translate }}"
-        [validationMessages]="{
-          required: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_LAST_NAME_IS_REQUIRED' | translate
-        }">
-      </form-text>
-      <form-text
-        [controlState]="formState.controls.username"
-        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_USERNAME' | translate }}"
-        [validationMessages]="{
-          required: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_USERNAME_IS_REQUIRED' | translate
-        }">
-      </form-text>
-      <form-text
-        [controlState]="formState.controls.email"
-        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_EMAIL' | translate }}"
-        [validationMessages]="{
-          required: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_EMAIL_IS_REQUIRED' | translate,
-          email: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_EMAIL_IS_INVALID' | translate
-        }">
-      </form-text>
-      <custom-select
-        [controlState]="formState.controls.authGroup"
-        [isRequired]="true"
-        [options]="authGroupOptions"
-        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_AUTH_GROUP' | translate }}">
-      </custom-select>
-      <!--<div class="tabular-row spacer">
-        <h3 class="full-title upper cell"><i>{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_EMAIL' | translate }}</i></h3>
-        <select [ngrxFormControlState]="formState.controls.authGroup" class="cell">
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-        </select>
-      </div>-->
       <div class="bttn-set">
         <button
           [ngClass]="{
@@ -73,7 +38,7 @@
             'button-disabled': formState.isInvalid
           }"
           class="bttn">
-          {{ 'ACCOUNT.USERS.MODAL_DETAILS.BUTTON_SAVE' | translate }}
+          {{ 'ACCOUNT.USER_GROUPS.MODAL_DETAILS.BUTTON_SAVE' | translate }}
         </button>
       </div>
     </form>

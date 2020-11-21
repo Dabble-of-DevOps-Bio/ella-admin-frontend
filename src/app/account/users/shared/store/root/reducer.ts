@@ -14,7 +14,7 @@ const reducer = createReducer(
   on(AccountUsersPageRootActions.loadItemsSuccess, (state, action) => ({
     ...state,
     items: action.response.items,
-    totalItems: action.response.total,
+    totalItems: action.response.totalItems,
     isLoading: false
   })),
   on(AccountUsersPageRootActions.loadItemsFailure, (state) => ({

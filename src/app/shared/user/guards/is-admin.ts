@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { UserSelectors } from '../store';
 
 @Injectable()
-export class IsSuperUserGuard implements CanActivate {
+export class IsAdminGuard implements CanActivate {
   constructor(
     private router: Router,
     private store: Store<AppState>
@@ -17,16 +17,14 @@ export class IsSuperUserGuard implements CanActivate {
     return this.store
       .pipe(
         withLatestFrom(
-          this.store.select(UserSelectors.profile),
-          this.store.select(UserSelectors.isSuperUser)
+          this.store.select(UserSelectors.isAdmin)
         ),
-        filter(([_, profile, __]) => !!profile.isSuperUser),
-        map(([_, __, isSuperUser]) => {
-          if (!isSuperUser) {
-            this.router.navigate(['/not-found']);
+        map(([_, isAdmin]) => {
+          if (!isAdmin) {
+            this.router.navigate(['/']);
           }
 
-          return isSuperUser;
+          return isAdmin;
         })
       );
   }

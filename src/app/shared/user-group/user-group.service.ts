@@ -5,6 +5,8 @@ import { plainToClass, classToPlain, plainToClassFromExist } from 'class-transfo
 import { UserGroup } from './models';
 import { ApiService } from '@ronas-it/angular-common';
 import { PaginationRequest, PaginationResponse } from '@shared/pagination';
+import { UserGroupSortField } from './enums';
+import { isUndefined, omitBy } from 'lodash';
 
 @Injectable()
 export class UserGroupService {
@@ -16,16 +18,16 @@ export class UserGroupService {
     this.endpoint = '/user-groups/';
   }
 
-  public search({ page, perPage, all, desc }: {
+  public search({ page, perPage, sortBy, desc }: {
     page?: number,
     perPage?: number,
-    all?: boolean,
+    sortBy?: UserGroupSortField,
     desc?: boolean
   } = {}): Observable<PaginationResponse<UserGroup>> {
-    const request = new PaginationRequest({ page, perPage, all, desc });
+    const request = new PaginationRequest({ page, perPage, sortBy, desc });
 
     return this.apiService
-      .get<PaginationResponse<UserGroup>>(this.endpoint, request)
+      .get<PaginationResponse<UserGroup>>(this.endpoint, omitBy(classToPlain<PaginationRequest>(request), isUndefined))
       .pipe(
         map((response) => plainToClassFromExist(new PaginationResponse<UserGroup>(UserGroup), response))
       );

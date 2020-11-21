@@ -48,7 +48,7 @@ export class UserEffects {
         localStorage.setItem('user_id', String(action.response.id));
         localStorage.setItem('user_first_name', action.response.firstName);
         localStorage.setItem('user_last_name', action.response.lastName);
-        localStorage.setItem('user_is_super_user', String(+action.response.isSuperUser));
+        localStorage.setItem('user_auth_group', String(action.response.authGroup));
       })
     ),
     { dispatch: false }
