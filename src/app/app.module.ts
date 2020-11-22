@@ -18,6 +18,7 @@ import { NotificationComponent, NotificationEffects, NotificationModule } from '
 import { AuthEffects, AuthModule, authReducer, jwtOptionsFactory } from '@shared/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalEffects, ModalModule } from '@shared/modal';
+import { NavigationEffects, NavigationModule } from '@shared/navigation';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ModalEffects, ModalModule } from '@shared/modal';
       AuthEffects,
       UserEffects,
       NotificationEffects,
-      ModalEffects
+      ModalEffects,
+      NavigationEffects
     ]),
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot({
@@ -63,6 +65,7 @@ import { ModalEffects, ModalModule } from '@shared/modal';
       }
     }),
     NavbarModule,
+    NavigationModule,
     NotificationModule,
     ToastrModule.forRoot({
       ...configuration.notifications,

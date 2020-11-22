@@ -17,7 +17,8 @@
       "LINK_USERS": "Users",
       "LINK_USER_GROUPS": "User groups",
       "LINK_SOMETHING": "Something",
-      "BUTTON_NEW_USER": "New user"
+      "BUTTON_NEW_USER": "New user",
+      "BUTTON_NEW_USER_GROUP": "New user group"
     },
     "USERS": {
       "COLUMNS": {
@@ -34,6 +35,7 @@
       "ACTIONS": {
         "TEXT_EDIT": "Edit",
         "TEXT_RESET": "Reset",
+        "TEXT_CHANGE_PASSWORD": "Password",
         "TEXT_DELETE": "Delete"
       },
       "MODAL_DETAILS": {
@@ -44,6 +46,7 @@
         "TEXT_USERNAME": "Username",
         "TEXT_EMAIL": "Email",
         "TEXT_AUTH_GROUP": "Auth group",
+        "TEXT_GROUP": "Group",
         "BUTTON_SAVE": "Save",
         "ERRORS": {
           "TEXT_FIRST_NAME_IS_REQUIRED": "First name is required",

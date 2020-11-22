@@ -44,7 +44,7 @@ export class AccountUserGroupsModalDetailsActions {
   );
 
   public static openDetailsDialog = createAction(
-    '[Account Users Page] Open Details Dialog'
+    '[Account Users Groups Page] Open Details Dialog'
   );
   /* tslint:enable:typedef */
 }

@@ -141,6 +141,13 @@ export class AccountUsersPageFacade {
     this.store.dispatch(AccountUsersPageRootActions.resetPassword({ modalID, email }));
   }
 
+  public openChangePasswordModal(id: number): void {
+    this.modalService.open(AccountUsersModalDetailsComponent, {
+      panelClass: 'users-password-modal-panel',
+      data: { id }
+    });
+  }
+
   public openDeleteModal(id: number): void {
     this.modalService.open(
       AccountModalConfirmationComponent,

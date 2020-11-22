@@ -7,8 +7,7 @@ import { AccountUsersModalDetailsActions } from './actions';
 import { withLatestFrom, filter, switchMap, map, mergeMap, catchError, tap } from 'rxjs/operators';
 import { AccountUsersModalDetailsSelectors } from './selectors';
 import { UserService, User } from '@shared/user';
-import { ModalActions, ModalComponent, ModalService } from '@shared/modal';
-import { TranslateService } from '@ngx-translate/core';
+import { ModalActions, ModalService } from '@shared/modal';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AccountUsersPageRootActions, AccountUsersPageRootSelectors } from '../root';
 import { AccountUsersModalDetailsComponent } from '../../components/modal-details/modal-details.component';
@@ -126,7 +125,6 @@ export class AccountUsersModalDetailsEffects {
     private actions$: Actions,
     private store: Store<AppState>,
     private userService: UserService,
-    private modalService: ModalService,
-    private translateService: TranslateService
+    private modalService: ModalService
   ) { }
 }

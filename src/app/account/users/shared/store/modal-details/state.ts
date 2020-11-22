@@ -13,7 +13,8 @@ export class AccountUsersModalDetailsState {
       username: '',
       email: '',
       id: null,
-      authGroup: null
+      authGroup: null,
+      groupID: null
     });
   }
 }

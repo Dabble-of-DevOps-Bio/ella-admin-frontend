@@ -32,7 +32,8 @@ const reducer = wrapReducerWithFormStateUpdate(
         username: setValue(action.user?.username || ''),
         email: setValue(action.user?.email || ''),
         id: setValue(action.user?.id || null),
-        authGroup: setValue(action.user?.authGroup || 1)
+        authGroup: setValue(action.user?.authGroup || 1),
+        groupID: setValue(action.user?.groupID || null)
       })
     }))
   ),

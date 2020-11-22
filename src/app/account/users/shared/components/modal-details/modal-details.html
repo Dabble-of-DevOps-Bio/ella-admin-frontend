@@ -59,6 +59,12 @@
         [options]="authGroupOptions"
         label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_AUTH_GROUP' | translate }}">
       </custom-select>
+      <custom-select
+        [controlState]="formState.controls.groupID"
+        [isRequired]="true"
+        [options]="authGroupOptions"
+        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_GROUP' | translate }}">
+      </custom-select>
       <div class="bttn-set">
         <button
           [ngClass]="{
