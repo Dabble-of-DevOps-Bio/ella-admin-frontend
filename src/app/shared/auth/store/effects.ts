@@ -50,7 +50,7 @@ export class AuthEffects {
         localStorage.removeItem('user_id');
         localStorage.removeItem('user_first_name');
         localStorage.removeItem('user_last_name');
-        localStorage.removeItem('user_is_super_user');
+        localStorage.removeItem('user_auth_group');
 
         this.router.navigateByUrl('/login');
 
@@ -81,7 +81,6 @@ export class AuthEffects {
       ofType(AuthActions.updateToken),
       tap((action) => {
         localStorage.setItem('token', action.token);
-        localStorage.setItem('refresh_token', action.token);
       })
     ),
     { dispatch: false }

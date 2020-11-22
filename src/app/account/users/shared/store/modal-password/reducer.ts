@@ -27,14 +27,14 @@ const reducer = wrapReducerWithFormStateUpdate(
     on(AccountUsersModalPasswordActions.initModal, (state, action) => ({
       ...state,
       formState: updateGroup<AccountUsersPasswordForm>(state.formState, {
-        password: setValue(''),
+        newPassword: setValue(''),
         id: setValue(action.id)
       })
     }))
   ),
   (state) => state.formState,
   updateGroup<AccountUsersPasswordForm>({
-    password: validate(required)
+    newPassword: validate(required)
   })
 );
 

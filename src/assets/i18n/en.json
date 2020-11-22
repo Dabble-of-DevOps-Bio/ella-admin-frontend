@@ -93,6 +93,9 @@
       "MODAL_DELETE": {
         "TEXT_TITLE": "Delete user group?"
       }
+    },
+    "PROFILE": {
+      "BUTTON_LOGOUT": "Logout"
     }
   },
   "SHARED": {

@@ -8,7 +8,7 @@ export class AccountUsersModalPasswordState {
   constructor() {
     this.isSubmitting = false;
     this.formState = createFormGroupState<AccountUsersPasswordForm>('AccountUsersPasswordForm', {
-      password: '',
+      newPassword: '',
       id: null
     });
   }
