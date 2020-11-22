@@ -36,5 +36,18 @@ export class AuthActions {
     '[Auth] Refresh Token Failure',
     props<{ response: HttpErrorResponse }>()
   );
+
+  public static clientAppAuthorize = createAction(
+    '[Auth] Client App Authorize'
+  );
+
+  public static clientAppAuthorizeSuccess = createAction(
+    '[Auth] Client App Authorize Success'
+  );
+
+  public static clientAppAuthorizeFailure = createAction(
+    '[Auth] Client App Authorize Failure',
+    props<{ response: HttpErrorResponse }>()
+  );
   /* tslint:enable:typedef */
 }

@@ -21,6 +21,7 @@ import { CustomSelectModule } from '@shared/custom-select';
 import { AccountUsersModalPasswordFacade } from './shared/components/modal-password/modal-password.facade';
 import { AccountUsersModalPasswordComponent } from './shared/components/modal-password/modal-password.component';
 import { FormPasswordModule } from '@shared/form-password';
+import { UserGroupModule } from '@shared/user-group';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FormPasswordModule } from '@shared/form-password';
     NgVariableModule,
     FormTextModule,
     FormPasswordModule,
-    CustomSelectModule
+    CustomSelectModule,
+    UserGroupModule
   ],
   providers: [
     AccountUsersPageFacade,

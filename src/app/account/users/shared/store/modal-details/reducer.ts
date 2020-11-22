@@ -33,16 +33,21 @@ const reducer = wrapReducerWithFormStateUpdate(
         email: setValue(action.user?.email || ''),
         id: setValue(action.user?.id || null),
         authGroup: setValue(action.user?.authGroup || 1),
-        groupID: setValue(action.user?.groupID || null)
+        groupID: setValue(action.user?.group.id || null)
       })
-    }))
+    })),
+    on(AccountUsersModalDetailsActions.loadGroupsSuccess, (state, action) => ({
+      ...state,
+      groupItems: action.response.items
+    })),
   ),
   (state) => state.formState,
   updateGroup<AccountUsersDetailsForm>({
     firstName: validate(required),
     lastName: validate(required),
     username: validate(required),
-    email: validate(required, email)
+    email: validate(required, email),
+    groupID: validate(required)
   })
 );
 

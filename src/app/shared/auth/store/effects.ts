@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthActions } from './actions';
 import { AuthResponse } from '../models';
 import { AuthService } from '../auth.service';
-import { catchError, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
@@ -32,11 +32,28 @@ export class AuthEffects {
   public authorizeSuccess$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.authorizeSuccess),
-      map((action) => {
+      mergeMap((action) => {
         localStorage.setItem('token', action.response.access);
         localStorage.setItem('refresh_token', action.response.refresh);
 
-        return UserActions.refreshProfile();
+        return [
+          UserActions.refreshProfile(),
+          AuthActions.clientAppAuthorize()
+        ];
+      })
+    )
+  );
+
+  public clientAppAuthorize$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.clientAppAuthorize),
+      switchMap(() => {
+        return this.authService
+          .clientAppAuthorize()
+          .pipe(
+            map(() => AuthActions.clientAppAuthorizeSuccess()),
+            catchError((response: HttpErrorResponse) => of(AuthActions.clientAppAuthorizeFailure({ response })))
+          );
       })
     )
   );

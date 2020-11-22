@@ -39,4 +39,8 @@ export class AuthService {
   public checkRestoreToken(token: string): Observable<void> {
     return this.apiService.post('/auth/token/check', { token });
   }
+
+  public clientAppAuthorize(): Observable<void> {
+    return this.apiService.post('/staff-app-login/');
+  }
 }

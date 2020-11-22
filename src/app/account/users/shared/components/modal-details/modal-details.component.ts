@@ -7,6 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseModalComponent } from '@shared/base-modal';
 import { CustomSelectOption } from '@shared/custom-select';
 import { AuthGroupEnum } from '@shared/user/enums';
+import { UserGroup } from '@shared/user-group';
 
 @Component({
   selector: 'users-modal-details',
@@ -19,6 +20,7 @@ export class AccountUsersModalDetailsComponent extends BaseModalComponent implem
   public formState$: Observable<FormGroupState<AccountUsersDetailsForm>>;
   public isNewUser: boolean;
   public authGroupOptions: Array<CustomSelectOption<number, AuthGroupEnum>>;
+  public groupItems$: Observable<Array<UserGroup>>;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { id: number },
@@ -31,6 +33,7 @@ export class AccountUsersModalDetailsComponent extends BaseModalComponent implem
     this.formState$ = this.facade.formState$;
     this.isNewUser = (this.data.id === null);
     this.authGroupOptions = this.facade.authGroupOptions;
+    this.groupItems$ = this.facade.groupItems$;
   }
 
   public ngOnInit(): void {
