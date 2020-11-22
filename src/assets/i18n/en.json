@@ -58,6 +58,14 @@
       },
       "MODAL_RESET_PASSWORD": {
         "TEXT_TITLE": "Reset password?"
+      },
+      "MODAL_PASSWORD": {
+        "TITLE_SET_PASSWORD": "Set password",
+        "TEXT_PASSWORD": "Password",
+        "BUTTON_SAVE": "Save",
+        "ERRORS": {
+          "TEXT_PASSWORD_IS_REQUIRED": "Password is required"
+        }
       }
     },
     "USER_GROUPS": {

@@ -18,13 +18,14 @@ export class UserGroupService {
     this.endpoint = '/user-groups/';
   }
 
-  public search({ page, perPage, sortBy, desc }: {
+  public search({ page, perPage, sortBy, desc, all }: {
     page?: number,
     perPage?: number,
     sortBy?: UserGroupSortField,
-    desc?: boolean
+    desc?: boolean,
+    all?: boolean
   } = {}): Observable<PaginationResponse<UserGroup>> {
-    const request = new PaginationRequest({ page, perPage, sortBy, desc });
+    const request = new PaginationRequest({ page, perPage, sortBy, desc, all });
 
     return this.apiService
       .get<PaginationResponse<UserGroup>>(this.endpoint, omitBy(classToPlain<PaginationRequest>(request), isUndefined))
