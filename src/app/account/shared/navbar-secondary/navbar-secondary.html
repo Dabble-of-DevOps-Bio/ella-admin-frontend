@@ -9,11 +9,9 @@
     </div>
     <section>
       <button *ngIf="isUsersPage$ | async" (click)="openNewUserModal()" class="bttn green">
-        <i class="fa fa-plus"></i>
         {{ 'ACCOUNT.NAVBAR.BUTTON_NEW_USER' | translate }}
       </button>
       <button *ngIf="isUserGroupsPage$ | async" (click)="openNewUserGroupModal()" class="bttn green">
-        <i class="fa fa-plus"></i>
         {{ 'ACCOUNT.NAVBAR.BUTTON_NEW_USER_GROUP' | translate }}
       </button>
     </section>
