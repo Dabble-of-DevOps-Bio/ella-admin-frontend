@@ -20,7 +20,7 @@ export class AccountUsersModalDetailsComponent extends BaseModalComponent implem
   public formState$: Observable<FormGroupState<AccountUsersDetailsForm>>;
   public isNewUser: boolean;
   public authGroupOptions: Array<CustomSelectOption<number, AuthGroupEnum>>;
-  public groupItems$: Observable<Array<UserGroup>>;
+  public groupItems$: Observable<Array<CustomSelectOption<number, string>>>;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { id: number },
