@@ -1,8 +1,8 @@
 <div class="bttn-set">
   <a (click)="openEditModal()" class="bttn">
-    <i class="fa fa-edit"></i>
+    <i class="material-icons">edit</i>
   </a>
   <a *ngIf="isAdmin$ | async" (click)="openDeleteModal()" class="bttn">
-    <i class="fa fa-trash"></i>
+    <i class="material-icons">delete</i>
   </a>
 </div>

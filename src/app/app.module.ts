@@ -19,6 +19,7 @@ import { AuthEffects, AuthModule, authReducer, jwtOptionsFactory } from '@shared
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalEffects, ModalModule } from '@shared/modal';
 import { NavigationEffects, NavigationModule } from '@shared/navigation';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { NavigationEffects, NavigationModule } from '@shared/navigation';
     ToastrModule.forRoot({
       ...configuration.notifications,
       toastComponent: NotificationComponent
-    })
+    }),
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
