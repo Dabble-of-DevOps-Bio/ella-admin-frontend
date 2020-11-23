@@ -14,6 +14,7 @@ import { AgGridColumn } from 'ag-grid-angular';
 import { AccountUsersActionsCellRendererComponent } from './shared/components/actions-cell-renderer/actions-cell-renderer.component';
 import { DateTime } from 'luxon';
 import { configuration } from '@configurations';
+import { AccountUsersModalPasswordComponent } from './shared/components/modal-password/modal-password.component';
 
 @Injectable()
 export class AccountUsersPageFacade {
@@ -139,6 +140,13 @@ export class AccountUsersPageFacade {
 
   public resetPassword(modalID: string, email: string): void {
     this.store.dispatch(AccountUsersPageRootActions.resetPassword({ modalID, email }));
+  }
+
+  public openChangePasswordModal(id: number): void {
+    this.modalService.open(AccountUsersModalPasswordComponent, {
+      panelClass: 'users-password-modal-panel',
+      data: { id }
+    });
   }
 
   public openDeleteModal(id: number): void {

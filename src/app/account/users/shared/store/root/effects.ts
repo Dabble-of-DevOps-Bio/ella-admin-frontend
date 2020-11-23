@@ -28,7 +28,7 @@ export class AccountUsersPageRootEffects {
       ofType(AccountUsersPageRootActions.loadItemsByParameters),
       switchMap((action) => {
         return this.userService
-          .search({ relations: ['group'] })
+          .search({ relations: ['group'], all: true })
           .pipe(
             map((response: PaginationResponse<User>) => AccountUsersPageRootActions.loadItemsSuccess({ response })),
             catchError((response: HttpErrorResponse) => [AccountUsersPageRootActions.loadItemsFailure({ response })])

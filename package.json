@@ -33,6 +33,7 @@
     "@ronas-it/angular-common": "^1.0.27",
     "ag-grid-angular": "^24.1.0",
     "ag-grid-community": "^24.1.0",
+    "font-awesome": "^4.7.0",
     "luxon": "^1.25.0",
     "ngrx-forms": "^6.1.0",
     "ngx-toastr": "^13.1.0",

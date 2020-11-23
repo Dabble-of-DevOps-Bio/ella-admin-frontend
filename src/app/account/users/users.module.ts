@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { AccountUsersModalDetailsEffects, accountUsersPageReducer, AccountUsersPageRootEffects } from './shared/store';
+import { AccountUsersModalDetailsEffects, AccountUsersModalPasswordEffects, accountUsersPageReducer, AccountUsersPageRootEffects } from './shared/store';
 import { AccountUsersPageFacade } from './users.facade';
 import { AgGridModule } from 'ag-grid-angular';
 import { AccountUsersActionsCellRendererComponent } from './shared/components/actions-cell-renderer/actions-cell-renderer.component';
@@ -18,12 +18,17 @@ import { ModalModule } from '@shared/modal';
 import { NgVariableModule } from '@shared/ng-variable';
 import { FormTextModule } from '@shared/form-text';
 import { CustomSelectModule } from '@shared/custom-select';
+import { AccountUsersModalPasswordFacade } from './shared/components/modal-password/modal-password.facade';
+import { AccountUsersModalPasswordComponent } from './shared/components/modal-password/modal-password.component';
+import { FormPasswordModule } from '@shared/form-password';
+import { UserGroupModule } from '@shared/user-group';
 
 @NgModule({
   declarations: [
     AccountUsersPageComponent,
     AccountUsersActionsCellRendererComponent,
-    AccountUsersModalDetailsComponent
+    AccountUsersModalDetailsComponent,
+    AccountUsersModalPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -35,17 +40,21 @@ import { CustomSelectModule } from '@shared/custom-select';
     StoreModule.forFeature('accountUsersPage', accountUsersPageReducer),
     EffectsModule.forFeature([
       AccountUsersPageRootEffects,
-      AccountUsersModalDetailsEffects
+      AccountUsersModalDetailsEffects,
+      AccountUsersModalPasswordEffects
     ]),
     AgGridModule.withComponents([AccountUsersActionsCellRendererComponent]),
     MatDialogModule,
     NgVariableModule,
     FormTextModule,
-    CustomSelectModule
+    FormPasswordModule,
+    CustomSelectModule,
+    UserGroupModule
   ],
   providers: [
     AccountUsersPageFacade,
-    AccountUsersModalDetailsFacade
+    AccountUsersModalDetailsFacade,
+    AccountUsersModalPasswordFacade
   ]
 })
 export class AccountUsersPageModule { }

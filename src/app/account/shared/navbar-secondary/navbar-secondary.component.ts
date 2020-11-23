@@ -10,14 +10,22 @@ import { AccountNavbarSecondaryFacade } from './navbar-secondary.facade';
 })
 export class AccountNavbarSecondaryComponent {
   public isAdmin$: Observable<boolean>;
+  public isUsersPage$: Observable<boolean>;
+  public isUserGroupsPage$: Observable<boolean>;
 
   constructor(
     private facade: AccountNavbarSecondaryFacade
   ) {
     this.isAdmin$ = this.facade.isAdmin$;
+    this.isUsersPage$ = this.facade.isUsersPage();
+    this.isUserGroupsPage$ = this.facade.isUserGroupsPage();
   }
 
   public openNewUserModal(): void {
     this.facade.openNewUserModal();
+  }
+
+  public openNewUserGroupModal(): void {
+    this.facade.openNewUserGroupModal();
   }
 }

@@ -1,6 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '@shared/user';
+import { PaginationResponse } from '@shared/pagination';
+import { UserGroup } from '@shared/user-group';
 
 export class AccountUsersModalDetailsActions {
   /* tslint:disable:typedef */
@@ -45,6 +47,20 @@ export class AccountUsersModalDetailsActions {
 
   public static openDetailsDialog = createAction(
     '[Account Users Page] Open Details Dialog'
+  );
+
+  public static loadGroups = createAction(
+    '[Account Users Page - Modal Change Details] Load Groups'
+  );
+
+  public static loadGroupsSuccess = createAction(
+    '[Account Users Page - Modal Change Details] Load Groups Success',
+    props<{ response: PaginationResponse<UserGroup> }>()
+  );
+
+  public static loadGroupsFailure = createAction(
+    '[Account Users Page - Modal Change Details] Load Groups Failure',
+    props<{ response: HttpErrorResponse }>()
   );
   /* tslint:enable:typedef */
 }

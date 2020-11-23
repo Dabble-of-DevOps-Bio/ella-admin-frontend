@@ -35,14 +35,15 @@ export class UserService {
       );
   }
 
-  public search({ page, perPage, sortBy, desc, relations }: {
+  public search({ page, perPage, sortBy, desc, relations, all }: {
     page?: number,
     perPage?: number,
     sortBy?: UserSortField,
     desc?: boolean,
+    all?: boolean,
     relations?: Array<UserRelationType>
   } = {}): Observable<PaginationResponse<User>> {
-    const request = new PaginationRequest({ page, perPage, sortBy, desc, relations });
+    const request = new PaginationRequest({ page, perPage, sortBy, desc, relations, all });
 
     return this.apiService
       .get<PaginationResponse<User>>(this.endpoint, omitBy(classToPlain<PaginationRequest>(request), isUndefined))

@@ -7,7 +7,6 @@ import { AccountUserGroupsModalDetailsActions } from './actions';
 import { withLatestFrom, filter, switchMap, map, mergeMap, catchError, tap } from 'rxjs/operators';
 import { AccountUserGroupsModalDetailsSelectors } from './selectors';
 import { ModalActions, ModalService } from '@shared/modal';
-import { TranslateService } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AccountUserGroupsPageRootActions, AccountUserGroupsPageRootSelectors } from '../root';
 import { AccountUserGroupsModalDetailsComponent } from '../../components/modal-details/modal-details.component';
@@ -126,7 +125,6 @@ export class AccountUserGroupsModalDetailsEffects {
     private actions$: Actions,
     private store: Store<AppState>,
     private userGroupService: UserGroupService,
-    private modalService: ModalService,
-    private translateService: TranslateService
+    private modalService: ModalService
   ) { }
 }

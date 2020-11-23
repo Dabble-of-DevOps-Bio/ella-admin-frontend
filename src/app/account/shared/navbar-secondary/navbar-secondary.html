@@ -4,12 +4,17 @@
       <div class="bttn-set">
         <a routerLink="/users" routerLinkActive="active" class="bttn">{{ 'ACCOUNT.NAVBAR.LINK_USERS' | translate }}</a>
         <a routerLink="/user-groups" routerLinkActive="active" class="bttn">{{ 'ACCOUNT.NAVBAR.LINK_USER_GROUPS' | translate }}</a>
-        <a routerLink="/" class="bttn">{{ 'ACCOUNT.NAVBAR.LINK_SOMETHING' | translate }}</a>
+        <!--<a routerLink="/" class="bttn">{{ 'ACCOUNT.NAVBAR.LINK_SOMETHING' | translate }}</a>-->
       </div>
     </div>
     <section>
-      <button (click)="openNewUserModal()" class="bttn green">
+      <button *ngIf="isUsersPage$ | async" (click)="openNewUserModal()" class="bttn green">
+        <i class="fa fa-plus"></i>
         {{ 'ACCOUNT.NAVBAR.BUTTON_NEW_USER' | translate }}
+      </button>
+      <button *ngIf="isUserGroupsPage$ | async" (click)="openNewUserGroupModal()" class="bttn green">
+        <i class="fa fa-plus"></i>
+        {{ 'ACCOUNT.NAVBAR.BUTTON_NEW_USER_GROUP' | translate }}
       </button>
     </section>
   </div>

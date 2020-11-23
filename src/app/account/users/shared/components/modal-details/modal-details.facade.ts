@@ -9,6 +9,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { BaseModalFacade } from '@shared/base-modal';
 import { CustomSelectOption } from '@shared/custom-select';
 import { AuthGroupEnum } from '@shared/user/enums';
+import { UserGroup } from '@shared/user-group';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AccountUsersModalDetailsFacade extends BaseModalFacade {
@@ -18,6 +20,16 @@ export class AccountUsersModalDetailsFacade extends BaseModalFacade {
 
   public get isSubmitting$(): Observable<boolean> {
     return this.store.select(AccountUsersModalDetailsSelectors.isSubmitting);
+  }
+
+  public get groupItems$(): Observable<Array<CustomSelectOption<number, string>>> {
+    return this.store.select(AccountUsersModalDetailsSelectors.groupItems)
+      .pipe(
+        map((items) => items.map((item) => new CustomSelectOption<number, string>({
+          id: item.id,
+          title: item.name
+        })))
+      );
   }
 
   public get authGroupOptions(): Array<CustomSelectOption<number, AuthGroupEnum>> {

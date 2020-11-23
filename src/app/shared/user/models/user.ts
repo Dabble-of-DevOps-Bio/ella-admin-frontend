@@ -33,6 +33,10 @@ export class User {
   @Expose({ name: 'updated_at' })
   public updatedAt: Date;
 
+  @Expose({ name: 'new_password' })
+  @Exclude({ toClassOnly: true })
+  public newPassword: string;
+
   @Type(() => UserGroup)
   @Expose()
   public group: UserGroup;

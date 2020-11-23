@@ -7,12 +7,13 @@ import { AccountUsersModalDetailsActions } from './actions';
 import { withLatestFrom, filter, switchMap, map, mergeMap, catchError, tap } from 'rxjs/operators';
 import { AccountUsersModalDetailsSelectors } from './selectors';
 import { UserService, User } from '@shared/user';
-import { ModalActions, ModalComponent, ModalService } from '@shared/modal';
-import { TranslateService } from '@ngx-translate/core';
+import { ModalActions, ModalService } from '@shared/modal';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AccountUsersPageRootActions, AccountUsersPageRootSelectors } from '../root';
 import { AccountUsersModalDetailsComponent } from '../../components/modal-details/modal-details.component';
 import { NotificationActions } from '@shared/notification';
+import { UserGroupService } from '@shared/user-group';
+import { UserGroupSortField } from '@shared/user-group/enums';
 
 @Injectable()
 export class AccountUsersModalDetailsEffects {
@@ -20,7 +21,10 @@ export class AccountUsersModalDetailsEffects {
     this.actions$.pipe(
       ofType(AccountUsersModalDetailsActions.initModal),
       mergeMap(({ id }) => this.store.select(AccountUsersPageRootSelectors.item, id)),
-      map((user) => AccountUsersModalDetailsActions.prefillForm({ user }))
+      mergeMap((user) => [
+        AccountUsersModalDetailsActions.prefillForm({ user }),
+        AccountUsersModalDetailsActions.loadGroups()
+      ])
     )
   );
 
@@ -49,7 +53,6 @@ export class AccountUsersModalDetailsEffects {
       ),
       switchMap(([{ modalID }, formState]) => {
         const updateRequest = new User({ ...formState.value });
-        updateRequest.groupID = null;
 
         return this.userService
           .create(updateRequest)
@@ -122,11 +125,27 @@ export class AccountUsersModalDetailsEffects {
     { dispatch: false }
   );
 
+  public loadGroups$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountUsersModalDetailsActions.loadGroups),
+      switchMap(() => {
+        return this.userGroupService
+          .search({ all: true, sortBy: UserGroupSortField.NAME })
+          .pipe(
+            mergeMap((response) => [
+              AccountUsersModalDetailsActions.loadGroupsSuccess({ response }),
+            ]),
+            catchError((response: HttpErrorResponse) => [AccountUsersModalDetailsActions.loadGroupsFailure({ response })])
+          );
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
     private userService: UserService,
     private modalService: ModalService,
-    private translateService: TranslateService
+    private userGroupService: UserGroupService,
   ) { }
 }

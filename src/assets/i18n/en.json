@@ -17,7 +17,9 @@
       "LINK_USERS": "Users",
       "LINK_USER_GROUPS": "User groups",
       "LINK_SOMETHING": "Something",
-      "BUTTON_NEW_USER": "New user"
+      "BUTTON_NEW_USER": "New user",
+      "LINK_LOGIN_AS_USER": "Login as User",
+      "BUTTON_NEW_USER_GROUP": "New user group"
     },
     "USERS": {
       "COLUMNS": {
@@ -34,6 +36,7 @@
       "ACTIONS": {
         "TEXT_EDIT": "Edit",
         "TEXT_RESET": "Reset",
+        "TEXT_CHANGE_PASSWORD": "Password",
         "TEXT_DELETE": "Delete"
       },
       "MODAL_DETAILS": {
@@ -44,6 +47,7 @@
         "TEXT_USERNAME": "Username",
         "TEXT_EMAIL": "Email",
         "TEXT_AUTH_GROUP": "Auth group",
+        "TEXT_GROUP": "Group",
         "BUTTON_SAVE": "Save",
         "ERRORS": {
           "TEXT_FIRST_NAME_IS_REQUIRED": "First name is required",
@@ -58,6 +62,14 @@
       },
       "MODAL_RESET_PASSWORD": {
         "TEXT_TITLE": "Reset password?"
+      },
+      "MODAL_PASSWORD": {
+        "TITLE_SET_PASSWORD": "Set password",
+        "TEXT_PASSWORD": "Password",
+        "BUTTON_SAVE": "Save",
+        "ERRORS": {
+          "TEXT_PASSWORD_IS_REQUIRED": "Password is required"
+        }
       }
     },
     "USER_GROUPS": {
@@ -82,6 +94,9 @@
       "MODAL_DELETE": {
         "TEXT_TITLE": "Delete user group?"
       }
+    },
+    "PROFILE": {
+      "BUTTON_LOGOUT": "Logout"
     }
   },
   "SHARED": {
