@@ -5,5 +5,5 @@ export class AccountUsersDetailsForm {
   public username: string;
   public email: string;
   public authGroup: number;
-  public groupID: number;
+  public group: number;
 }

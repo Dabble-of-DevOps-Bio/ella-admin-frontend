@@ -43,7 +43,9 @@ export class PublicLoginPageEffects {
     this.actions$.pipe(
       ofType(AuthActions.authorizeFailure),
       map((action) => NotificationActions.showError({
-        translationKey: action.response.error.detail
+        translationKey: (action.response.error.detail !== undefined)
+          ? action.response.error.detail
+          : 'SHARED.NOTIFICATIONS.TEXT_ERROR'
       }))
     )
   );

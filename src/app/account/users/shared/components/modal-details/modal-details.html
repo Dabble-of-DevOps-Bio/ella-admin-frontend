@@ -60,10 +60,13 @@
         label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_AUTH_GROUP' | translate }}">
       </custom-select>
       <custom-select
-        [controlState]="formState.controls.groupID"
+        [controlState]="formState.controls.group"
         [isRequired]="true"
         [options]="groupItems$ | async"
-        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_GROUP' | translate }}">
+        label="{{ 'ACCOUNT.USERS.MODAL_DETAILS.TEXT_GROUP' | translate }}"
+        [validationMessages]="{
+          required: 'ACCOUNT.USERS.MODAL_DETAILS.ERRORS.TEXT_GROUP_IS_REQUIRED' | translate
+        }">
       </custom-select>
       <div class="bttn-set">
         <button

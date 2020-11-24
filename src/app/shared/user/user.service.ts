@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { plainToClass, classToPlain, plainToClassFromExist } from 'class-transformer';
-import { User } from './models';
+import { UpdateUserRequest, User } from './models';
 import { ApiService } from '@ronas-it/angular-common';
 import { PaginationRequest, PaginationResponse } from '@shared/pagination';
 import { UserRelationType } from './types';
@@ -52,16 +52,20 @@ export class UserService {
       );
   }
 
-  public create(user: User): Observable<User> {
+  public create(request: UpdateUserRequest): Observable<User> {
     return this.apiService
-      .post(this.endpoint, classToPlain(user))
+      .post(this.endpoint, classToPlain(request))
       .pipe(
         map((response) => plainToClass(User, response))
       );
   }
 
-  public update(user: User): Observable<void> {
-    return this.apiService.put(`${this.endpoint}${user.id}/`, classToPlain(user));
+  public update(request: UpdateUserRequest): Observable<User> {
+    return this.apiService
+      .put(`${this.endpoint}${request.id}/`, classToPlain(request))
+      .pipe(
+        map((response) => plainToClass(User, response))
+      );
   }
 
   public get(id: number): Observable<User> {

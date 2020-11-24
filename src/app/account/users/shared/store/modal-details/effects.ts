@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { AccountUsersModalDetailsActions } from './actions';
 import { withLatestFrom, filter, switchMap, map, mergeMap, catchError, tap } from 'rxjs/operators';
 import { AccountUsersModalDetailsSelectors } from './selectors';
-import { UserService, User } from '@shared/user';
+import { UserService, UpdateUserRequest } from '@shared/user';
 import { ModalActions, ModalService } from '@shared/modal';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AccountUsersPageRootActions, AccountUsersPageRootSelectors } from '../root';
@@ -52,13 +52,13 @@ export class AccountUsersModalDetailsEffects {
         this.store.select(AccountUsersModalDetailsSelectors.formState)
       ),
       switchMap(([{ modalID }, formState]) => {
-        const updateRequest = new User({ ...formState.value });
+        const updateRequest = new UpdateUserRequest({ ...formState.value });
 
         return this.userService
           .create(updateRequest)
           .pipe(
             mergeMap((response) => [
-              AccountUsersModalDetailsActions.saveSuccess({ response: updateRequest }),
+              AccountUsersModalDetailsActions.saveSuccess({ response }),
               ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
               ModalActions.closeAll(),
             ]),
@@ -75,13 +75,13 @@ export class AccountUsersModalDetailsEffects {
         this.store.select(AccountUsersModalDetailsSelectors.formState)
       ),
       switchMap(([{ modalID }, formState]) => {
-        const updateRequest = new User({ ...formState.value });
+        const updateRequest = new UpdateUserRequest({ ...formState.value });
 
         return this.userService
           .update(updateRequest)
           .pipe(
             mergeMap((response) => [
-              AccountUsersModalDetailsActions.saveSuccess({ response: updateRequest }),
+              AccountUsersModalDetailsActions.saveSuccess({ response }),
               ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
               ModalActions.closeAll(),
             ]),
