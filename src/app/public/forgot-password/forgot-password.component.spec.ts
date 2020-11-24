@@ -1,5 +1,5 @@
-import { PublicChangePasswordPageComponent } from './change-password.component';
-import { PublicChangePasswordPageEffects, publicChangePasswordPageReducer } from './shared/store';
+import { PublicForgotPasswordPageComponent } from './forgot-password.component';
+import { PublicForgotPasswordPageEffects, publicForgotPasswordPageReducer } from './shared/store';
 import { AppState } from '@shared/store/state';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
@@ -8,15 +8,15 @@ import { render, RenderResult } from '@testing-library/angular';
 import { configuration } from '@configurations';
 import { TranslateTestingModule } from 'ngx-translate-testing';
 
-describe('PublicChangePasswordPageComponent', () => {
-  let component: RenderResult<PublicChangePasswordPageComponent>;
-  let componentInstance: PublicChangePasswordPageComponent;
+describe('PublicForgotPasswordPageComponent', () => {
+  let component: RenderResult<PublicForgotPasswordPageComponent>;
+  let componentInstance: PublicForgotPasswordPageComponent;
   let store: Store<AppState>;
 
   const translation = require(`../../../assets/i18n/${configuration.language.default}.json`);
 
   beforeEach(async () => {
-    component = await render(PublicChangePasswordPageComponent, {
+    component = await render(PublicForgotPasswordPageComponent, {
       imports: [
         TranslateTestingModule.withTranslations(configuration.language.default, translation),
         StoreModule.forRoot({}, {
@@ -25,12 +25,12 @@ describe('PublicChangePasswordPageComponent', () => {
             strictActionImmutability: true
           }
         }),
-        StoreModule.forFeature('publicChangePasswordPage', publicChangePasswordPageReducer),
+        StoreModule.forFeature('publicForgotPasswordPage', publicForgotPasswordPageReducer),
         EffectsModule.forRoot([]),
-        EffectsModule.forFeature([PublicChangePasswordPageEffects])
+        EffectsModule.forFeature([PublicForgotPasswordPageEffects])
       ],
       declarations: [
-        PublicChangePasswordPageComponent
+        PublicForgotPasswordPageComponent
       ],
       routes: [],
       providers: []

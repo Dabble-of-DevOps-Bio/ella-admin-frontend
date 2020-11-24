@@ -31,7 +31,7 @@
     &-placeholder {opacity: 0.65;}
     .icon {position: absolute; top: 0; right: 0; margin: 10px; transition: all 0.3s;}
   }
-  .dropdown-content {width: 100%; top: 100%; border-top: none; border-radius: 0 0 3px 3px; max-height: 65px; overflow-y: auto;}
+  .dropdown-content {width: 100%; top: 100%; border-top: none; border-radius: 0 0 3px 3px; max-height: 69px; overflow-y: auto;}
   &.dropdown-open {
     .dropdown-trigger {
       :after {top: -6px;}

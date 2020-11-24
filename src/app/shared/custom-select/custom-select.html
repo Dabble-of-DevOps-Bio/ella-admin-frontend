@@ -35,6 +35,11 @@
       </div>
     </div>
   </div>
+  <validation-errors
+      *ngIf="controlState.isSubmitted && controlState.isInvalid"
+      [controlErrors]="controlState.errors"
+      [messages]="validationMessages">
+    </validation-errors>
   <ng-template #disabledDropdown>
     <div
       class="cell dropdown custom-select disabled">

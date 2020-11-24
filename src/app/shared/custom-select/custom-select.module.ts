@@ -5,13 +5,15 @@ import { DropdownModule } from '../dropdown/dropdown.module';
 import { NgModule } from '@angular/core';
 import { NgrxFormsModule } from 'ngrx-forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { ValidationErrorsModule } from '@shared/validation-errors';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
     DropdownModule,
-    NgrxFormsModule
+    NgrxFormsModule,
+    ValidationErrorsModule
   ],
   declarations: [
     CustomSelectComponent
