@@ -628,9 +628,22 @@ button.normal {
 .spacer, .spacer-horizontal {height: 4rem;}
 .spacer2 {height: 2rem;}
 
+/* material dialog overrides */
+.cdk-overlay-container {overflow: auto; pointer-events: auto;}
+.cdk-overlay-backdrop {height: 100%; position: fixed;}
+.cdk-global-overlay-wrapper {padding: 30px; box-sizing: border-box;}
+.cdk-overlay-connected-position-bounding-box {pointer-events: none;}
+.cdk-overlay-pane.mat-tooltip-panel {position: fixed;}
+.mat-dialog-container {
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
 /* modals */
 .mat-dialog-container {background-color: #f5f9f8; color: #000; padding: 0 24px 24px!important; overflow: initial; position: relative;
-  .modal {width: 238px; text-align: center;
+  .modal {width: 300px; text-align: center;
     &-title {font-family: "Work Sans", sans-serif; font-size: 1.2rem; line-height: 20px; 
       display: flex; height: 3.8rem; min-height: 3.8rem; text-transform: none; margin: 0 -24px 2.9rem;
       background-color: rgba(49, 129, 123, 0.25);
