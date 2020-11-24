@@ -24,6 +24,7 @@ export class CustomSelectComponent<T extends string | number> {
   @Input() isLoading: boolean;
   @Input() label: string;
   @Input() isRequired: boolean;
+  @Input() validationMessages: Map<string, string>;
 
   @Output() onLoadNextPage: EventEmitter<void>;
 

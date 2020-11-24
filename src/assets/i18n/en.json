@@ -2,14 +2,20 @@
   "PUBLIC": {
     "LAYOUT": {
       "TITLE_LOGIN": "Login",
-      "TITLE_CHANGE_PASSWORD": "Change password",
+      "TITLE_FORGOT_PASSWORD": "Forgot password",
       "TAB_LOGIN": "Login",
-      "TAB_CHANGE_PASSWORD": "Change password"
+      "TAB_FORGOT_PASSWORD": "Forgot password"
     },
     "LOGIN": {
       "TEXT_USERNAME": "Username",
       "TEXT_PASSWORD": "Password",
       "BUTTON_LOGIN": "Log in"
+    },
+    "FORGOT_PASSWORD": {
+      "TEXT_EMAIL": "Email",
+      "BUTTON_RESET_PASSWORD": "Reset password",
+      "TEXT_SUCCESS": "Check your email for additional details",
+      "TEXT_ERROR": "User not found"
     }
   },
   "ACCOUNT": {
@@ -54,7 +60,8 @@
           "TEXT_LAST_NAME_IS_REQUIRED": "Last name is required",
           "TEXT_USERNAME_IS_REQUIRED": "Username is required",
           "TEXT_EMAIL_IS_REQUIRED": "Email is required",
-          "TEXT_EMAIL_IS_INVALID": "Email is invalid"
+          "TEXT_EMAIL_IS_INVALID": "Email is invalid",
+          "TEXT_GROUP_IS_REQUIRED": "Group is required"
         }
       },
       "MODAL_DELETE": {

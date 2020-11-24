@@ -2,7 +2,7 @@ import { RouterReducerState } from '@ngrx/router-store';
 import { PublicLoginPageState } from '@app/public/login/shared/store';
 import { UserState } from '@shared/user';
 import { AccountUsersPageState } from '@app/account/users/shared/store';
-import { PublicChangePasswordPageState } from '@app/public/change-password/shared/store';
+import { PublicForgotPasswordPageState } from '@app/public/forgot-password/shared/store';
 import { AuthState } from '@shared/auth';
 import { AccountProfilePageState } from '@app/account/profile/shared/store';
 import { AccountUserGroupsPageState } from '@app/account/user-groups/shared/store';
@@ -13,7 +13,7 @@ export class AppState {
   public authState?: AuthState;
   public userState?: UserState;
   public accountUsersPage?: AccountUsersPageState;
-  public publicChangePasswordPage?: PublicChangePasswordPageState;
+  public publicForgotPasswordPage?: PublicForgotPasswordPageState;
   public accountProfilePage?: AccountProfilePageState;
   public accountUserGroupsPage?: AccountUserGroupsPageState;
 }
