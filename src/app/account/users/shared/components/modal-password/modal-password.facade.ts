@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { FormGroupState } from 'ngrx-forms';
 import { AccountUsersModalPasswordActions, AccountUsersModalPasswordSelectors } from '../../store';
 import { AccountUsersPasswordForm } from '../../forms';
-import { TranslateService } from '@ngx-translate/core';
 import { BaseModalFacade } from '@shared/base-modal';
 
 @Injectable()
@@ -19,8 +18,7 @@ export class AccountUsersModalPasswordFacade extends BaseModalFacade {
   }
 
   constructor(
-    protected store: Store<AppState>,
-    private translateService: TranslateService
+    protected store: Store<AppState>
   ) {
     super(store);
   }

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { AccountUsersModalPasswordActions } from './actions';
 import { withLatestFrom, filter, switchMap, map, mergeMap, catchError, tap } from 'rxjs/operators';
 import { AccountUsersModalPasswordSelectors } from './selectors';
-import { UserService, User } from '@shared/user';
+import { UserService, UpdateUserRequest } from '@shared/user';
 import { ModalActions } from '@shared/modal';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AccountUsersPageRootActions } from '../root';
@@ -22,13 +22,13 @@ export class AccountUsersModalPasswordEffects {
       ),
       filter(([_, formState]) => formState.isValid),
       switchMap(([{ modalID }, formState]) => {
-        const updateRequest = new User({ ...formState.value });
+        const updateRequest = new UpdateUserRequest({ ...formState.value });
 
         return this.userService
           .update(updateRequest)
           .pipe(
             mergeMap((response) => [
-              AccountUsersModalPasswordActions.saveSuccess({ response: updateRequest }),
+              AccountUsersModalPasswordActions.saveSuccess({ response }),
               ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
               ModalActions.closeAll(),
             ]),
