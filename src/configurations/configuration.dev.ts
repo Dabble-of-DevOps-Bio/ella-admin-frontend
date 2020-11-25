@@ -22,5 +22,6 @@ export const configuration = {
     tapToDismiss: true,
     timeOut: 3000
   },
-  dateFormat: 'yyyy-LL-dd'
+  dateFormat: 'yyyy-LL-dd',
+  frontendUrl: 'https://ella.ronasit.com'
 };

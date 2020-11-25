@@ -41,6 +41,6 @@ export class AuthService {
   }
 
   public clientAppAuthorize(): Observable<void> {
-    return this.apiService.post('/staff-app-login/');
+    return this.apiService.post('/staff-app-login/', null, { withCredentials: true });
   }
 }

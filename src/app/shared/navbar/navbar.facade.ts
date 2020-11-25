@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { User, UserSelectors } from '@shared/user';
-import { AuthSelectors } from '@shared/auth';
+import { AuthActions, AuthSelectors } from '@shared/auth';
 
 @Injectable()
 export class NavbarFacade {
@@ -18,4 +18,8 @@ export class NavbarFacade {
   constructor(
     private store: Store<AppState>
   ) { }
+
+  public loginIntoFrontend(): void {
+    this.store.dispatch(AuthActions.frontendAuthorize());
+  }
 }

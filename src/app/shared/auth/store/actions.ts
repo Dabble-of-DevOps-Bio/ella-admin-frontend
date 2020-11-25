@@ -37,15 +37,15 @@ export class AuthActions {
     props<{ response: HttpErrorResponse }>()
   );
 
-  public static clientAppAuthorize = createAction(
+  public static frontendAuthorize = createAction(
     '[Auth] Client App Authorize'
   );
 
-  public static clientAppAuthorizeSuccess = createAction(
+  public static frontendAuthorizeSuccess = createAction(
     '[Auth] Client App Authorize Success'
   );
 
-  public static clientAppAuthorizeFailure = createAction(
+  public static frontendAuthorizeFailure = createAction(
     '[Auth] Client App Authorize Failure',
     props<{ response: HttpErrorResponse }>()
   );

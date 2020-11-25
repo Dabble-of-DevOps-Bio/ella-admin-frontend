@@ -18,4 +18,8 @@ export class NavbarComponent {
     this.profile$ = this.facade.profile$;
     this.isAuthenticated$ = this.facade.isAuthenticated$;
   }
+
+  public loginIntoFrontend(): void {
+    this.facade.loginIntoFrontend();
+  }
 }

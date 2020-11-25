@@ -23,5 +23,6 @@ export const configuration = {
     tapToDismiss: true,
     timeOut: 3000
   },
-  dateFormat: 'yyyy-LL-dd'
+  dateFormat: 'yyyy-LL-dd',
+  frontendUrl: 'http://localhost:5001'
 };

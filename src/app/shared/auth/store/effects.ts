@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthActions } from './actions';
 import { AuthResponse } from '../models';
 import { AuthService } from '../auth.service';
-import { catchError, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { catchError, filter, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
@@ -12,6 +12,7 @@ import { UserActions } from '@shared/user/store/actions';
 import { AuthSelectors } from './selectors';
 import { AppState } from '@shared/store';
 import { ModalActions } from '@shared/modal';
+import { configuration } from '@configurations';
 
 @Injectable()
 export class AuthEffects {
@@ -38,7 +39,7 @@ export class AuthEffects {
 
         return [
           UserActions.refreshProfile(),
-          AuthActions.clientAppAuthorize()
+          AuthActions.frontendAuthorize()
         ];
       })
     )
@@ -46,13 +47,13 @@ export class AuthEffects {
 
   public clientAppAuthorize$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.clientAppAuthorize),
+      ofType(AuthActions.frontendAuthorize),
       switchMap(() => {
         return this.authService
           .clientAppAuthorize()
           .pipe(
-            map(() => AuthActions.clientAppAuthorizeSuccess()),
-            catchError((response: HttpErrorResponse) => of(AuthActions.clientAppAuthorizeFailure({ response })))
+            map(() => AuthActions.frontendAuthorizeSuccess()),
+            catchError((response: HttpErrorResponse) => of(AuthActions.frontendAuthorizeFailure({ response })))
           );
       })
     )
@@ -108,6 +109,23 @@ export class AuthEffects {
       ofType(AuthActions.refreshTokenFailure),
       map(() => AuthActions.unauthorize())
     )
+  );
+
+  public clientAppAuthorizeSuccess$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.frontendAuthorizeSuccess),
+      tap(() => window.open(configuration.frontendUrl, '_blank'))
+    ),
+    { dispatch: false }
+  );
+
+  public clientAppAuthorizeFailure$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.frontendAuthorizeFailure),
+      filter((action) => action.response.status === 302),
+      tap(() => window.open(configuration.frontendUrl, '_blank'))
+    ),
+    { dispatch: false }
   );
 
   constructor(
