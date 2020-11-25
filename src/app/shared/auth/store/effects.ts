@@ -33,14 +33,11 @@ export class AuthEffects {
   public authorizeSuccess$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.authorizeSuccess),
-      mergeMap((action) => {
+      map((action) => {
         localStorage.setItem('token', action.response.access);
         localStorage.setItem('refresh_token', action.response.refresh);
 
-        return [
-          UserActions.refreshProfile(),
-          AuthActions.frontendAuthorize()
-        ];
+        return UserActions.refreshProfile();
       })
     )
   );
