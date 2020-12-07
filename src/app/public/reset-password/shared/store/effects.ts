@@ -45,7 +45,6 @@ export class PublicResetPasswordPageEffects {
   public resetPasswordFailed$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(PublicResetPasswordPageActions.resetPasswordFailed),
-      tap((action) => console.log(action.response.error)),
       map((action) => NotificationActions.showError({
         translationKey: (action.response.error.password !== undefined)
           ? action.response.error.password.join('\n')
