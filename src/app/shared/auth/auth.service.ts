@@ -32,12 +32,12 @@ export class AuthService {
     return this.apiService.post('/password-reset/', { email });
   }
 
-  public restorePassword(request: RestorePasswordRequest): Observable<void> {
-    return this.apiService.post('/auth/restore-password', request);
+  public setNewPassword(password: string, token: string): Observable<void> {
+    return this.apiService.post('/password-reset/confirm/', { password, token });
   }
 
   public checkRestoreToken(token: string): Observable<void> {
-    return this.apiService.post('/auth/token/check', { token });
+    return this.apiService.post('/password-reset/validate_token/', { token });
   }
 
   public clientAppAuthorize(): Observable<void> {

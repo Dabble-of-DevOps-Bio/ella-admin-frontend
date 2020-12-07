@@ -10,7 +10,7 @@
         </div>
         <div class="sb-controls"></div>
       </header>
-      <div class="sb-container topcontrols">
+      <div *ngVar="isResetPasswordPage$ | async as isResetPasswordPage" class="sb-container topcontrols">
         <article class="sb-top"></article>
         <article class="sb-body">
           <div class="contentwrapper">
@@ -22,10 +22,18 @@
                 {{ 'PUBLIC.LAYOUT.TAB_LOGIN' | translate }}
               </a>
               <a
+                *ngIf="!isResetPasswordPage"
                 routerLink="/forgot-password"
                 routerLinkActive="active"
                 class="bttn">
                 {{ 'PUBLIC.LAYOUT.TAB_FORGOT_PASSWORD' | translate }}
+              </a>
+              <a
+                *ngIf="isResetPasswordPage"
+                routerLink="/reset-password"
+                routerLinkActive="active"
+                class="bttn">
+                {{ 'PUBLIC.LAYOUT.TAB_RESET_PASSWORD' | translate }}
               </a>
             </div>
             <section class="line-wrapper">

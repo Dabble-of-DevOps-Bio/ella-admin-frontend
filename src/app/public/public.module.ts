@@ -4,6 +4,8 @@ import { PublicComponent } from './public.component';
 import { PublicRoutingModule } from './public.routing';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { PublicFacade } from './public.facade';
+import { NgVariableModule } from '@shared/ng-variable';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,11 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     RouterModule,
     PublicRoutingModule,
-    TranslateModule
+    TranslateModule,
+    NgVariableModule
+  ],
+  providers: [
+    PublicFacade
   ]
 })
 export class PublicModule { }
