@@ -4,7 +4,8 @@
       "TITLE_LOGIN": "Login",
       "TITLE_FORGOT_PASSWORD": "Forgot password",
       "TAB_LOGIN": "Login",
-      "TAB_FORGOT_PASSWORD": "Forgot password"
+      "TAB_FORGOT_PASSWORD": "Forgot password",
+      "TAB_RESET_PASSWORD": "Reset password"
     },
     "LOGIN": {
       "TEXT_USERNAME": "Username",
@@ -16,6 +17,14 @@
       "BUTTON_RESET_PASSWORD": "Reset password",
       "TEXT_SUCCESS": "Check your email for additional details",
       "TEXT_ERROR": "User not found"
+    },
+    "RESET_PASSWORD": {
+      "TEXT_PASSWORD": "Password",
+      "TEXT_REPEAT_PASSWORD": "Repeat password",
+      "BUTTON_SET_PASSWORD": "Set new password",
+      "TEXT_SUCCESS": "Password was changed",
+      "TEXT_ERROR_TOKEN": "Incorrect or expired link",
+      "TEXT_ERROR": "Unable to change password"
     }
   },
   "ACCOUNT": {
