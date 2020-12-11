@@ -50,7 +50,7 @@
     "@nrwl/builders": "^7.8.7",
     "@nrwl/cypress": "^10.0.1",
     "@nrwl/workspace": "^10.0.1",
-    "@ronas-it/angular-schematics": "^1.1.2",
+    "@ronas-it/angular-schematics": "^1.1.3",
     "@ronas-it/tslint-rules": "^1.0.3",
     "@testing-library/angular": "^10.0.0",
     "@testing-library/jest-dom": "^5.1.1",

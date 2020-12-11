@@ -18,6 +18,10 @@ const routes: Routes = [
       {
         path: 'user-groups',
         loadChildren: () => import('./user-groups/user-groups.module').then((module) => module.AccountUserGroupsPageModule)
+      },
+      {
+        path: 'gen-panels',
+        loadChildren: () => import('./gen-panels/gen-panels.module').then((module) => module.AccountGenPanelsPageModule)
       }
     ]
   }

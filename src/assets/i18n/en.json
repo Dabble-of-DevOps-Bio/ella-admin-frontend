@@ -31,7 +31,7 @@
     "NAVBAR": {
       "LINK_USERS": "Users",
       "LINK_USER_GROUPS": "User groups",
-      "LINK_SOMETHING": "Something",
+      "LINK_GEN_PANELS": "Gen Panels",
       "BUTTON_NEW_USER": "New user",
       "LINK_LOGIN_AS_USER": "Login as User",
       "BUTTON_NEW_USER_GROUP": "New user group"
@@ -92,6 +92,31 @@
       "COLUMNS": {
         "TEXT_ID": "ID",
         "TEXT_NAME": "Name",
+        "TEXT_ACTIONS": "Actions"
+      },
+      "ACTIONS": {
+        "TEXT_EDIT": "Edit",
+        "TEXT_DELETE": "Delete"
+      },
+      "MODAL_DETAILS": {
+        "TITLE_NEW": "New user group",
+        "TITLE_EDIT": "Edit user group",
+        "TEXT_NAME": "Name",
+        "BUTTON_SAVE": "Save",
+        "ERRORS": {
+          "TEXT_NAME_IS_REQUIRED": "Name is required"
+        }
+      },
+      "MODAL_DELETE": {
+        "TEXT_TITLE": "Delete user group?"
+      }
+    },
+    "GEN_PANELS": {
+      "COLUMNS": {
+        "TEXT_ID": "ID",
+        "TEXT_NAME": "Name",
+        "TEXT_GENOME_REFERENCE": "Genome Ref.",
+        "TEXT_VERSION": "Version",
         "TEXT_ACTIONS": "Actions"
       },
       "ACTIONS": {
