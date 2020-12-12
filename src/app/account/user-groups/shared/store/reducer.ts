@@ -7,7 +7,7 @@ const initialState = new AccountUserGroupsPageState();
 
 const reducersMap: ActionReducerMap<AccountUserGroupsPageState> = {
   rootState: accountUserGroupsPageRootReducer,
-  modalDetails: accountUserGroupsModalDetailsReducer,
+  modalDetails: accountUserGroupsModalDetailsReducer
 };
 
 const reducer = combineReducers(reducersMap, initialState);

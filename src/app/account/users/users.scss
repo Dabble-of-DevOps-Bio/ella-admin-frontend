@@ -1,5 +1,6 @@
 :host .users-page {
   ::ng-deep .ag-root-wrapper .bttn-set .bttn {
     line-height: 1.9rem; margin-top: 0.6rem;
+    &:not(:last-child) {margin-right: 0.6rem;}
   }
 }

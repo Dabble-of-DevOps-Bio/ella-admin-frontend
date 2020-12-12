@@ -1,0 +1,61 @@
+:host .dropdown {position: relative; display: inline-block; z-index: 2; line-height: normal;
+  &-content {background: #fff; position: absolute; width: 250px; top: 130%; left: 0; text-align: left;
+    opacity: 0; margin-top: -10000px; padding: 4px 3px; border: 1px solid #000; border-radius: 3px;
+    transition: opacity 0.3s, top 0s, margin 0s; transition-delay: 0s, 0s, 0s; box-sizing: border-box;
+    &-scrollable {overflow: hidden;}
+  }
+  &-trigger {line-height: 18px;
+    :after {content: ' '; position: absolute; top: 6px; width: 0; height: 0; right: 0;
+      bottom: 0; margin: auto; border-style: solid; border-width: 5px 5px 0 5px;
+      border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+      pointer-events: none;
+    }
+  }
+  &-open {z-index: 5;
+    .dropdown-content {top: 100%; margin-top: 6px; opacity: 1; transition-delay: 0s, 0s, 0s;}
+  }
+  &-right .dropdown-content {left: auto; right: 0;}
+  &-item {display: block; max-width: 100%; padding: 8px; border: none; box-sizing: border-box;
+    color: #000; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.2rem;
+    &:hover {background: #f5f9f8}
+    &:last-of-type {border-bottom: 0;}
+  }
+  &-scroll {max-height: 226px; overflow: hidden; overflow-y: scroll; width: calc(100% + 100px);
+    .dropdown-items {margin-right: 85px;}
+  }
+  &.disabled {pointer-events: none;}
+}
+:host .custom-multiselect {max-width: 182px;
+  &.dropdown-hastags {max-width: 300px; width: 100%;}
+  .dropdown-trigger {transition: none;
+    &-selected {padding: 4px 40px 4px 4px;}
+  }
+  .dropdown-items {
+    .dropdown-item {height: 34px; padding-left: 32px; line-height: 18px;
+      &:hover {
+        input:not(:checked) ~ .checkbox-icon {background-color: #98A8B3;}
+      }
+      &.not-found {padding: 8px;}
+    }
+    .checkbox {padding: 0;
+      &-icon {top: 9px; left: 8px; background-color: #C4CDD4; border-color: transparent; pointer-events: none;}
+    }
+  }
+  .dropdown-tags {position: absolute; top: 4px; left: 4px; right: 4px; height: 28px; font-size: 0.85rem;
+    pointer-events: none; overflow: hidden; max-width: 100%; margin-right: 40px;
+    .dropdown-tag {position: relative; display: inline-block; padding: 6px 8px; height: 16px; margin-right: 3px; background-color: #E2E6E9;
+      border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 18px; max-width: 100%;
+      &-action {position: absolute; top: 0; right: 0; margin: 8px 6px; width: 10px; height: 10px; pointer-events: auto;}
+      .icon {background-color: #C4CDD4; margin: -2px; transform: scale(0.7);
+        &:hover {background-color: #6C8393;}
+      }
+    }
+    &-reset {position: absolute; top: 10px; right: 26px;
+      .icon {background-color: #C4CDD4; transform: scale(0.8);
+        &:hover {background-color: #6C8393;}
+      }
+    }
+    &-count {position: absolute; right: 44px; top: 10px; font-size: 0.85rem; pointer-events: none;}
+    &-hashidden {margin-right: 68px;}
+  }
+}

@@ -115,7 +115,7 @@
       "COLUMNS": {
         "TEXT_ID": "ID",
         "TEXT_NAME": "Name",
-        "TEXT_GENOME_REFERENCE": "Genome Ref.",
+        "TEXT_GENOME_REFERENCE": "Genome Reference",
         "TEXT_VERSION": "Version",
         "TEXT_ACTIONS": "Actions"
       },
@@ -124,12 +124,11 @@
         "TEXT_DELETE": "Delete"
       },
       "MODAL_DETAILS": {
-        "TITLE_NEW": "New user group",
-        "TITLE_EDIT": "Edit user group",
-        "TEXT_NAME": "Name",
+        "TITLE_TEXT": "Assign user groups",
+        "TEXT_GROUPS": "User Groups",
         "BUTTON_SAVE": "Save",
         "ERRORS": {
-          "TEXT_NAME_IS_REQUIRED": "Name is required"
+          "TEXT_USER_GROUPS_IS_REQUIRED": "User Groups is required"
         }
       },
       "MODAL_DELETE": {

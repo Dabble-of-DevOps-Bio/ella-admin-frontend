@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { ModalService } from '@shared/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountGenPanelsPageRootActions, AccountGenPanelsPageRootSelectors } from './shared/store/root';
+import { AccountGenPanelsActionsCellRendererComponent } from './shared/components/actions-cell-renderer/actions-cell-renderer.component';
+import { AccountGenPanelsModalDetailsComponent } from './shared/components/modal-details/modal-details.component';
 
 @Injectable()
 export class AccountGenPanelsPageFacade {
@@ -54,17 +56,17 @@ export class AccountGenPanelsPageFacade {
         sortable: true,
         filter: true
       },
-      /*{
+      {
         headerName: this.translateService.instant('ACCOUNT.GEN_PANELS.COLUMNS.TEXT_ACTIONS'),
         cellRenderer: 'actionsCellRenderer',
         maxWidth: 180
-      }*/
+      }
     ];
   }
 
   public get frameworkComponents(): any {
     return {
-      // actionsCellRenderer: AccountGenPanelsActionsCellRendererComponent
+      actionsCellRenderer: AccountGenPanelsActionsCellRendererComponent
     };
   }
 
@@ -85,5 +87,12 @@ export class AccountGenPanelsPageFacade {
 
   public loadItems(): void {
     this.store.dispatch(AccountGenPanelsPageRootActions.loadItems());
+  }
+
+  public openDetailsModal(id: number): void {
+    this.modalService.open(AccountGenPanelsModalDetailsComponent, {
+      panelClass: 'gen-panels-modal-panel',
+      data: { id }
+    });
   }
 }

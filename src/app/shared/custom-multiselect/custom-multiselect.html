@@ -1,0 +1,69 @@
+<label
+  *ngIf="label"
+  [for]="controlState.id"
+  [ngClass]="{ required: isRequired }"
+  class="full-title upper cell">
+  <i>{{ label }}</i>
+</label>
+<div
+  [closeByClick]="false"
+  [ngClass]="{
+    disabled: isDisabled,
+    'dropdown-hastags': hasSelectedOptions
+  }"
+  class="cell dropdown custom-multiselect"
+  dropdown>
+
+  <div (hiddenCount)="hiddenCount($event)" class="dropdown-tags dropdown-tags-hashidden" multiselect>
+    <ng-container *ngIf="hasSelectedOptions">
+      <div *ngFor="let selectedOption of selectedOptions" class="dropdown-tag">
+        {{ selectedOption.tagTitle || selectedOption.title }}
+        <a (click)="removeTag(selectedOption)" class="dropdown-tag-action">
+          <span class="icon icon-mask icon-error"></span>
+        </a>
+      </div>
+    </ng-container>
+  </div>
+  <span *ngIf="hiddenTagsCount" class="dropdown-tags-count">+{{ hiddenTagsCount }}</span>
+  <a *ngIf="hasSelectedOptions" (click)="resetOptions()" class="dropdown-tags-reset">
+    <span class="icon icon-mask icon-error"></span>
+  </a>
+
+  <a
+    [ngClass]="{ 'dropdown-trigger-selected': hasSelectedOptions }"
+    class="dropdown-trigger">
+    <ng-container *ngIf="!hasSelectedOptions">
+      {{ placeholder }}
+    </ng-container>
+    <span class="icon icon-mask icon-arrow-down"></span>
+  </a>
+
+  <div class="dropdown-content dropdown-content-scrollable">
+    <div
+      (scrolled)="onScroll()"
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      [scrollWindow]="false"
+      [infiniteScrollDisabled]="isLoading"
+      [class.dropdown-scroll]="hasScroll"
+      infiniteScroll>
+      <div class="dropdown-items">
+        <div *ngFor="let option of options" class="checkbox">
+          <input type="checkbox" [checked]="getIsChecked(option)">
+          <span class="checkbox-icon"></span>
+          <a
+            (click)="onClickOption(option)"
+            [title]="option.title || ''"
+            data-testid="dropdown-item"
+            class="dropdown-item">
+            {{ option.title }}
+          </a>
+        </div>
+        <div *ngIf="isLoading" class="dropdown-item loader loader-loading"></div>
+        <div *ngIf="isNotFound" class="dropdown-item not-found">
+          {{ 'SHARED.MULTISELECT.TEXT_NO_ITEMS' | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

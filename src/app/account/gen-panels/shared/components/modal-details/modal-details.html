@@ -1,0 +1,56 @@
+<div
+  *ngVar="isSubmitting$ | async as isSubmitting"
+  [modalDisableClose]="isSubmitting"
+  [modalID]="modalID"
+  class="modal profile-modal">
+  <h3 mat-dialog-title class="modal-title">
+    <div class="modal-title-container">
+      <div mat-dialog-close class="icon modal-close">
+        <svg id="i-close" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+          <path d="M2 30 L30 2 M30 30 L2 2"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="modal-title-text">
+      {{ 'ACCOUNT.GEN_PANELS.MODAL_DETAILS.TITLE_TEXT' | translate }}
+    </div>
+  </h3>
+  <div class="modal-content" mat-dialog-content>
+    <form
+      *ngVar="formState$ | async as formState"
+      (submit)="save()"
+      [ngrxFormState]="formState"
+      role="form"
+      class="table">
+      <!--<form-text
+        [controlState]="formState.controls.name"
+        label="{{ 'ACCOUNT.USER_GROUPS.MODAL_DETAILS.TEXT_NAME' | translate }}"
+        [validationMessages]="{
+          required: 'ACCOUNT.USER_GROUPS.MODAL_DETAILS.ERRORS.TEXT_NAME_IS_REQUIRED' | translate
+        }">
+      </form-text>-->
+      <custom-multiselect
+        (onLoadNextPage)="onLoadNextPage()"
+        [controlState]="formState.controls.groups"
+        [isRequired]="true"
+        [options]="options$ | async"
+        [isLoading]="isLoading$ | async"
+        [hasScroll]="true"
+        [placeholder]="placeholder"
+        label="{{ 'ACCOUNT.GEN_PANELS.MODAL_DETAILS.TEXT_GROUPS' | translate }}"
+        data-testid="groups-multiselect"
+        class="groups-multiselect">
+      </custom-multiselect>
+      <div class="bttn-set">
+        <button
+          [ngClass]="{
+            'button-loading': isSubmitting,
+            'button-disabled': formState.isInvalid
+          }"
+          class="bttn">
+          {{ 'ACCOUNT.GEN_PANELS.MODAL_DETAILS.BUTTON_SAVE' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
