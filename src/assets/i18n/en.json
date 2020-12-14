@@ -31,7 +31,7 @@
     "NAVBAR": {
       "LINK_USERS": "Users",
       "LINK_USER_GROUPS": "User groups",
-      "LINK_SOMETHING": "Something",
+      "LINK_GEN_PANELS": "Gen Panels",
       "BUTTON_NEW_USER": "New user",
       "LINK_LOGIN_AS_USER": "Login as User",
       "BUTTON_NEW_USER_GROUP": "New user group"
@@ -105,6 +105,30 @@
         "BUTTON_SAVE": "Save",
         "ERRORS": {
           "TEXT_NAME_IS_REQUIRED": "Name is required"
+        }
+      },
+      "MODAL_DELETE": {
+        "TEXT_TITLE": "Delete user group?"
+      }
+    },
+    "GEN_PANELS": {
+      "COLUMNS": {
+        "TEXT_ID": "ID",
+        "TEXT_NAME": "Name",
+        "TEXT_GENOME_REFERENCE": "Genome Reference",
+        "TEXT_VERSION": "Version",
+        "TEXT_ACTIONS": "Actions"
+      },
+      "ACTIONS": {
+        "TEXT_EDIT": "Edit",
+        "TEXT_DELETE": "Delete"
+      },
+      "MODAL_DETAILS": {
+        "TITLE_TEXT": "Assign user groups",
+        "TEXT_GROUPS": "User Groups",
+        "BUTTON_SAVE": "Save",
+        "ERRORS": {
+          "TEXT_USER_GROUPS_IS_REQUIRED": "User Groups is required"
         }
       },
       "MODAL_DELETE": {
