@@ -8,6 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { accountAnalysesReportPageReducer, AccountAnalysesReportPageEffects } from './shared/store';
 import { AccountAnalysesReportPageFacade } from './report.facade';
+import { NgVariableModule } from '@shared/ng-variable';
+import { AnalysisModule } from '@shared/analysis';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { AccountAnalysesReportPageFacade } from './report.facade';
     TranslateModule,
     AccountAnalysesReportPageRoutingModule,
     StoreModule.forFeature('accountAnalysesReportPage', accountAnalysesReportPageReducer),
-    EffectsModule.forFeature([AccountAnalysesReportPageEffects])
+    EffectsModule.forFeature([AccountAnalysesReportPageEffects]),
+    NgVariableModule,
+    AnalysisModule
   ],
   providers: [
     AccountAnalysesReportPageFacade

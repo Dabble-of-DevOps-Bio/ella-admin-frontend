@@ -1,5 +1,9 @@
-export { Analysis } from './analysis';
-export { AnalysisPatientData } from './patient-data';
-export { AnalysisVariantReport } from './variant-report';
-export { AnalysisFilters } from './filters';
-export { AnalysisPaginationRequest } from './pagination-request';
+export * from './analysis';
+export * from './filters';
+export * from './pagination-request';
+export * from './patient-data';
+export * from './patient';
+export * from './report';
+export * from './sample';
+export * from './test';
+export * from './variant-report';

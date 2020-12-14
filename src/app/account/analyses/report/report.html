@@ -1,1 +1,74 @@
-Report
+<ng-container *ngIf="!(isLoading$ | async)">
+  <div *ngVar="(patientData$ | async) as patientData" class="report-page">
+    <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_PATIENT_DATA' | translate }}</h2>
+    <div class="report-row">
+      <div class="report-col report-col-50">
+        <div class="report-col report-col-50 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_PATIENT_NAME' | translate }}</div>
+        <div class="report-col report-col-50">{{ patientData?.patient?.patientLastName }}, {{ patientData.patient.patientFirstName }}</div>
+      </div>
+      <div class="report-col report-col-50">
+        <div class="report-col report-col-50 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_ORDERED_BY' | translate }}</div>
+        <div class="report-col report-col-50">{{ patientData?.test?.testRequestingPhysician }}</div>
+      </div>
+    </div>
+    <div class="report-row">
+      <div class="report-col report-col-50">
+        <div class="report-col report-col-50 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_DATE_OF_BIRTH' | translate }}</div>
+        <div class="report-col report-col-50">{{ patientData?.patient?.patientDOB }}</div>
+      </div>
+      <div class="report-col report-col-50">
+        <div class="report-col report-col-50 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_SAMPLE_COLLECTION_DATE' | translate }}</div>
+        <div class="report-col report-col-50">{{ patientData?.sample?.sampleCollectionDate }}</div>
+      </div>
+    </div>
+    <div class="report-row">
+      <div class="report-col report-col-50">
+        <div class="report-col report-col-50 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_GENDER' | translate }}</div>
+        <div class="report-col report-col-50">{{ patientData?.patient?.patientGender }}</div>
+      </div>
+      <div class="report-col report-col-50">
+        <div class="report-col report-col-50 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_SAMPLE_ACCESSION_DATE' | translate }}</div>
+        <div class="report-col report-col-50">{{ patientData?.sample?.sampleAccessionDate }}</div>
+      </div>
+    </div>
+    <div class="report-row">
+      <div class="report-col report-col-50">
+        <div class="report-col report-col-50 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_SAMPLE_TYPE' | translate }}</div>
+        <div class="report-col report-col-50">{{ patientData?.sample?.sampleType }}</div>
+      </div>
+      <div class="report-col report-col-50">
+        <div class="report-col report-col-50 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_REPORT_DATE' | translate }}</div>
+        <div class="report-col report-col-50">{{ patientData?.report?.reportDate }}</div>
+      </div>
+    </div>
+    <div class="report-row">
+      <div class="report-col">
+        <div class="report-col report-col-25 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_SAMPLE_ID' | translate }}</div>
+        <div class="report-col report-col-75">{{ patientData?.sample?.sampleID }}</div>
+      </div>
+    </div>
+    <div class="report-row">
+      <div class="report-col">
+        <div class="report-col report-col-25 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_TEST_ACCESSION' | translate }}</div>
+        <div class="report-col report-col-75">{{ patientData?.test?.testAccession }}</div>
+      </div>
+    </div>
+    <div class="report-row">
+      <div class="report-col">
+        <div class="report-col report-col-25 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_TEST_ORDERED' | translate }}</div>
+        <div class="report-col report-col-75">{{ patientData?.test?.testOrdered }}</div>
+      </div>
+    </div>
+    <div class="report-row">
+      <div class="report-col">
+        <div class="report-col report-col-25 report-col-title">{{ 'ACCOUNT.ANALYSES.REPORT.TEXT_TEST_CODE' | translate }}</div>
+        <div class="report-col report-col-75">{{ patientData?.test?.testCode }}</div>
+      </div>
+    </div>
+    <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_RESULT_POSITIVE' | translate }}</h2>
+    <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_LITERATURE' | translate }}</h2>
+    <textarea></textarea>
+    <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_ADDITIONAL_COMMENTS' | translate }}</h2>
+    <textarea></textarea>
+  </div>
+</ng-container>
