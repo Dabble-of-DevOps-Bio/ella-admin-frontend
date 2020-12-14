@@ -35,8 +35,7 @@ export class AccountUsersPageRootActions {
   );
 
   public static deleteUserSuccess = createAction(
-    '[Account Users Page] Delete User Success',
-    props<{ id: number }>()
+    '[Account Users Page] Delete User Success'
   );
 
   public static deleteUserFailure = createAction(
