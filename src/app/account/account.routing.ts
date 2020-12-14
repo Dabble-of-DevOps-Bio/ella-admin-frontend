@@ -20,8 +20,12 @@ const routes: Routes = [
         loadChildren: () => import('./user-groups/user-groups.module').then((module) => module.AccountUserGroupsPageModule)
       },
       {
-        path: 'gen-panels',
-        loadChildren: () => import('./gen-panels/gen-panels.module').then((module) => module.AccountGenPanelsPageModule)
+        path: 'gene-panels',
+        loadChildren: () => import('./gene-panels/gene-panels.module').then((module) => module.AccountGenePanelsPageModule)
+      },
+      {
+        path: 'analyses',
+        loadChildren: () => import('./analyses/analyses.module').then((module) => module.AccountAnalysesPageModule)
       }
     ]
   }

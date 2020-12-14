@@ -31,7 +31,8 @@
     "NAVBAR": {
       "LINK_USERS": "Users",
       "LINK_USER_GROUPS": "User groups",
-      "LINK_GEN_PANELS": "Gen Panels",
+      "LINK_GENE_PANELS": "Gene Panels",
+      "LINK_ANALYSES": "Analyses",
       "BUTTON_NEW_USER": "New user",
       "LINK_LOGIN_AS_USER": "Login as User",
       "BUTTON_NEW_USER_GROUP": "New user group"
@@ -111,7 +112,7 @@
         "TEXT_TITLE": "Delete user group?"
       }
     },
-    "GEN_PANELS": {
+    "GENE_PANELS": {
       "COLUMNS": {
         "TEXT_ID": "ID",
         "TEXT_NAME": "Name",
@@ -133,6 +134,18 @@
       },
       "MODAL_DELETE": {
         "TEXT_TITLE": "Delete user group?"
+      }
+    },
+    "ANALYSES": {
+      "COLUMNS": {
+        "TEXT_ID": "ID",
+        "TEXT_NAME": "Name",
+        "TEXT_GENE_PANEL_NAME": "Gene Panel Name",
+        "TEXT_GENE_PANEL_VERSION": "Gene Panel Version",
+        "TEXT_ACTIONS": "Actions"
+      },
+      "ACTIONS": {
+        "TEXT_REPORT": "Report"
       }
     },
     "PROFILE": {

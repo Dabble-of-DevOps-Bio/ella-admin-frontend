@@ -1,1 +1,0 @@
-export { AccountGenPanelsDetailsForm } from './details';

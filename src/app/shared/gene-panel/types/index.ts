@@ -1,0 +1,1 @@
+export { GenePanelRelationType } from './relation';
