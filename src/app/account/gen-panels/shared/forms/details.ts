@@ -1,3 +1,6 @@
+import { Boxed } from 'ngrx-forms';
+
 export class AccountGenPanelsDetailsForm {
-  public groups: Array<number>;
+  public id: number;
+  public groups: Boxed<Array<number>>;
 }

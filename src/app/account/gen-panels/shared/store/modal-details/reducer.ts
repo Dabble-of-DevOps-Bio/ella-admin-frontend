@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { AccountGenPanelsModalDetailsActions } from './actions';
 import { AccountGenPanelsModalDetailsState } from './state';
-import { onNgrxForms, updateGroup, wrapReducerWithFormStateUpdate, setValue, validate } from 'ngrx-forms';
+import { onNgrxForms, updateGroup, wrapReducerWithFormStateUpdate, setValue, validate, box } from 'ngrx-forms';
 import { AccountGenPanelsDetailsForm } from '../../forms';
 import { required } from 'ngrx-forms/validation';
 
@@ -48,7 +48,8 @@ const reducer = wrapReducerWithFormStateUpdate(
     on(AccountGenPanelsModalDetailsActions.prefillForm, (state, action) => ({
       ...state,
       formState: updateGroup<AccountGenPanelsDetailsForm>(state.formState, {
-        groups: setValue(action.genPanel?.groups || [])
+        id: setValue(action.genPanel?.id),
+        groups: setValue(box(action.genPanel?.groups || []))
       })
     }))
   ),

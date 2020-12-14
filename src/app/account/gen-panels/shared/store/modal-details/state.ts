@@ -1,5 +1,5 @@
 import { AccountGenPanelsDetailsForm } from '../../forms';
-import { createFormGroupState, FormGroupState } from 'ngrx-forms';
+import { box, createFormGroupState, FormGroupState } from 'ngrx-forms';
 import { UserGroup } from '@shared/user-group';
 
 export class AccountGenPanelsModalDetailsState {
@@ -18,7 +18,8 @@ export class AccountGenPanelsModalDetailsState {
     this.perPage = 15;
     this.query = '';
     this.formState = createFormGroupState<AccountGenPanelsDetailsForm>('AccountGenPanelsDetailsForm', {
-      groups: []
+      id: null,
+      groups: box([])
     });
   }
 }

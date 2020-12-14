@@ -1,5 +1,4 @@
 const apiDomain = 'localhost:8000';
-// const apiDomain = 'api.ella.ronasit.com';
 const apiURL = 'http://' + apiDomain;
 
 export const configuration = {

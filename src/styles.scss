@@ -129,7 +129,7 @@ header, hgroup, menu, nav, output, ruby, section, summary, time,
 mark {margin: 0; padding: 0; border: 0; vertical-align: baseline;}
 * {box-sizing: border-box;}
 .debug {font-size: 2em;}
-input {font-family: "Source Sans Pro", sans-serif; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+input[type='text'], input[type='email'] {font-family: "Source Sans Pro", sans-serif; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   background-color: transparent; padding: 0.3rem; height: 2.6rem; font-size: 1.2rem; font-weight: 400;
   text-overflow: ellipsis; width: inherit;
   &:focus {border-bottom: 1px solid Transparent; box-shadow: 0px 0.3rem 0px rgba(49, 96, 129, 0.5);
@@ -340,43 +340,6 @@ select {font-family: "Work Sans", sans-serif; font-size: 1.2rem; font-weight: 50
   .bttn:not(:first-child) {border-left: 1px solid rgba(49, 96, 129, 0.25); margin-left: 0;}
 }
 .line-wrapper, .search-module .element-item, .pagination {display: flex; align-items: center;}
-
-
-/*.dropdown {
-  height: 2.6rem;
-  box-shadow: 0 0.3rem 0 rgba(0, 0, 0, 0.05);
-  background-color: rgba(255, 255, 255, 0.75);
-  transition: all 0.3s;
-  position: relative;
-  &:hover {
-    &:not([disabled]) {
-      box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.25);
-      background-color: white;
-    }
-  }
-  &:after {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    width: 0;
-    height: 0;
-    right: 10px;
-    bottom: 0;
-    margin: auto;
-    border-style: solid;
-    border-width: 5px 5px 0 5px;
-    border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
-    pointer-events: none;
-  }
-  ~ {
-    button {
-      margin-left: 1.3rem;
-    }
-    .upload-button {
-      margin-left: 1.3rem;
-    }
-  }
-}*/
 button.normal {
   background-color: rgba(49, 96, 129, 0.05) !important;
   color: rgba(0, 0, 0, 0.75) !important;
@@ -395,17 +358,6 @@ button.normal {
     }
   }
 }
-/*.dropdown.disabled {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  color: rgba(0, 0, 0, 0.75);
-  opacity: 0.25;
-  background-color: inherit;
-  select {
-    &:hover {
-      cursor: default;
-    }
-  }
-}*/
 .button {
   ~ {
     .button {

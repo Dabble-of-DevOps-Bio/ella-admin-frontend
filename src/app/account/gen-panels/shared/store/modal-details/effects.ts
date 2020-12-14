@@ -14,6 +14,7 @@ import { NotificationActions } from '@shared/notification';
 import { GenPanel, GenPanelService } from '@shared/gen-panel';
 import { UserGroup, UserGroupService } from '@shared/user-group';
 import { PaginationResponse } from '@shared/pagination';
+import { unbox } from 'ngrx-forms';
 
 @Injectable()
 export class AccountGenPanelsModalDetailsEffects {
@@ -33,7 +34,10 @@ export class AccountGenPanelsModalDetailsEffects {
       ),
       filter(([_, formState]) => formState.isValid),
       switchMap(([{ modalID }, formState]) => {
-        const updateRequest = new GenPanel({ ...formState.value });
+        const updateRequest = new GenPanel({
+          id: formState.value.id,
+          groups: unbox(formState.value.groups)
+        });
 
         return this.genPanelService
           .update(updateRequest)
