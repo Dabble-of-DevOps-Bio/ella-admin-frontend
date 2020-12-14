@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { plainToClass, classToPlain, plainToClassFromExist } from 'class-transformer';
-import { Analysis } from './models';
+import { Analysis, AnalysisFilters, AnalysisPaginationRequest, AnalysisPatientData, AnalysisVariantReport } from './models';
 import { ApiService } from '@ronas-it/angular-common';
-import { PaginationRequest, PaginationResponse } from '@shared/pagination';
+import { PaginationResponse } from '@shared/pagination';
 import { AnalysisSortField } from './enums';
 import { isUndefined, omitBy } from 'lodash';
 
@@ -18,17 +18,18 @@ export class AnalysisService {
     this.endpoint = '/analysis/';
   }
 
-  public search({ page, perPage, sortBy, desc, all }: {
+  public search({ filters, page, perPage, sortBy, desc, all }: {
+    filters?: AnalysisFilters,
     page?: number,
     perPage?: number,
     sortBy?: AnalysisSortField,
     desc?: boolean,
     all?: boolean
   } = {}): Observable<PaginationResponse<Analysis>> {
-    const request = new PaginationRequest({ page, perPage, sortBy, desc, all });
+    const request = new AnalysisPaginationRequest({ ...filters, page, perPage, sortBy, desc, all });
 
     return this.apiService
-      .get<PaginationResponse<Analysis>>(this.endpoint, omitBy(classToPlain<PaginationRequest>(request), isUndefined))
+      .get<PaginationResponse<Analysis>>(this.endpoint, omitBy(classToPlain<AnalysisPaginationRequest>(request), isUndefined))
       .pipe(
         map((response) => plainToClassFromExist(new PaginationResponse<Analysis>(Analysis), response))
       );
@@ -51,6 +52,22 @@ export class AnalysisService {
       .get(`${this.endpoint}${id}/`)
       .pipe(
         map((response) => plainToClass(Analysis, response))
+      );
+  }
+
+  public getVariantReport(id: number): Observable<AnalysisVariantReport> {
+    return this.apiService
+      .get(`${this.endpoint}${id}/variant-report/`)
+      .pipe(
+        map((response) => plainToClass(AnalysisVariantReport, response))
+      );
+  }
+
+  public getPatientData(id: number): Observable<AnalysisPatientData> {
+    return this.apiService
+      .get(`${this.endpoint}${id}/patient-data/`)
+      .pipe(
+        map((response) => plainToClass(AnalysisPatientData, response))
       );
   }
 
