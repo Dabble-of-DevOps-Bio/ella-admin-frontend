@@ -76,6 +76,45 @@ export class AccountUsersPageRootEffects {
     )
   );
 
+  public deleteUser$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountUsersPageRootActions.deleteUser),
+      switchMap(({ id, modalID }) => {
+        return this.userService
+          .moveToInactive(id)
+          .pipe(
+            mergeMap(() => [
+              AccountUsersPageRootActions.deleteUserSuccess(),
+              ModalActions.changeDisableClose({ modalID, isDisableClose: false }),
+              ModalActions.closeAll()
+            ]),
+            catchError((response: HttpErrorResponse) => [AccountUsersPageRootActions.deleteUserFailure({ response })])
+          );
+      })
+    )
+  );
+
+  public deleteUserSuccess$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountUsersPageRootActions.deleteUserSuccess),
+      mergeMap(() => [
+        NotificationActions.showSuccess({
+          translationKey: 'SHARED.NOTIFICATIONS.TEXT_SUCCESS'
+        }),
+        AccountUsersPageRootActions.loadItemsByParameters({}),
+      ])
+    )
+  );
+
+  public deleteUserFailure$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountUsersPageRootActions.deleteUserFailure),
+      map((response) => NotificationActions.showError({
+        translationKey: (response.response.error.name !== undefined) ? response.response.error.name[0] : 'SHARED.NOTIFICATIONS.TEXT_ERROR'
+      }))
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,

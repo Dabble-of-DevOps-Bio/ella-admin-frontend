@@ -79,4 +79,8 @@ export class UserService {
   public delete(id: number): Observable<void> {
     return this.apiService.delete(`${this.endpoint}${id}/`);
   }
+
+  public moveToInactive(id: number): Observable<void> {
+    return this.apiService.post(`${this.endpoint}${id}/move-to-inactive/`);
+  }
 }
