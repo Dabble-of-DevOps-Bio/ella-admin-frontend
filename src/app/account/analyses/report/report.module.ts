@@ -10,6 +10,7 @@ import { accountAnalysesReportPageReducer, AccountAnalysesReportPageEffects } fr
 import { AccountAnalysesReportPageFacade } from './report.facade';
 import { NgVariableModule } from '@shared/ng-variable';
 import { AnalysisModule } from '@shared/analysis';
+import { NgrxFormsModule } from 'ngrx-forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AnalysisModule } from '@shared/analysis';
     StoreModule.forFeature('accountAnalysesReportPage', accountAnalysesReportPageReducer),
     EffectsModule.forFeature([AccountAnalysesReportPageEffects]),
     NgVariableModule,
-    AnalysisModule
+    AnalysisModule,
+    NgrxFormsModule
   ],
   providers: [
     AccountAnalysesReportPageFacade

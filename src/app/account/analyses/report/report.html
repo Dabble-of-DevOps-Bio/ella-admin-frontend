@@ -1,4 +1,4 @@
-<ng-container *ngIf="!(isLoading$ | async)">
+<ng-container *ngIf="!(isPatientLoading$ | async) && !(isReportLoading$ | async)">
   <div *ngVar="(patientData$ | async) as patientData" class="report-page">
     <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_PATIENT_DATA' | translate }}</h2>
     <div class="report-row">
@@ -65,10 +65,21 @@
         <div class="report-col report-col-75">{{ patientData?.test?.testCode }}</div>
       </div>
     </div>
-    <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_RESULT_POSITIVE' | translate }}</h2>
-    <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_LITERATURE' | translate }}</h2>
-    <textarea></textarea>
-    <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_ADDITIONAL_COMMENTS' | translate }}</h2>
-    <textarea></textarea>
+    <form
+      *ngVar="formState$ | async as formState"
+      (submit)="onSubmit()"
+      [ngrxFormState]="formState">
+      <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_RESULT_POSITIVE' | translate }}</h2>
+
+      <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_LITERATURE' | translate }}</h2>
+      <textarea [ngrxFormControlState]="formState.controls.literature"></textarea>
+      
+      <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_ADDITIONAL_COMMENTS' | translate }}</h2>
+      <textarea [ngrxFormControlState]="formState.controls.comments"></textarea>
+
+      <div>
+        <button type="submit">{{ 'ACCOUNT.ANALYSES.REPORT.BUTTON_CREATE_REPORT' | translate }}</button>
+      </div>
+    </form>
   </div>
 </ng-container>

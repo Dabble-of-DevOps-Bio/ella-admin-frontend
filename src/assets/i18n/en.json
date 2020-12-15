@@ -163,7 +163,8 @@
         "TEXT_TEST_CODE": "Test Code",
         "TITLE_RESULT_POSITIVE": "Result Positive",
         "TITLE_LITERATURE": "Literature",
-        "TITLE_ADDITIONAL_COMMENTS": "Additional Comments"
+        "TITLE_ADDITIONAL_COMMENTS": "Additional Comments",
+        "BUTTON_CREATE_REPORT": "Create Report"
       }
     },
     "PROFILE": {

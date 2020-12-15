@@ -7,3 +7,4 @@ export * from './report';
 export * from './sample';
 export * from './test';
 export * from './variant-report';
+export * from './variant-result';

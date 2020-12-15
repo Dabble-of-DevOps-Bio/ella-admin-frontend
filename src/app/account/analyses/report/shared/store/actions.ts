@@ -41,5 +41,9 @@ export class AccountAnalysesReportPageActions {
     '[Account Analyses Report Page] Load Variant Report Failure',
     props<{ response: HttpErrorResponse }>()
   );
+
+  public static save = createAction(
+    '[Account Analyses Report Page] Save Changes'
+  );
   /* tslint:enable:typedef */
 }

@@ -9,7 +9,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { BaseModalFacade } from '@shared/base-modal';
 import { CustomSelectOption } from '@shared/custom-select';
 import { AuthGroupEnum } from '@shared/user/enums';
-import { UserGroup } from '@shared/user-group';
 import { map } from 'rxjs/operators';
 
 @Injectable()
