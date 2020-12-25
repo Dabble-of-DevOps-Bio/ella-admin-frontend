@@ -1,0 +1,18 @@
+<h3 *ngIf="label" class="full-title upper cell"><i>{{ label }}</i></h3>
+<textarea
+  [ngrxFormControlState]="controlState"
+  [placeholder]="placeholder"
+  [attr.rows]="rows"
+  [attr.data-testid]="dataTestID"
+  [attr.role]="fieldRole"
+  [ngClass]="{
+    'form-control-success': controlState.isSubmitted && controlState.isValid,
+    'form-control-error': controlState.isSubmitted && controlState.isInvalid
+  }"
+  class="cell">
+</textarea>
+<validation-errors
+  *ngIf="controlState.isSubmitted && controlState.isInvalid"
+  [controlErrors]="controlState.errors"
+  [messages]="validationMessages">
+</validation-errors>

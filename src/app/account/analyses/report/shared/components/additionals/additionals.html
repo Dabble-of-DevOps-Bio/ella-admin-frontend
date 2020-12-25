@@ -1,0 +1,23 @@
+<form
+  (submit)="onSubmit()"
+  [ngrxFormState]="formState">
+  <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_LITERATURE' | translate }}</h2>
+  <form-textarea
+    [controlState]="formState.controls.literature"
+    [validationMessages]="{
+      required: 'ACCOUNT.ANALYSES.REPORT.ERRORS.TEXT_LITERATURE_IS_REQUIRED' | translate
+    }">
+  </form-textarea>
+
+  <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_ADDITIONAL_COMMENTS' | translate }}</h2>
+  <form-textarea
+    [controlState]="formState.controls.comment"
+    [validationMessages]="{
+      required: 'ACCOUNT.ANALYSES.REPORT.ERRORS.TEXT_COMMENTS_IS_REQUIRED' | translate
+    }">
+  </form-textarea>
+
+  <div>
+    <button type="submit">{{ 'ACCOUNT.ANALYSES.REPORT.BUTTON_CREATE_REPORT' | translate }}</button>
+  </div>
+</form>

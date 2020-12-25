@@ -1,0 +1,15 @@
+<ng-container *ngIf="!(isPatientLoading$ | async) && !(isReportLoading$ | async)">
+  <div *ngVar="formState$ | async as formState" class="report-page">
+    <analyses-report-patient
+      [data]="patientData$ | async">
+    </analyses-report-patient>
+
+    <analyses-report-result-items
+      [formState]="formState">
+    </analyses-report-result-items>
+
+    <analyses-report-additionals
+      [formState]="formState">
+    </analyses-report-additionals>
+  </div>
+</ng-container>

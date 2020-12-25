@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AccountUsersPageFacade } from '@app/account/users/users.facade';
-import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { BaseCellRendererComponent } from '@shared/base-cell-renderer';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,22 +9,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['actions-cell-renderer.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccountUsersActionsCellRendererComponent implements ICellRendererAngularComp {
+export class AccountUsersActionsCellRendererComponent extends BaseCellRendererComponent {
   public isAdmin$: Observable<boolean>;
-  private params: any;
 
   constructor(
     private facade: AccountUsersPageFacade
   ) {
+    super();
+
     this.isAdmin$ = this.facade.isAdmin$;
-  }
-
-  public agInit(params: any): void {
-    this.params = params;
-  }
-
-  public refresh(params?: any): boolean {
-    return true;
   }
 
   public openEditModal(): void {

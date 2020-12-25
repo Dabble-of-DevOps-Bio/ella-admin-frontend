@@ -7,7 +7,9 @@ import { AuthState } from '@shared/auth';
 import { AccountProfilePageState } from '@app/account/profile/shared/store';
 import { AccountUserGroupsPageState } from '@app/account/user-groups/shared/store';
 import { PublicResetPasswordPageState } from '@app/public/reset-password/shared/store';
-import { AccountGenPanelsPageState } from '@app/account/gen-panels/shared/store';
+import { AccountGenePanelsPageState } from '@app/account/gene-panels/shared/store';
+import { AccountAnalysesPageState } from '@app/account/analyses/shared/store';
+import { AccountAnalysesReportPageState } from '@app/account/analyses/report/shared/store';
 
 export class AppState {
   public router: RouterReducerState<any>;
@@ -19,5 +21,7 @@ export class AppState {
   public accountProfilePage?: AccountProfilePageState;
   public accountUserGroupsPage?: AccountUserGroupsPageState;
   public publicResetPasswordPage?: PublicResetPasswordPageState;
-  public accountGenPanelsPage?: AccountGenPanelsPageState;
+  public accountGenePanelsPage?: AccountGenePanelsPageState;
+  public accountAnalysesPage?: AccountAnalysesPageState;
+  public accountAnalysesReportPage?: AccountAnalysesReportPageState;
 }

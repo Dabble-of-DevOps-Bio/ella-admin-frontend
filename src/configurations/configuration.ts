@@ -1,5 +1,5 @@
-const apiDomain = 'localhost:8000';
-const apiURL = 'http://' + apiDomain;
+const apiDomain = 'api.ella.ronasit.com';
+const apiURL = 'https://' + apiDomain;
 
 export const configuration = {
   production: false,
