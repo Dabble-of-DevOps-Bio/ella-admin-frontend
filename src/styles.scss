@@ -334,7 +334,7 @@ select {font-family: "Work Sans", sans-serif; font-size: 1.2rem; font-weight: 50
   }
 }
 .bttn, .pagination {height: 2.6rem; box-shadow: 0 0.3rem 0 rgba(0, 0, 0, 0.05);
-    transition: all 0.3s;
+  transition: all 0.3s;
 }
 .bttn-set {flex-wrap: wrap; display: flex; align-items: center;
   .bttn:not(:first-child) {border-left: 1px solid rgba(49, 96, 129, 0.25); margin-left: 0;}
@@ -485,6 +485,39 @@ button.normal {
 
 /* ag-tables */
 .ag-theme-alpine {font-family: "Work Sans", sans-serif;}
+
+/* tables */
+.table {
+  &-row {position: relative; display: flex; align-items: flex-end; border-bottom: 2px solid #EFF2F7;
+    .avatar {margin: -4px 0;}
+  }
+  &-cell {font-family: Poppins; font-style: normal; font-weight: normal; font-size: 13px; color: #000;
+    padding: 10px 8px; box-sizing: border-box; line-height: 24px; text-align: center;
+    &:first-of-type {padding-left: 16px;}
+    &:last-of-type {padding-right: 16px;}
+  }
+  &-head {background-color: #F8F9FA;
+    .table-row {margin-bottom: 2px;}
+    .table-cell {font-weight: 600; padding-top: 12px; padding-bottom: 12; text-align: center;
+      a {color: #6C8393;}
+      .icon {margin: 4px 0px 0px;}
+    }
+  }
+  &-content {
+    .dropdown-trigger {padding: 4px; border-radius: 3px;
+      .icon {background-color: #fff;}
+    }
+    .table-row {border-radius: 3px;
+      &:hover {background-color: #F0F3F4;}
+    }
+  }
+  &-checkbox {line-height: 21px;
+    .checkbox {width: 16px; padding: 12px 0;}
+  }
+  &-actions {
+    a, .button {position: relative; z-index: 1;}
+  }
+}
 
 .material-icons {font-size: 16px;}
 

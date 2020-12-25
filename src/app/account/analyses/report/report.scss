@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&family=Roboto:wght@500&display=swap');
 
-:host .report-page {font-family: 'Poppins', sans-serif; padding: 1.3rem;
+::ng-deep .report-page {font-family: 'Poppins', sans-serif; padding: 1.3rem;
   height: calc(100vh - 87px); overflow: auto;
   h2 {font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 34px; line-height: 40px; letter-spacing: 0.25px;
     padding-bottom: 20px; margin-bottom: 18px; border-bottom: 1px solid #000000;

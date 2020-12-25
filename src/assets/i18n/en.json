@@ -164,7 +164,30 @@
         "TITLE_RESULT_POSITIVE": "Result Positive",
         "TITLE_LITERATURE": "Literature",
         "TITLE_ADDITIONAL_COMMENTS": "Additional Comments",
-        "BUTTON_CREATE_REPORT": "Create Report"
+        "ITEMS_HEADER": {
+          "TEXT_GENE": "Gene",
+          "TEXT_VARIANT": "Variant",
+          "TEXT_ZYGOSITY": "Zygosity",
+          "TEXT_CLASSIFICATION": "Variant Classification",
+          "TEXT_REMOVE": "Remove from Report"
+        },
+        "BUTTON_REMOVE": "Remove",
+        "BUTTON_CREATE_REPORT": "Create Report",
+        "MODAL_DELETE": {
+          "TEXT_TITLE": "Delete result?"
+        },
+        "MODAL_EDIT": {
+          "TEXT_GENE": "Gene",
+          "TEXT_VARIANT": "Variant",
+          "TEXT_ZYGOSITY": "Zygosity",
+          "TEXT_VARIANT_CLASSIFICATION": "Variant Classification",
+          "ERRORS": {
+            "TEXT_GENE_IS_REQUIRED": "Gene is required",
+            "TEXT_VARIANT_IS_REQUIRED": "Variant is required",
+            "TEXT_ZYGOSITY_IS_REQUIRED": "Zygosity is required",
+            "TEXT_VARIANT_CLASSIFICATION_IS_REQUIRED": "Variant CLassification is required"
+          }
+        }
       }
     },
     "PROFILE": {

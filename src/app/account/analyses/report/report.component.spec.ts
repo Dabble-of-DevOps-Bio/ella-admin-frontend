@@ -1,5 +1,5 @@
 import { AccountAnalysesReportPageComponent } from './report.component';
-import { AccountAnalysesReportPageEffects, accountAnalysesReportPageReducer } from './shared/store';
+import { AccountAnalysesReportPageEffects, accountAnalysesReportPageReducer } from './shared/store/root';
 import { AppState } from '@shared/store/state';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';

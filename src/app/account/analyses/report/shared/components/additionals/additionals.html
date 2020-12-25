@@ -1,0 +1,13 @@
+<form
+  (submit)="onSubmit()"
+  [ngrxFormState]="formState">
+  <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_LITERATURE' | translate }}</h2>
+  <textarea [ngrxFormControlState]="formState.controls.literature"></textarea>
+
+  <h2>{{ 'ACCOUNT.ANALYSES.REPORT.TITLE_ADDITIONAL_COMMENTS' | translate }}</h2>
+  <textarea [ngrxFormControlState]="formState.controls.comment"></textarea>
+
+  <div>
+    <button type="submit">{{ 'ACCOUNT.ANALYSES.REPORT.BUTTON_CREATE_REPORT' | translate }}</button>
+  </div>
+</form>

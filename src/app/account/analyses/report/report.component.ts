@@ -15,6 +15,7 @@ export class AccountAnalysesReportPageComponent implements OnDestroy {
   public isPatientLoading$: Observable<boolean>;
   public isReportLoading$: Observable<boolean>;
   public patientData$: Observable<AnalysisPatientData>;
+  public reportData$: Observable<AnalysisPatientData>;
   public formState$: Observable<FormGroupState<AccountAnalysesReportForm>>;
 
   constructor(

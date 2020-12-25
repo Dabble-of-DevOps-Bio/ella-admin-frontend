@@ -1,0 +1,61 @@
+<div
+  class="modal report-result-modal">
+  <h3 mat-dialog-title class="modal-title">
+    <div class="modal-title-container">
+      <div mat-dialog-close class="icon modal-close">
+        <svg id="i-close" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+          <path d="M2 30 L30 2 M30 30 L2 2"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="modal-title-text">
+      {{ 'ACCOUNT.ANALYSES.REPORT.MODAL_EDIT.TITLE_TEXT' | translate }}
+    </div>
+  </h3>
+  <div class="modal-content" mat-dialog-content>
+    <form
+      *ngVar="formState$ | async as formState"
+      (submit)="save()"
+      [ngrxFormState]="formState"
+      role="form"
+      class="table">
+      <form-text
+        [controlState]="formState.controls.gene"
+        label="{{ 'ACCOUNT.ANALYSES.REPORT.MODAL_EDIT.TEXT_GENE' | translate }}"
+        [validationMessages]="{
+          required: 'ACCOUNT.ANALYSES.REPORT.MODAL_EDIT.ERRORS.TEXT_GENE_IS_REQUIRED' | translate
+        }">
+      </form-text>
+      <form-text
+        [controlState]="formState.controls.variant"
+        label="{{ 'ACCOUNT.ANALYSES.REPORT.MODAL_EDIT.TEXT_VARIANT' | translate }}"
+        [validationMessages]="{
+          required: 'ACCOUNT.ANALYSES.REPORT.MODAL_EDIT.ERRORS.TEXT_VARIANT_IS_REQUIRED' | translate
+        }">
+      </form-text>
+      <form-text
+        [controlState]="formState.controls.zygosity"
+        label="{{ 'ACCOUNT.ANALYSES.REPORT.MODAL_EDIT.TEXT_ZYGOSITY' | translate }}"
+        [validationMessages]="{
+          required: 'ACCOUNT.ANALYSES.REPORT.MODAL_EDIT.ERRORS.TEXT_ZYGOSITY_IS_REQUIRED' | translate
+        }">
+      </form-text>
+      <form-text
+        [controlState]="formState.controls.variantClassification"
+        label="{{ 'ACCOUNT.ANALYSES.REPORT.MODAL_EDIT.TEXT_VARIANT_CLASSIFICATION' | translate }}"
+        [validationMessages]="{
+          required: 'ACCOUNT.ANALYSES.REPORT.MODAL_EDIT.ERRORS.TEXT_VARIANT_CLASSIFICATION_IS_REQUIRED' | translate
+        }">
+      </form-text>
+      <div class="bttn-set">
+        <button
+          [ngClass]="{
+            'button-disabled': formState.isInvalid
+          }"
+          class="bttn">
+          {{ 'ACCOUNT.ANALYSES.REPORT.MODAL_EDIT.BUTTON_SAVE' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
