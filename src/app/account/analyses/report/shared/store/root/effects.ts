@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AccountAnalysesReportPageRootActions } from './actions';
-import { AnalysisPatientData, AnalysisService, AnalysisVariantReport } from '@shared/analysis';
+import { AnalysisPatientData, AnalysisService, AnalysisVariantReport, AnalysisVariantResult } from '@shared/analysis';
 import { AccountAnalysesReportPageRootSelectors } from './selectors';
 import { NavigationSelectors } from '@shared/navigation';
 import { catchError, filter, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
@@ -74,8 +74,14 @@ export class AccountAnalysesReportPageRootEffects {
       ),
       filter(([_, formState]) => formState.isValid),
       switchMap(([_, formState, id]) => {
+        const report = new AnalysisVariantReport({
+          literature: formState.value.literature,
+          comment: formState.value.comment,
+          data: formState.value.data.map((result) => new AnalysisVariantResult(result ))
+        });
+
         return this.analysisService
-          .updateVariantReport(Number(id), formState.value)
+          .updateVariantReport(Number(id), report)
           .pipe(
             map(() => AccountAnalysesReportPageRootActions.saveSuccess()),
             catchError((response: HttpErrorResponse) => [AccountAnalysesReportPageRootActions.saveFailure({ response })])
