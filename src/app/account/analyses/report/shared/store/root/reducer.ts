@@ -1,5 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { addArrayControl, onNgrxForms, removeArrayControl, setValue, updateGroup, wrapReducerWithFormStateUpdate } from 'ngrx-forms';
+import { addArrayControl, onNgrxForms, removeArrayControl, setValue, updateGroup, validate, wrapReducerWithFormStateUpdate } from 'ngrx-forms';
+import { required } from 'ngrx-forms/validation';
 import { AccountAnalysesReportForm } from '../../forms';
 import { AccountAnalysesReportModalEditActions } from '../modal-edit';
 import { AccountAnalysesReportPageRootActions } from './actions';
@@ -60,7 +61,10 @@ const reducer = wrapReducerWithFormStateUpdate(
     }))
   ),
   (state) => state.formState,
-  updateGroup<AccountAnalysesReportForm>({})
+  updateGroup<AccountAnalysesReportForm>({
+    literature: validate(required),
+    comment: validate(required)
+  })
 );
 
 export function accountAnalysesReportPageRootReducer(state: AccountAnalysesReportPageRootState | undefined, action: Action): AccountAnalysesReportPageRootState {

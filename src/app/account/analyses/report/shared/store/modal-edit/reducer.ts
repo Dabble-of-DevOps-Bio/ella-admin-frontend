@@ -2,7 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { AccountAnalysesReportModalEditActions } from './actions';
 import { AccountAnalysesReportModalEditState } from './state';
 import { onNgrxForms, updateGroup, wrapReducerWithFormStateUpdate, setValue, validate } from 'ngrx-forms';
-import { email, required } from 'ngrx-forms/validation';
+import { required } from 'ngrx-forms/validation';
 import { AccountAnalysesResultForm } from '../../forms';
 
 const initialState = new AccountAnalysesReportModalEditState();
@@ -26,7 +26,7 @@ const reducer = wrapReducerWithFormStateUpdate(
   updateGroup<AccountAnalysesResultForm>({
     gene: validate(required),
     zygosity: validate(required),
-    variant: validate(required, email),
+    variant: validate(required),
     variantClassification: validate(required)
   })
 );

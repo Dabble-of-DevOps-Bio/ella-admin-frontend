@@ -35,16 +35,16 @@ export class AnalysisService {
       );
   }
 
-  public create(group: Analysis): Observable<Analysis> {
+  public create(analysis: Analysis): Observable<Analysis> {
     return this.apiService
-      .post(this.endpoint, classToPlain(group))
+      .post(this.endpoint, classToPlain(analysis))
       .pipe(
         map((response) => plainToClass(Analysis, response))
       );
   }
 
-  public update(group: Analysis): Observable<void> {
-    return this.apiService.put(`${this.endpoint}${group.id}/`, classToPlain(group));
+  public update(analysis: Analysis): Observable<void> {
+    return this.apiService.put(`${this.endpoint}${analysis.id}/`, classToPlain(analysis));
   }
 
   public get(id: number): Observable<Analysis> {
@@ -69,6 +69,10 @@ export class AnalysisService {
       .pipe(
         map((response) => plainToClass(AnalysisPatientData, response))
       );
+  }
+
+  public updateVariantReport(id: number, report: AnalysisVariantReport): Observable<void> {
+    return this.apiService.put(`${this.endpoint}${id}/variant-report/`, classToPlain(report));
   }
 
   public delete(id: number): Observable<void> {

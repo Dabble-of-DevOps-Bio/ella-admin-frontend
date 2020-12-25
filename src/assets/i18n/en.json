@@ -173,14 +173,20 @@
         },
         "BUTTON_REMOVE": "Remove",
         "BUTTON_CREATE_REPORT": "Create Report",
+        "ERRORS": {
+          "TEXT_LITERATURE_IS_REQUIRED": "Literature is required",
+          "TEXT_COMMENTS_IS_REQUIRED": "Additional Comments is required"
+        },
         "MODAL_DELETE": {
           "TEXT_TITLE": "Delete result?"
         },
         "MODAL_EDIT": {
+          "TITLE_TEXT": "New result",
           "TEXT_GENE": "Gene",
           "TEXT_VARIANT": "Variant",
           "TEXT_ZYGOSITY": "Zygosity",
           "TEXT_VARIANT_CLASSIFICATION": "Variant Classification",
+          "BUTTON_SAVE": "Save",
           "ERRORS": {
             "TEXT_GENE_IS_REQUIRED": "Gene is required",
             "TEXT_VARIANT_IS_REQUIRED": "Variant is required",

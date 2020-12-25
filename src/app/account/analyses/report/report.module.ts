@@ -19,6 +19,9 @@ import { AccountAnalysesReportModalEditComponent } from './shared/components/mod
 import { ModalModule } from '@shared/modal';
 import { FormTextModule } from '@shared/form-text';
 import { AccountAnalysesReportModalEditEffects, accountAnalysesReportPageReducer, AccountAnalysesReportPageRootEffects } from './shared/store';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AccountAnalysesReportModalEditFacade } from './shared/components/modal-edit/modal-edit.facade';
+import { FormTextAreaModule } from '@shared/form-textarea';
 
 @NgModule({
   declarations: [
@@ -44,10 +47,13 @@ import { AccountAnalysesReportModalEditEffects, accountAnalysesReportPageReducer
     AnalysisModule,
     NgrxFormsModule,
     ModalModule,
-    FormTextModule
+    FormTextModule,
+    MatDialogModule,
+    FormTextAreaModule
   ],
   providers: [
-    AccountAnalysesReportPageFacade
+    AccountAnalysesReportPageFacade,
+    AccountAnalysesReportModalEditFacade
   ]
 })
 export class AccountAnalysesReportPageModule { }

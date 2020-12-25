@@ -46,6 +46,15 @@ export class AccountAnalysesReportPageRootActions {
     '[Account Analyses Report Page - Root] Save Changes'
   );
 
+  public static saveSuccess = createAction(
+    '[Account Analyses Report Page - Root] Save Changes Success'
+  );
+
+  public static saveFailure = createAction(
+    '[Account Analyses Report Page - Root] Save Changes Failure',
+    props<{ response: HttpErrorResponse }>()
+  );
+
   public static deleteItem = createAction(
     '[Account Analyses Report Page - Root] Delete Item',
     props<{ modalID: string, index: number }>()

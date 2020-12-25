@@ -7,10 +7,11 @@ import { AccountAnalysesReportPageRootActions } from './actions';
 import { AnalysisPatientData, AnalysisService, AnalysisVariantReport } from '@shared/analysis';
 import { AccountAnalysesReportPageRootSelectors } from './selectors';
 import { NavigationSelectors } from '@shared/navigation';
-import { catchError, filter, map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
+import { catchError, filter, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationActions } from '@shared/notification';
 import { ModalActions } from '@shared/modal';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AccountAnalysesReportPageRootEffects {
@@ -19,7 +20,7 @@ export class AccountAnalysesReportPageRootEffects {
     this.actions$.pipe(
       ofType(AccountAnalysesReportPageRootActions.initPage),
       withLatestFrom(
-        this.store.select(NavigationSelectors.selectRouteParam('id')),
+        this.store.select(NavigationSelectors.selectRouteParam('id'))
       ),
       filter(([_, id]) => !!Number(id)),
       mergeMap(([_, id]) => [
@@ -64,9 +65,48 @@ export class AccountAnalysesReportPageRootEffects {
     )
   );
 
+  public save$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountAnalysesReportPageRootActions.save),
+      withLatestFrom(
+        this.store.select(AccountAnalysesReportPageRootSelectors.formState),
+        this.store.select(NavigationSelectors.selectRouteParam('id'))
+      ),
+      filter(([_, formState]) => formState.isValid),
+      switchMap(([_, formState, id]) => {
+        return this.analysisService
+          .updateVariantReport(Number(id), formState.value)
+          .pipe(
+            map(() => AccountAnalysesReportPageRootActions.saveSuccess()),
+            catchError((response: HttpErrorResponse) => [AccountAnalysesReportPageRootActions.saveFailure({ response })])
+          );
+      })
+    )
+  );
+
+  public saveSuccess$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountAnalysesReportPageRootActions.saveSuccess),
+      tap(() => this.router.navigateByUrl('/analyses')),
+      map(() => NotificationActions.showSuccess({
+        translationKey: 'SHARED.NOTIFICATIONS.TEXT_SUCCESS'
+      }))
+    )
+  );
+
+  public saveFailure$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountAnalysesReportPageRootActions.saveFailure),
+      map((response) => NotificationActions.showError({
+        translationKey: (response.response.error.name !== undefined) ? response.response.error.name[0] : 'SHARED.NOTIFICATIONS.TEXT_ERROR'
+      }))
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private analysisService: AnalysisService
+    private analysisService: AnalysisService,
+    private router: Router
   ) { }
 }

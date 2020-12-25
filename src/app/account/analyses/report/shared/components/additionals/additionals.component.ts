@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, Output } from '@angular/core';
 import { FormGroupState } from 'ngrx-forms';
+import { AccountAnalysesReportPageFacade } from '../../../report.facade';
 import { AccountAnalysesReportForm } from '../../forms';
 
 @Component({
@@ -10,5 +11,12 @@ import { AccountAnalysesReportForm } from '../../forms';
 })
 export class AccountAnalysesReportAdditionalsComponent {
   @Input() formState: FormGroupState<AccountAnalysesReportForm>;
-  @Output() onSubmit;
+
+  constructor(
+    private facade: AccountAnalysesReportPageFacade
+  ) { }
+
+  public onSubmit(): void {
+    this.facade.save();
+  }
 }
