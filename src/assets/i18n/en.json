@@ -33,6 +33,7 @@
       "LINK_USER_GROUPS": "User groups",
       "LINK_GENE_PANELS": "Gene Panels",
       "LINK_ANALYSES": "Analyses",
+      "LINK_CUSTOM_REPORTS": "Custom Reports",
       "BUTTON_NEW_USER": "New user",
       "LINK_LOGIN_AS_USER": "Login as User",
       "BUTTON_NEW_USER_GROUP": "New user group"
@@ -142,6 +143,66 @@
         "TEXT_NAME": "Name",
         "TEXT_GENE_PANEL_NAME": "Gene Panel Name",
         "TEXT_GENE_PANEL_VERSION": "Gene Panel Version",
+        "TEXT_ACTIONS": "Actions"
+      },
+      "ACTIONS": {
+        "TEXT_REPORT": "Report"
+      },
+      "REPORT": {
+        "TITLE_PATIENT_DATA": "Patient Data",
+        "TEXT_PATIENT_NAME": "Patient Name",
+        "TEXT_ORDERED_BY": "Ordered By",
+        "TEXT_DATE_OF_BIRTH": "Date of Birth",
+        "TEXT_SAMPLE_COLLECTION_DATE": "Sample Collection Date",
+        "TEXT_GENDER": "Gender",
+        "TEXT_SAMPLE_ACCESSION_DATE": "Sample Accession Date",
+        "TEXT_SAMPLE_TYPE": "Sample Type",
+        "TEXT_REPORT_DATE": "Report Date",
+        "TEXT_SAMPLE_ID": "Sample ID/MRN",
+        "TEXT_TEST_ACCESSION": "Test Accession",
+        "TEXT_TEST_ORDERED": "Test Ordered",
+        "TEXT_TEST_CODE": "Test Code",
+        "TITLE_RESULT_POSITIVE": "Result Positive",
+        "TITLE_LITERATURE": "Literature",
+        "TITLE_ADDITIONAL_COMMENTS": "Additional Comments",
+        "ITEMS_HEADER": {
+          "TEXT_GENE": "Gene",
+          "TEXT_VARIANT": "Variant",
+          "TEXT_ZYGOSITY": "Zygosity",
+          "TEXT_CLASSIFICATION": "Variant Classification",
+          "TEXT_REMOVE": "Remove from Report"
+        },
+        "BUTTON_REMOVE": "Remove",
+        "BUTTON_CREATE_REPORT": "Create Report",
+        "ERRORS": {
+          "TEXT_LITERATURE_IS_REQUIRED": "Literature is required",
+          "TEXT_COMMENTS_IS_REQUIRED": "Additional Comments is required"
+        },
+        "MODAL_DELETE": {
+          "TEXT_TITLE": "Delete result?"
+        },
+        "MODAL_EDIT": {
+          "TITLE_TEXT": "New result",
+          "TEXT_GENE": "Gene",
+          "TEXT_VARIANT": "Variant",
+          "TEXT_ZYGOSITY": "Zygosity",
+          "TEXT_VARIANT_CLASSIFICATION": "Variant Classification",
+          "BUTTON_SAVE": "Save",
+          "ERRORS": {
+            "TEXT_GENE_IS_REQUIRED": "Gene is required",
+            "TEXT_VARIANT_IS_REQUIRED": "Variant is required",
+            "TEXT_ZYGOSITY_IS_REQUIRED": "Zygosity is required",
+            "TEXT_VARIANT_CLASSIFICATION_IS_REQUIRED": "Variant CLassification is required"
+          }
+        }
+      }
+    },
+    "CUSTOM_REPORTS": {
+      "COLUMNS": {
+        "TEXT_ID": "ID",
+        "TEXT_NAME": "Name",
+        "TEXT_TYPE": "Type",
+        "TEXT_METHOD": "Method",
         "TEXT_ACTIONS": "Actions"
       },
       "ACTIONS": {

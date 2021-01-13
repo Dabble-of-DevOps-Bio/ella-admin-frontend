@@ -1,16 +1,16 @@
 import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
-import { AccountAnalysesPageFacade } from './analyses.facade';
+import { AccountCustomReportsPageFacade } from './custom-reports.facade';
 import { Observable } from 'rxjs';
 import { Analysis } from '@shared/analysis';
 import { AgGridColumn } from 'ag-grid-angular';
 
 @Component({
-  selector: 'account-analyses-page',
-  templateUrl: 'analyses.html',
-  styleUrls: ['analyses.scss'],
+  selector: 'account-custom-reports-page',
+  templateUrl: 'custom-reports.html',
+  styleUrls: ['custom-reports.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccountAnalysesPageComponent implements OnDestroy {
+export class AccountCustomReportsPageComponent implements OnDestroy {
   public items$: Observable<Array<Analysis>>;
   public isLoading$: Observable<boolean>;
   public columnDefs: Array<Partial<AgGridColumn>>;
@@ -18,7 +18,7 @@ export class AccountAnalysesPageComponent implements OnDestroy {
   private gridApi: any;
 
   constructor(
-    private facade: AccountAnalysesPageFacade
+    private facade: AccountCustomReportsPageFacade
   ) {
     this.items$ = this.facade.items$;
     this.isLoading$ = this.facade.isLoading$;

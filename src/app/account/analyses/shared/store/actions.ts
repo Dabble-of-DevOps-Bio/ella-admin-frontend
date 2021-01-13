@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
-import { Analysis } from '@shared/analysis';
-import { AnalysisSortField } from '@shared/analysis/enums';
+import { Analysis, AnalysisSortField } from '@shared/analysis';
 import { PaginationResponse } from '@shared/pagination';
 
 export class AccountAnalysesPageActions {
