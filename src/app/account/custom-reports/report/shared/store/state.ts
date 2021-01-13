@@ -15,7 +15,12 @@ export class AccountCustomReportsReportPageState {
     this.customReport = null;
     this.formState = createFormGroupState<AccountCustomReportsReportForm>('AccountCustomReportsReportForm', {
       name: '',
-      customReportGene: ''
+      customReportGeneID: null,
+      customReportGene: '',
+      customReportVariationID: null,
+      customReportVariation: '',
+      result: '',
+      interpretation: ''
     });
   }
 }

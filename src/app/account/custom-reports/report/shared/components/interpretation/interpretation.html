@@ -1,4 +1,7 @@
 <h2>{{ 'ACCOUNT.CUSTOM_REPORTS.REPORT.TITLE_INTERPRETATION' | translate }}</h2>
-<div class="report-row">
-  
-</div>
+<form-textarea
+  [controlState]="formState.controls.interpretation"
+  [validationMessages]="{
+    required: 'ACCOUNT.CUSTOM_REPORTS.REPORT.ERRORS.TEXT_INTERPRETATION_IS_REQUIRED' | translate
+  }">
+</form-textarea>
