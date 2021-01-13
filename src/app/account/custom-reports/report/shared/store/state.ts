@@ -14,9 +14,8 @@ export class AccountCustomReportsReportPageState {
     this.isSendingRequest = false;
     this.customReport = null;
     this.formState = createFormGroupState<AccountCustomReportsReportForm>('AccountCustomReportsReportForm', {
-      literature: '',
-      comment: '',
-      data: []
+      name: '',
+      customReportGene: ''
     });
   }
 }

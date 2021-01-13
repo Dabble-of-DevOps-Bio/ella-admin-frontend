@@ -9,25 +9,25 @@ import { EffectsModule } from '@ngrx/effects';
 import { AccountCustomReportsReportPageFacade } from './report.facade';
 import { NgVariableModule } from '@shared/ng-variable';
 import { NgrxFormsModule } from 'ngrx-forms';
-import { AccountCustomReportsReportPatientComponent } from './shared/components/patient/patient.component';
-import { AccountCustomReportsReportAdditionalsComponent } from './shared/components/additionals/additionals.component';
-import { AccountCustomReportsReportResultItemsComponent } from './shared/components/result-items/result-items.component';
-import { AccountCustomReportsReportResultItemComponent } from './shared/components/result-item/result-item.component';
-import { AccountCustomReportsReportResultHeaderComponent } from './shared/components/result-header/result-header.component';
 import { ModalModule } from '@shared/modal';
 import { FormTextModule } from '@shared/form-text';
 import { AccountCustomReportsReportPageEffects, accountCustomReportsReportPageReducer } from './shared/store';
 import { FormTextAreaModule } from '@shared/form-textarea';
 import { CustomReportModule } from '@shared/custom-report';
+import { AccountCustomReportsReportAccessionComponent } from './shared/components/accession/accession.component';
+import { AccountCustomReportsReportGenesComponent } from './shared/components/genes/genes.component';
+import { AccountCustomReportsReportVariationsComponent } from './shared/components/variations/variations.component';
+import { AccountCustomReportsReportResultComponent } from './shared/components/result/result.component';
+import { AccountCustomReportsReportInterpretationComponent } from './shared/components/interpretation/interpretation.component';
 
 @NgModule({
   declarations: [
     AccountCustomReportsReportPageComponent,
-    AccountCustomReportsReportPatientComponent,
-    AccountCustomReportsReportAdditionalsComponent,
-    AccountCustomReportsReportResultItemsComponent,
-    AccountCustomReportsReportResultItemComponent,
-    AccountCustomReportsReportResultHeaderComponent
+    AccountCustomReportsReportAccessionComponent,
+    AccountCustomReportsReportGenesComponent,
+    AccountCustomReportsReportVariationsComponent,
+    AccountCustomReportsReportResultComponent,
+    AccountCustomReportsReportInterpretationComponent
   ],
   imports: [
     CommonModule,

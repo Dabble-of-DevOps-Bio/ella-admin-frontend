@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 import { AccountCustomReportsPageActions, AccountCustomReportsPageSelectors } from './shared/store';
 import { AppState } from '@shared/store';
 import { TranslateService } from '@ngx-translate/core';
-import { Analysis } from '@shared/analysis';
 import { AgGridColumn } from 'ag-grid-angular';
 import { AccountCustomReportsActionsCellRendererComponent } from './shared/components/actions-cell-renderer/actions-cell-renderer.component';
+import { CustomReport } from '@shared/custom-report';
 
 @Injectable()
 export class AccountCustomReportsPageFacade {
@@ -14,7 +14,7 @@ export class AccountCustomReportsPageFacade {
     return this.store.select(AccountCustomReportsPageSelectors.isLoading);
   }
 
-  public get items$(): Observable<Array<Analysis>> {
+  public get items$(): Observable<Array<CustomReport>> {
     return this.store.select(AccountCustomReportsPageSelectors.items);
   }
 
@@ -68,7 +68,7 @@ export class AccountCustomReportsPageFacade {
     private translateService: TranslateService
   ) { }
 
-  public getItem$(id: number): Observable<Analysis> {
+  public getItem$(id: number): Observable<CustomReport> {
     return this.store.select(AccountCustomReportsPageSelectors.item, id);
   }
 

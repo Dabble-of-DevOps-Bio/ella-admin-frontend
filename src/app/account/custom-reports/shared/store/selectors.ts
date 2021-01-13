@@ -1,8 +1,8 @@
 import { AppState } from '@shared/store';
 import { createSelector, MemoizedSelector, MemoizedSelectorWithProps } from '@ngrx/store';
 import { AccountCustomReportsPageState } from './state';
-import { Analysis } from '@shared/analysis';
 import { find } from 'lodash';
+import { CustomReport } from '@shared/custom-report';
 
 const selectFeature = (state: AppState) => state.accountCustomReportsPage as AccountCustomReportsPageState;
 
@@ -12,7 +12,7 @@ export class AccountCustomReportsPageSelectors {
     (state: AccountCustomReportsPageState) => state.isLoading
   );
 
-  public static items: MemoizedSelector<AppState, Array<Analysis>> = createSelector(
+  public static items: MemoizedSelector<AppState, Array<CustomReport>> = createSelector(
     selectFeature,
     (state: AccountCustomReportsPageState) => state.items
   );
@@ -22,8 +22,8 @@ export class AccountCustomReportsPageSelectors {
     (state: AccountCustomReportsPageState) => state.totalItems
   );
 
-  public static item: MemoizedSelectorWithProps<AppState, number, Analysis> = createSelector(
+  public static item: MemoizedSelectorWithProps<AppState, number, CustomReport> = createSelector(
     AccountCustomReportsPageSelectors.items,
-    (items: Array<Analysis>, id: number) => find(items, { id })
+    (items: Array<CustomReport>, id: number) => find(items, { id })
   );
 }

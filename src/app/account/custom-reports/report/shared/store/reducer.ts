@@ -28,8 +28,8 @@ const reducer = wrapReducerWithFormStateUpdate(
   ),
   (state) => state.formState,
   updateGroup<AccountCustomReportsReportForm>({
-    literature: validate(required),
-    comment: validate(required)
+    name: validate(required),
+    customReportGene: validate(required)
   })
 );
 

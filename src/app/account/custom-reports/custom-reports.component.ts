@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { AccountCustomReportsPageFacade } from './custom-reports.facade';
 import { Observable } from 'rxjs';
-import { Analysis } from '@shared/analysis';
 import { AgGridColumn } from 'ag-grid-angular';
+import { CustomReport } from '@shared/custom-report';
 
 @Component({
   selector: 'account-custom-reports-page',
@@ -11,7 +11,7 @@ import { AgGridColumn } from 'ag-grid-angular';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountCustomReportsPageComponent implements OnDestroy {
-  public items$: Observable<Array<Analysis>>;
+  public items$: Observable<Array<CustomReport>>;
   public isLoading$: Observable<boolean>;
   public columnDefs: Array<Partial<AgGridColumn>>;
   public frameworkComponents: any;
