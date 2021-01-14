@@ -35,7 +35,8 @@ const reducer = wrapReducerWithFormStateUpdate(
       variations: action.variations,
       formState: updateGroup<AccountCustomReportsReportForm>(state.formState, {
         customReportGene: setValue(''),
-        customReportVariation: setValue('')
+        customReportVariation: setValue(''),
+        customReportVariationID: setValue(action.value)
       })
     })),
     on(AccountCustomReportsReportPageActions.resetGenes, (state, action) => ({

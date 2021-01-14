@@ -42,7 +42,7 @@ export class AccountCustomReportsReportPageActions {
 
   public static fillVariations = createAction(
     '[Account Custom Reports Report Page] Fill Variations',
-    props<{ variations: Array<CustomReportVariation> }>()
+    props<{ variations: Array<CustomReportVariation>, value: number }>()
   );
 
   public static resetGenes = createAction(

@@ -10,9 +10,9 @@ import { catchError, debounce, filter, map, mergeMap, switchMap, tap, withLatest
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationActions } from '@shared/notification';
 import { Router } from '@angular/router';
-import { CustomReport, CustomReportService } from '@shared/custom-report';
+import { CustomReport, CustomReportGene, CustomReportInterpretation, CustomReportResult, CustomReportService, CustomReportVariation } from '@shared/custom-report';
 import { SetValueAction } from 'ngrx-forms';
-import { find } from 'lodash';
+import { find, findIndex } from 'lodash';
 
 @Injectable()
 export class AccountCustomReportsReportPageEffects {
@@ -49,11 +49,79 @@ export class AccountCustomReportsReportPageEffects {
       ofType(AccountCustomReportsReportPageActions.save),
       withLatestFrom(
         this.store.select(AccountCustomReportsReportPageSelectors.formState),
-        this.store.select(NavigationSelectors.selectRouteParam('id'))
+        this.store.select(AccountCustomReportsReportPageSelectors.customReport)
       ),
       filter(([_, formState]) => formState.isValid),
-      switchMap(([_, formState, id]) => {
-        const report = new CustomReport({});
+      switchMap(([_, formState, customReport]) => {
+        let geneIndex = 0;
+        const customReportGenes = [...customReport.customReportGenes];
+
+        if (!formState.value.customReportGeneID) {
+          customReportGenes.push(
+            new CustomReportGene({
+              name: formState.value.customReportGene
+            })
+          );
+          geneIndex = customReportGenes.length - 1;
+        } else {
+          geneIndex = findIndex(customReportGenes, { id: formState.value.customReportGeneID });
+          customReportGenes[geneIndex] = new CustomReportGene({
+            ...customReportGenes[geneIndex]
+          });
+        }
+
+        if (!formState.value.customReportVariationID) {
+          const interpretation = new CustomReportInterpretation({
+            interpretations: formState.value.interpretation
+          });
+          const result = new CustomReportResult({
+            result: formState.value.result,
+            customReportInterpretation: interpretation
+          });
+
+          const customReportVariations = [...customReportGenes[geneIndex].customReportVariations, new CustomReportVariation({
+            variation: formState.value.customReportVariation,
+            customReportResult: result
+          })];
+
+          customReportGenes[geneIndex] = new CustomReportGene({
+            ...customReportGenes[geneIndex],
+            customReportVariations
+          });
+        } else {
+          const variantIndex = findIndex(
+            customReportGenes[geneIndex].customReportVariations,
+            { id: formState.value.customReportVariationID }
+          );
+
+          const interpretation = new CustomReportInterpretation({
+            ...customReportGenes[geneIndex].customReportVariations[variantIndex].customReportResult.customReportInterpretation,
+            interpretations: formState.value.interpretation
+          });
+
+          const result = new CustomReportResult({
+            ...customReportGenes[geneIndex].customReportVariations[variantIndex].customReportResult,
+            result: formState.value.result,
+            customReportInterpretation: interpretation
+          });
+
+          const customReportVariations = [...customReportGenes[geneIndex].customReportVariations];
+          customReportVariations[variantIndex] = new CustomReportVariation({
+            ...customReportVariations[variantIndex],
+            customReportResult: result
+          });
+
+          customReportGenes[geneIndex] = new CustomReportGene({
+            ...customReportGenes[geneIndex],
+            customReportVariations
+          });
+        }
+
+        const report = new CustomReport({
+          ...customReport,
+          name: formState.value.name,
+          customReportGenes
+        });
 
         return this.customReportService
           .update(report)
@@ -68,7 +136,7 @@ export class AccountCustomReportsReportPageEffects {
   public saveSuccess$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountCustomReportsReportPageActions.saveSuccess),
-      tap(() => this.router.navigateByUrl('/analyses')),
+      tap(() => this.router.navigateByUrl('/custom-reports')),
       map(() => NotificationActions.showSuccess({
         translationKey: 'SHARED.NOTIFICATIONS.TEXT_SUCCESS'
       }))
@@ -94,7 +162,7 @@ export class AccountCustomReportsReportPageEffects {
       map(([{ value }, genes]) => {
         const variations = (value) ? find(genes, { id: value }).customReportVariations : [];
 
-        return AccountCustomReportsReportPageActions.fillVariations({ variations });
+        return AccountCustomReportsReportPageActions.fillVariations({ variations, value: null });
       })
     )
   );

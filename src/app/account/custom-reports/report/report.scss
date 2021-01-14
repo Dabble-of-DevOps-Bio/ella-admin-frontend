@@ -15,9 +15,14 @@
       &-25 {width: 25%;}
       &-75 {width: 75%;}
     }
+    &-disclaimer {font-size: 13px; line-height: 19px; padding-bottom: 15px; padding-left: 40px;
+      background: url(/assets/images/custom-report-info.png) no-repeat; background-size: 40px; background-position-x: 40px;
+      div {padding-left: 50px;}
+    }
   }
   textarea {border: 1px solid rgb(155, 173, 189); border-radius: 4px; min-width: 75%;
     margin: 0px; height: 150px; min-height: 150px; width: 901px; margin-top: 40px;
+    &:last-child {margin-bottom: 40px;}
   }
   input[type=text], .dropdown {border: 1px solid rgb(155, 173, 189); width: 220px;}
   .dropdown {height: 27px!important;}
