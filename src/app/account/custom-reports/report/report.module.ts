@@ -19,6 +19,7 @@ import { AccountCustomReportsReportGenesComponent } from './shared/components/ge
 import { AccountCustomReportsReportVariationsComponent } from './shared/components/variations/variations.component';
 import { AccountCustomReportsReportResultComponent } from './shared/components/result/result.component';
 import { AccountCustomReportsReportInterpretationComponent } from './shared/components/interpretation/interpretation.component';
+import { CustomSelectModule } from '@shared/custom-select';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AccountCustomReportsReportInterpretationComponent } from './shared/comp
     NgrxFormsModule,
     ModalModule,
     FormTextModule,
-    FormTextAreaModule
+    FormTextAreaModule,
+    CustomSelectModule
   ],
   providers: [
     AccountCustomReportsReportPageFacade

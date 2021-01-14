@@ -1,4 +1,23 @@
 <h2>{{ 'ACCOUNT.CUSTOM_REPORTS.REPORT.TITLE_VARIATIONS_DETECTED' | translate }}</h2>
 <div class="report-row">
-  
+  <div class="report-col report-col-50">
+    <custom-select
+      [controlState]="formState.controls.customReportVariationID"
+      [options]="variationOptions"
+      [validationMessages]="{
+        required: 'ACCOUNT.CUSTOM_REPORTS.REPORT.ERRORS.TEXT_VARIATIONS_IS_REQUIRED' | translate
+      }">
+      </custom-select>
+  </div>
+</div>
+<div class="report-row">
+  <div class="report-col report-col-50">
+    {{ 'ACCOUNT.CUSTOM_REPORTS.REPORT.TEXT_ENTER_NEW' | translate }}
+    <form-text
+      [controlState]="formState.controls.customReportVariation"
+      [validationMessages]="{
+        required: 'ACCOUNT.CUSTOM_REPORTS.REPORT.ERRORS.TEXT_VARIATIONS_IS_REQUIRED' | translate
+      }">
+    </form-text>
+  </div>
 </div>

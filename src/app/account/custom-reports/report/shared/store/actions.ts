@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
-import { CustomReport } from '@shared/custom-report';
+import { CustomReport, CustomReportVariation } from '@shared/custom-report';
 
 export class AccountCustomReportsReportPageActions {
   /* tslint:disable:typedef */
@@ -38,6 +38,26 @@ export class AccountCustomReportsReportPageActions {
   public static saveFailure = createAction(
     '[Account Custom Reports Report Page] Save Changes Failure',
     props<{ response: HttpErrorResponse }>()
+  );
+
+  public static fillVariations = createAction(
+    '[Account Custom Reports Report Page] Fill Variations',
+    props<{ variations: Array<CustomReportVariation> }>()
+  );
+
+  public static resetGenes = createAction(
+    '[Account Custom Reports Report Page] Reset Genes',
+    props<{ value: number }>()
+  );
+
+  public static fillInterpretation = createAction(
+    '[Account Custom Reports Report Page] Fill Interpretation',
+    props<{ interpretation: string, result: string }>()
+  );
+
+  public static resetVariations = createAction(
+    '[Account Custom Reports Report Page] Reset Variations',
+    props<{ value: number }>()
   );
   /* tslint:enable:typedef */
 }

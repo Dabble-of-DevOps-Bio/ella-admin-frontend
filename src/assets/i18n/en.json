@@ -216,15 +216,17 @@
         "TEXT_SELECT_GENES": "Select the Genes Analyzed",
         "TEXT_CREATE_NEW": "Or create a new one",
         "TEXT_SELECT_FROM_AVAILABLE": "Select from available",
-        "TEXT_DATE_OF_BIRTH": "Enter new",
+        "TEXT_ENTER_NEW": "Enter new",
         "TITLE_VARIATIONS_DETECTED": "Variations Detected",
         "TEXT_SELECT_VARIATIONS": "Select the Variations Detection",
         "TITLE_RESULT": "Result",
         "TITLE_INTERPRETATION": "Interpretation",
         "BUTTON_CREATE_REPORT": "Create Report",
         "ERRORS": {
-          "TEXT_LITERATURE_IS_REQUIRED": "Literature is required",
-          "TEXT_COMMENTS_IS_REQUIRED": "Additional Comments is required"
+          "TEXT_GENES_IS_REQUIRED": "Genes is required",
+          "TEXT_VARIATIONS_IS_REQUIRED": "Variations is required",
+          "TEXT_RESULT_IS_REQUIRED": "Results is required",
+          "TEXT_INTERPRETATION_IS_REQUIRED": "Interpretation is required"
         }
       }
     },
@@ -246,6 +248,9 @@
     "NOTIFICATIONS": {
       "TEXT_SUCCESS": "Data was saved successfully",
       "TEXT_ERROR": "Unable to handle request"
+    },
+    "SELECT": {
+      "TEXT_NO_ITEMS": "No items"
     }
   }
 }

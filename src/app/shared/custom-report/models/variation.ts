@@ -1,4 +1,5 @@
 import { Expose, Type } from 'class-transformer';
+import { CustomReportResult } from './result';
 
 export class CustomReportVariation {
   @Type(() => Number)
@@ -8,8 +9,9 @@ export class CustomReportVariation {
   @Expose()
   public variation: string;
 
+  @Type(() => CustomReportResult)
   @Expose({ name: 'custom_report_result' })
-  public customReportResult: any;
+  public customReportResult: CustomReportResult;
 
   constructor(model: Partial<CustomReportVariation> = {}) {
     Object.assign(this, model);

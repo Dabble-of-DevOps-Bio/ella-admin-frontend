@@ -12,12 +12,14 @@
 
       <custom-reports-report-genes
         [data]="customReport"
-        [formState]="formState">
+        [formState]="formState"
+        [geneOptions]="geneOptions$ | async">
       </custom-reports-report-genes>
 
       <custom-reports-report-variations
         [data]="customReport"
-        [formState]="formState">
+        [formState]="formState"
+        [variationOptions]="variationOptions$ | async">
       </custom-reports-report-variations>
 
       <custom-reports-report-result
