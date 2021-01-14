@@ -10,6 +10,8 @@ import { PublicResetPasswordPageState } from '@app/public/reset-password/shared/
 import { AccountGenePanelsPageState } from '@app/account/gene-panels/shared/store';
 import { AccountAnalysesPageState } from '@app/account/analyses/shared/store';
 import { AccountAnalysesReportPageState } from '@app/account/analyses/report/shared/store';
+import { AccountCustomReportsPageState } from '@app/account/custom-reports/shared/store';
+import { AccountCustomReportsReportPageState } from '@app/account/custom-reports/report/shared/store';
 
 export class AppState {
   public router: RouterReducerState<any>;
@@ -24,4 +26,6 @@ export class AppState {
   public accountGenePanelsPage?: AccountGenePanelsPageState;
   public accountAnalysesPage?: AccountAnalysesPageState;
   public accountAnalysesReportPage?: AccountAnalysesReportPageState;
+  public accountCustomReportsPage?: AccountCustomReportsPageState;
+  public accountCustomReportsReportPage?: AccountCustomReportsReportPageState;
 }

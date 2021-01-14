@@ -1,0 +1,1 @@
+export { CustomReportRelationType } from './relation';

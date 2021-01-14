@@ -1,0 +1,40 @@
+<ng-container *ngIf="!(isLoading$ | async)">
+  <div *ngVar="formState$ | async as formState" class="report-page">
+    <form
+      *ngVar="customReport$ | async as customReport"
+      (submit)="onSubmit()"
+      [ngrxFormState]="formState">
+
+      <custom-reports-report-accession
+        [data]="customReport"
+        [formState]="formState">
+      </custom-reports-report-accession>
+
+      <custom-reports-report-genes
+        [data]="customReport"
+        [formState]="formState"
+        [geneOptions]="geneOptions$ | async">
+      </custom-reports-report-genes>
+
+      <custom-reports-report-variations
+        [data]="customReport"
+        [formState]="formState"
+        [variationOptions]="variationOptions$ | async">
+      </custom-reports-report-variations>
+
+      <custom-reports-report-result
+        [data]="customReport"
+        [formState]="formState">
+      </custom-reports-report-result>
+
+      <custom-reports-report-interpretation
+        [data]="customReport"
+        [formState]="formState">
+      </custom-reports-report-interpretation>
+
+      <div>
+        <button class="bttn active" type="submit">{{ 'ACCOUNT.ANALYSES.REPORT.BUTTON_CREATE_REPORT' | translate }}</button>
+      </div>
+    </form>
+  </div>
+</ng-container>

@@ -26,6 +26,10 @@ const routes: Routes = [
       {
         path: 'analyses',
         loadChildren: () => import('./analyses/analyses.module').then((module) => module.AccountAnalysesPageModule)
+      },
+      {
+        path: 'custom-reports',
+        loadChildren: () => import('./custom-reports/custom-reports.module').then((module) => module.AccountCustomReportsPageModule)
       }
     ]
   }

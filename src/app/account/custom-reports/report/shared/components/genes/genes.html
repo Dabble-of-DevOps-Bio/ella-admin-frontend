@@ -1,0 +1,27 @@
+<h2>{{ 'ACCOUNT.CUSTOM_REPORTS.REPORT.TITLE_GENES_ANALYZED' | translate }}</h2>
+<div class="report-disclaimer">
+  <div>{{ 'ACCOUNT.CUSTOM_REPORTS.REPORT.TEXT_SELECT_GENES' | translate }}</div>
+  <div>{{ 'ACCOUNT.CUSTOM_REPORTS.REPORT.TEXT_CREATE_NEW' | translate }}</div>
+</div>
+<div class="report-row">
+  <div class="report-col report-col-50">
+    <custom-select
+      [controlState]="formState.controls.customReportGeneID"
+      [options]="geneOptions"
+      [validationMessages]="{
+        required: 'ACCOUNT.CUSTOM_REPORTS.REPORT.ERRORS.TEXT_GENES_IS_REQUIRED' | translate
+      }">
+      </custom-select>
+  </div>
+</div>
+<div class="report-row">
+  <div class="report-col report-col-50">
+    {{ 'ACCOUNT.CUSTOM_REPORTS.REPORT.TEXT_ENTER_NEW' | translate }}
+    <form-text
+      [controlState]="formState.controls.customReportGene"
+      [validationMessages]="{
+        required: 'ACCOUNT.CUSTOM_REPORTS.REPORT.ERRORS.TEXT_GENES_IS_REQUIRED' | translate
+      }">
+    </form-text>
+  </div>
+</div>

@@ -1,5 +1,5 @@
-import { AccountAnalysesPageComponent } from './analyses.component';
-import { AccountAnalysesPageEffects, accountAnalysesPageReducer } from './shared/store';
+import { AccountCustomReportsPageComponent } from './custom-reports.component';
+import { AccountCustomReportsPageEffects, accountCustomReportsPageReducer } from './shared/store';
 import { AppState } from '@shared/store/state';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
@@ -7,17 +7,17 @@ import { TestBed } from '@angular/core/testing';
 import { render, RenderResult } from '@testing-library/angular';
 import { configuration } from '@configurations';
 import { TranslateTestingModule } from 'ngx-translate-testing';
-import { AccountAnalysesPageFacade } from './analyses.facade';
+import { AccountCustomReportsPageFacade } from './custom-reports.facade';
 
-describe('AccountAnalysesPageComponent', () => {
-  let component: RenderResult<AccountAnalysesPageComponent>;
-  let componentInstance: AccountAnalysesPageComponent;
+describe('AccountCustomReportsPageComponent', () => {
+  let component: RenderResult<AccountCustomReportsPageComponent>;
+  let componentInstance: AccountCustomReportsPageComponent;
   let store: Store<AppState>;
 
   const translation = require(`../../../assets/i18n/${configuration.language.default}.json`);
 
   beforeEach(async () => {
-    component = await render(AccountAnalysesPageComponent, {
+    component = await render(AccountCustomReportsPageComponent, {
       imports: [
         TranslateTestingModule.withTranslations(configuration.language.default, translation),
         StoreModule.forRoot({}, {
@@ -26,15 +26,15 @@ describe('AccountAnalysesPageComponent', () => {
             strictActionImmutability: true
           }
         }),
-        StoreModule.forFeature('accountAnalysesPage', accountAnalysesPageReducer),
+        StoreModule.forFeature('accountCustomReportsPage', accountCustomReportsPageReducer),
         EffectsModule.forRoot([]),
-        EffectsModule.forFeature([AccountAnalysesPageEffects])
+        EffectsModule.forFeature([AccountCustomReportsPageEffects])
       ],
       declarations: [
-        AccountAnalysesPageComponent
+        AccountCustomReportsPageComponent
       ],
       routes: [],
-      providers: [AccountAnalysesPageFacade]
+      providers: [AccountCustomReportsPageFacade]
     });
 
     componentInstance = component.fixture.componentInstance;
